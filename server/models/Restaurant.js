@@ -9,8 +9,8 @@ var yelp = new Yelp({
   token_secret: process.env.YELP_TOKEN_SECRET,
 });
 
-exports.getResults = function(hollaback) {
-	yelp.search({ term: 'food', location: 'Montreal' })
+exports.getResults = function(coordsObj, hollaback) {
+	yelp.search({ radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
 	.then(function(data) {
 		hollaback(null, data);
 	})

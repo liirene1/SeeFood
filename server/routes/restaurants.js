@@ -5,11 +5,9 @@ var router = express.Router();
 
 var Restaurant = require('../models/Restaurant.js');
 
-router.get('/', function(req, res) {
-	console.log('gots');
-	Restaurant.getResults(function(err, results) {
-		console.log('error: ', err);
-		console.log('results: ', results);
+router.put('/', function(req, res) {
+	Restaurant.getResults(req.body, function(err, results) {
+		res.status(err ? 400 : 200).send(err || results)
 	});
 });
 
