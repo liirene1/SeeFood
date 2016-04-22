@@ -79,6 +79,6 @@ app.use(function(err, req, res, next) {
 var server = http.createServer(app);
 
 app.on('stormpath.ready', function() {
-  app.listen(process.env.PORT || 3000);
+  app.listen(process.env.PORT || 5000);
 });
 
