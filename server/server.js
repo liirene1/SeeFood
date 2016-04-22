@@ -9,6 +9,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
+var stormpath = require('express-stormpath');
 require('dotenv').config();
 
 var mongoose = require('mongoose');
@@ -32,6 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
+app.use(stormpath.init(app, { website: true }));
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
@@ -74,10 +76,13 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
 // module.exports = app;
 
 var server = http.createServer(app);
 
-server.listen(PORT, function() {
-  console.log(`Server listening on port ${PORT}`);
+app.on('stormpath.ready', function() {
+  server.listen(PORT, function() {
+    console.log(`Server listening on port ${PORT}`);
+  });
 });
