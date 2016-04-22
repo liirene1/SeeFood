@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ui.router'])
+angular.module('seeFoodApp', ['ionic', 'ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -13,21 +13,21 @@ angular.module('starter', ['ionic', 'ui.router'])
     controller: 'homeCtrl'
   })
   .state('/swipe', {
-    url: '/',
+    url: '/photos',
     templateUrl: 'swipe/partials/swipe.html',
     controller: 'swipeCtrl'
   })
-  .state('/home', {
-    url: '/',
-    templateUrl: 'home/partials/home.html',
-    controller: 'homeCtrl'
+  .state('/list', {
+    url: '/list',
+    templateUrl: 'list/partials/list.html',
+    controller: 'listCtrl'
   })
-  .state('/home', {
-    url: '/',
-    templateUrl: 'home/partials/home.html',
-    controller: 'homeCtrl'
+  .state('/detail', {
+    url: '/detail',
+    templateUrl: 'detail/partials/detail.html',
+    controller: 'detailCtrl'
   })
-
+  $urlRouterProvider.otherwise('/');
 })
 
 .run(function($ionicPlatform) {

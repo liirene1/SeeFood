@@ -20,14 +20,35 @@
 
     <!-- your app's js -->
     <script src="module.js"></script>
+    <script src="/detail/controllers/detailCtrl.js"></script>
+    <script src="/home/controllers/homeCtrl.js"></script>
+    <script src="/swipe/controllers/swipeCtrl.js"></script>
+    <script src="/list/controllers/listCtrl.js"></script>
   </head>
-  <body ng-app="starter">
+  <body ng-app="seeFoodApp">
 
     <ion-pane>
       <ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar>
       <ion-content>
+        <h1>sup</h1>
+        <button ui-sref='home' class="button button-positive">
+          home
+        </button>
+
+        <button ui-sref='swipe' class="button button-calm">
+          swipe
+        </button>
+
+        <button ui-sref='list' class="button button-balanced">
+          list
+        </button>
+
+        <button ui-sref='detail' class="button button-energized">
+          detail
+        </button>
+        
         <ion-view></ion-view>
       </ion-content>
     </ion-pane>
