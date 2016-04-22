@@ -13,11 +13,14 @@ var stormpath = require('express-stormpath');
 require('dotenv').config();
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/seefood');
+
+const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/seefood';
+
+mongoose.connect(mongoUrl);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function() {
-    console.log('successfully connected to db');
+    console.log(`successfully connected to ${mongoUrl}`);
 });
 
 var app = express();
@@ -26,9 +29,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(stormpath.init(app, { website: true }));
 
 app.use(stormpath.init(app, {
+  website: true,
   enableFacebook: true,
   social: {
     facebook: {
@@ -41,11 +44,6 @@ app.use(stormpath.init(app, {
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/restaurants', require('./routes/restaurants'));
-
-app.all('/*', function(req, res, next) {
-    res.sendFile('index.html', { root: path.join(__dirname, 'public') });
-});
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -83,4 +81,26 @@ var server = http.createServer(app);
 app.on('stormpath.ready', function() {
   app.listen(process.env.PORT || PORT);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
