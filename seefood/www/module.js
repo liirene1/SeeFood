@@ -17,20 +17,20 @@ angular.module('starter', ['ionic', 'ui.router', 'ngCordova'])
     templateUrl: 'swipe/partials/swipe.html',
     controller: 'swipeCtrl'
   })
-  .state('/home', {
-    url: '/',
-    templateUrl: 'home/partials/home.html',
-    controller: 'homeCtrl'
-  })
-  .state('/home', {
-    url: '/',
-    templateUrl: 'home/partials/home.html',
-    controller: 'homeCtrl'
-  })
+  // .state('/home', {
+  //   url: '/',
+  //   templateUrl: 'home/partials/home.html',
+  //   controller: 'homeCtrl'
+  // })
+  // .state('/home', {
+  //   url: '/',
+  //   templateUrl: 'home/partials/home.html',
+  //   controller: 'homeCtrl'
+  // })
 
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaGeolocation) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -46,9 +46,18 @@ angular.module('starter', ['ionic', 'ui.router', 'ngCordova'])
       StatusBar.styleDefault();
     }
 
+    var posOptions = {
+           enableHighAccuracy: true,
+           timeout: 20000,
+           maximumAge: 0
+       };
+
     $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
+
+            console.log("lat:", lat);
+            console.log("long:", long);
   });
 })
 
