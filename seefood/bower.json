@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "cordova": "^3.4.0",
-    "ngCordova": "^0.1.26-alpha"
+    "ngCordova": "^0.1.26-alpha",
+    "hammerjs": "^2.0.8",
+    "AngularHammer": "ryanmullins-angular-hammer#^2.1.10"
   }
 }

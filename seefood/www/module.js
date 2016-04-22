@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova'])
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -56,12 +56,15 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova'])
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
 
-            HomeService.getRestaurants(lat, long)
-            .then(function(res) {
-              console.log(res.data);
-            }, function(err) {
-              console.log('err:', err);
-            })
+            console.log(lat)
+            console.log(long)
+
+            // HomeService.getRestaurants(lat, long)
+            // .then(function(res) {
+            //   console.log(res.data);
+            // }, function(err) {
+            //   console.log('err:', err);
+            // })
 
 
   });
