@@ -7,24 +7,24 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-  .state('/home', {
+  .state('home', {
     url: '/',
-    templateUrl: 'home/partials/home.html',
+    templateUrl: './home/partials/home.html',
     controller: 'homeCtrl'
   })
-  .state('/swipe', {
+  .state('swipe', {
     url: '/photos',
-    templateUrl: 'swipe/partials/swipe.html',
+    templateUrl: './swipe/partials/swipe.html',
     controller: 'swipeCtrl'
   })
-  .state('/list', {
+  .state('list', {
     url: '/list',
-    templateUrl: 'list/partials/list.html',
+    templateUrl: './list/partials/list.html',
     controller: 'listCtrl'
   })
-  .state('/detail', {
+  .state('detail', {
     url: '/detail',
-    templateUrl: 'detail/partials/detail.html',
+    templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl'
   })
   $urlRouterProvider.otherwise('/');
