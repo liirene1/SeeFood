@@ -1,6 +1,6 @@
 'use strict';
 
-const PORT = 3000;
+// const PORT = 3000;
 
 var express = require('express');
 var path = require('path');
@@ -39,10 +39,10 @@ app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/restaurants', require('./routes/restaurants'));
 
-// app.all('/*', function(req, res, next) {
-//     // Just send the index.html for other files to support HTML5Mode
-//     res.sendFile('index.html', { root: path.join(__dirname, 'public') });
-// });
+app.all('/*', function(req, res, next) {
+    // Just send the index.html for other files to support HTML5Mode
+    res.sendFile('index.html', { root: path.join(__dirname, 'public') });
+});
 
 
 // catch 404 and forward to error handler
@@ -79,10 +79,12 @@ app.use(function(err, req, res, next) {
 
 // module.exports = app;
 
-var server = http.createServer(app);
-
 app.on('stormpath.ready', function() {
-  server.listen(PORT, function() {
-    console.log(`Server listening on port ${PORT}`);
-  });
+  app.listen(process.env.PORT || 3000);
 });
+
+// var server = http.createServer(app);
+
+// server.listen(PORT, function() {
+//   console.log(`Server listening on port ${PORT}`);
+// });
