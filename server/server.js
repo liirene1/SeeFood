@@ -35,6 +35,16 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(stormpath.init(app, { website: true }));
 
+app.use(stormpath.init(app, {
+  enableFacebook: true,
+  social: {
+    facebook: {
+      appId: process.env.id,
+      appSecret: process.env.secret,
+    },
+  },
+}));
+
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/restaurants', require('./routes/restaurants'));
