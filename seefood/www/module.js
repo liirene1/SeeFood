@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('seeFoodApp', ['ionic', 'ui.router'])
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -30,7 +30,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router'])
   $urlRouterProvider.otherwise('/');
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaGeolocation) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -45,5 +45,20 @@ angular.module('seeFoodApp', ['ionic', 'ui.router'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    var posOptions = {
+           enableHighAccuracy: true,
+           timeout: 20000,
+           maximumAge: 0
+       };
+
+    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+            var lat  = position.coords.latitude;
+            var long = position.coords.longitude;
+
+            console.log("lat:", lat);
+            console.log("long:", long);
   });
 })
+
+});
