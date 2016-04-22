@@ -30,7 +30,11 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova'])
   $urlRouterProvider.otherwise('/');
 })
 
-.run(function($ionicPlatform, $cordovaGeolocation, HomeService) {
+.constant('API', function($location) {
+  return window.location.hostname === 'localhost' ? 'localhost:5000' : 'seefoodapp.herokuapp.com';
+})
+
+.run(function($ionicPlatform, $cordovaGeolocation, HomeService, API) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -47,24 +51,23 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova'])
     }
 
     var posOptions = {
-           enableHighAccuracy: true,
-           timeout: 20000,
-           maximumAge: 0
-       };
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 0
+    };
 
     $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-            var lat  = position.coords.latitude;
-            var long = position.coords.longitude;
+      var lat  = position.coords.latitude;
+      var long = position.coords.longitude;
 
-            HomeService.getRestaurants(lat, long)
-            .then(function(res) {
-              console.log(res.data);
-            }, function(err) {
-              console.log('err:', err);
-            })
+      console.log(API());
 
-
+      HomeService.getRestaurants(lat, long)
+      .then(function(res) {
+        console.log(res.data);
+      }, function(err) {
+        console.log('err:', err);
+      });
+    });
   });
-})
-
 });
