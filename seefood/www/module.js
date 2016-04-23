@@ -30,7 +30,11 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
   $urlRouterProvider.otherwise('/');
 })
 
-.run(function($ionicPlatform, $cordovaGeolocation, HomeService) {
+.constant('API', function($location) {
+  return window.location.hostname === 'localhost' ? 'localhost:5000' : 'seefoodapp.herokuapp.com';
+})
+
+.run(function($ionicPlatform, $cordovaGeolocation, HomeService, API) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -47,12 +51,13 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     }
 
     var posOptions = {
-           enableHighAccuracy: true,
-           timeout: 20000,
-           maximumAge: 0
-       };
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 0
+    };
 
     $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+<<<<<<< HEAD
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
 
@@ -65,9 +70,19 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
             // }, function(err) {
             //   console.log('err:', err);
             // })
+=======
+      var lat  = position.coords.latitude;
+      var long = position.coords.longitude;
+>>>>>>> f67e559a95e0d6242cfb1a9b8a4658a2ffcbc863
 
+      console.log(API());
 
+      HomeService.getRestaurants(lat, long)
+      .then(function(res) {
+        console.log(res.data);
+      }, function(err) {
+        console.log('err:', err);
+      });
+    });
   });
-})
-
 });
