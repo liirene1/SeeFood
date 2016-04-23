@@ -9,12 +9,12 @@ app.service('HomeService', function($http, API) {
     	lat: lat,
     	lng: lng
     }
-    return $http.put(`${API()}/restaurants`, coordObj);
+    return $http.put(`${API}/restaurants`, coordObj);
  	}
 
  this.fbLogin = function() {
  	var catsup ={ sup: 'doe' };
- 	$http.post(`${API()}/users`, catsup)
+ 	$http.post(`${API}/users`, catsup)
  	.then(res => console.log(res),
  				err => console.error(err))
  };
