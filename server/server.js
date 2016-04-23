@@ -10,6 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
 var stormpath = require('express-stormpath');
+var fs = require('fs');
 require('dotenv').config();
 
 var mongoose = require('mongoose');
@@ -40,6 +41,11 @@ app.use(stormpath.init(app, {
     },
   },
 }));
+
+app.get('/', function(req, res) {
+  var testPath = path.join(__dirname, 'test.html');
+  res.sendFile(testPath);
+});
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
