@@ -4,7 +4,6 @@ var app = angular.module('seeFoodApp');
 
 app.service('HomeService', function($http, API, CacheFactory) {
 
-	
 
  this.fbLogin = function() {
  	var catsup = { sup: 'doe' };

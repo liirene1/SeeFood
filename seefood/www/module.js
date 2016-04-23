@@ -38,7 +38,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
 
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
-.run(function($ionicPlatform, $cordovaGeolocation, HomeService, SwipeService) {
+.run(function($ionicPlatform, $cordovaGeolocation, SwipeService) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -70,8 +70,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
 
       SwipeService.getRestaurants(lat, long)
       .then(function(res) {
-        console.log(res.data);
-        console.log(res.data.businesses);
       }, function(err) {
         console.log('err:', err);
       });
