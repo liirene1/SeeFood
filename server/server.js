@@ -11,6 +11,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var stormpath = require('express-stormpath');
 var fs = require('fs');
+var cors = require('cors');
+
 require('dotenv').config();
 
 var mongoose = require('mongoose');
@@ -30,6 +32,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
 
 app.use(stormpath.init(app, {
   website: true,
