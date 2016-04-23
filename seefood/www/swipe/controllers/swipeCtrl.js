@@ -8,14 +8,19 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 	$scope.$watch(function() {
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
-		$scope.restaurants = newVal[0];
-		console.log($scope.restaurants);
+		$scope.restaurant = newVal[0];
+		console.log('watch restaurant: ', $scope.restaurant);
 	});
 
 	var myElement = document.getElementById('pic');
 	var mc = new Hammer(myElement);
 
-	mc.on("panright", function(ev) {
+	mc.on("swiperight", function(ev) {
 		console.log(ev.type);
+		RestaurantService.addLike();
+		RestaurantService.swipeRestaurant();
+		$scope.restaurant = RestaurantService.grabRestaurant();
+		console.log('scope restaurant: ', $scope.restaurant);
+		debugger;
 	});
 })
