@@ -3,9 +3,11 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'])
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents', 'angular-cache'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, CacheFactoryProvider) {
+  angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+
   $stateProvider
   .state('home', {
     url: '/',
@@ -23,12 +25,16 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     controller: 'listCtrl'
   })
   .state('detail', {
-    url: '/detail',
+    url: '/detail/:id',
     templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl'
   })
+
+
+
   $urlRouterProvider.otherwise('/');
 })
+
 
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
@@ -64,7 +70,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
 
       SwipeService.getRestaurants(lat, long)
       .then(function(res) {
-        // console.log(res.data);
       }, function(err) {
         console.log('err:', err);
       });
