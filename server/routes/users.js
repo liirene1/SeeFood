@@ -8,7 +8,6 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	// req.body.nah = 'doe';
 	res.send(req.body);
 });
 

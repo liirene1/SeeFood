@@ -30,10 +30,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
   $urlRouterProvider.otherwise('/');
 })
 
-.constant('API', function($location) {
-  // return window.location.hostname === 'localhost' ? 'localhost:5000' : 'seefoodapp.herokuapp.com';
-  return 'http://seefoodapp.herokuapp.com';
-})
+.constant('API', 'http://seefoodapp.herokuapp.com')
 
 .run(function($ionicPlatform, $cordovaGeolocation, HomeService) {
   $ionicPlatform.ready(function() {
@@ -64,13 +61,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
 
             console.log(lat)
             console.log(long)
-
-            // HomeService.getRestaurants(lat, long)
-            // .then(function(res) {
-            //   console.log(res.data);
-            // }, function(err) {
-            //   console.log('err:', err);
-            // })
 
       HomeService.getRestaurants(lat, long)
       .then(function(res) {
