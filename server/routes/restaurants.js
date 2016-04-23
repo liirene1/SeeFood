@@ -5,10 +5,14 @@ var router = express.Router();
 
 var Restaurant = require('../models/Restaurant.js');
 
-router.put('/', function(req, res) {
+//stormpath middleware added - err needs to send message and redirect
+router.put('/', stormpath.isLoggedIn, function(req, res) {
 	Restaurant.getResults(req.body, function(err, results) {
 		res.status(err ? 400 : 200).send(err || results)
 	});
 });
 
+web: {
+	logout:
+}
 module.exports = router;

@@ -12,11 +12,11 @@ app.service('HomeService', function($http, API) {
     return $http.put(`${API}/restaurants`, coordObj);
  	}
 
- this.fbLogin = function() {
- 	var catsup ={ sup: 'doe' };
- 	$http.post(`${API}/users`, catsup)
- 	.then(res => console.log(res),
- 				err => console.error(err))
- };
+ // this.fbLogin = function() {
+ // 	var catsup ={ sup: 'doe' };
+ // 	$http.post(`${API}/users`, catsup)
+ // 	.then(res => console.log(res),
+ // 				err => console.error(err))
+ // };
 
 })
