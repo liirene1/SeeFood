@@ -1,3 +1,4 @@
+
 'use strict';
 
 var Yelp = require('yelp');
@@ -10,7 +11,7 @@ var yelp = new Yelp({
 });
 
 exports.getResults = function(coordsObj, hollaback) {
-	yelp.search({ radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
+	yelp.search({ limit: 1, radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
 	.then(function(data) {
 		hollaback(null, data);
 	})

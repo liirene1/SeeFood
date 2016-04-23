@@ -3,9 +3,11 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'])
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents', 'angular-cache'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, CacheFactoryProvider) {
+  angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+
   $stateProvider
   .state('home', {
     url: '/',
@@ -27,12 +29,16 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl'
   })
+
+
+
   $urlRouterProvider.otherwise('/');
 })
 
+
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
-.run(function($ionicPlatform, $cordovaGeolocation, HomeService) {
+.run(function($ionicPlatform, $cordovaGeolocation, HomeService, SwipeService) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -62,9 +68,10 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
             console.log(lat)
             console.log(long)
 
-      HomeService.getRestaurants(lat, long)
+      SwipeService.getRestaurants(lat, long)
       .then(function(res) {
         console.log(res.data);
+        console.log(res.data.businesses);
       }, function(err) {
         console.log('err:', err);
       });

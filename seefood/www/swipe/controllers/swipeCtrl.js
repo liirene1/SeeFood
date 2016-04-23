@@ -2,7 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('swipeCtrl', function() {
+app.controller('swipeCtrl', function(SwipeService) {
 	console.log('swipeCtrl');
 
 
@@ -14,6 +14,8 @@ app.controller('swipeCtrl', function() {
 		function(ev) {
 			console.log(ev.type);
 		});
+
+		// SwipeService.getOne;
 
 
 
