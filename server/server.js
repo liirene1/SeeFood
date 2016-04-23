@@ -17,7 +17,7 @@ require('dotenv').config();
 
 var mongoose = require('mongoose');
 
-const mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost/seefood';
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/seefood';
 
 mongoose.connect(mongoUrl);
 var db = mongoose.connection;
