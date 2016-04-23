@@ -8,7 +8,8 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
-	console.log('req.body: ', req.body.catsup);
+	req.body.catsup.nah = 'doe';
+	res.send(req.body.catsup);
 });
 
 module.exports = router;
