@@ -15,11 +15,18 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 	var myElement = document.getElementById('pic');
 	var mc = new Hammer(myElement);
 
+	mc.on("swipeleft", function(ev) {
+		console.log(ev.type);
+		RestaurantService.swipeRestaurant();
+		$scope.restaurant = RestaurantService.grabRestaurant();
+		$scope.$apply();
+		console.log('scope restaurant: ', $scope.restaurant);
+	});
+
 	mc.on("swiperight", function(ev) {
 		console.log(ev.type);
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();
-		$scope.restaurant = null;
 		$scope.restaurant = RestaurantService.grabRestaurant();
 		$scope.$apply();
 		console.log('scope restaurant: ', $scope.restaurant);
