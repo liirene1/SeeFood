@@ -57,7 +57,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     };
 
     $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-<<<<<<< HEAD
+
             var lat  = position.coords.latitude;
             var long = position.coords.longitude;
 
@@ -70,10 +70,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
             // }, function(err) {
             //   console.log('err:', err);
             // })
-=======
-      var lat  = position.coords.latitude;
-      var long = position.coords.longitude;
->>>>>>> f67e559a95e0d6242cfb1a9b8a4658a2ffcbc863
 
       console.log(API());
 
