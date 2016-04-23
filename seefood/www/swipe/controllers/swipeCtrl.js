@@ -2,13 +2,13 @@
 
 var app = angular.module('seeFoodApp');
 
-
 app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 	console.log('swipeCtrl');
 
 	$scope.$watch(function() {
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
+		console.log('restos: ', newVal);
 		$scope.restaurant = newVal[0];
 		console.log('watch restaurant: ', $scope.restaurant);
 	});
