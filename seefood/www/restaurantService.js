@@ -7,12 +7,10 @@ app.service('RestaurantService', function() {
 	this.likes = [];
 
 	this.setRestaurants = function(data) {
-		console.log('DATA!!!!: ', data);
 		data.businesses.forEach(ele => {
 			this.restaurants.push(ele);
 		});
 		this.restaurants = _.shuffle(this.restaurants);
-		console.log('this.restaurants: ', this.restaurants);
 	};
 
 	this.swipeRestaurant = function() {
@@ -27,7 +25,7 @@ app.service('RestaurantService', function() {
 		return this.likes;
 	};
 
-	this.setLikes = function(like) {
-		this.likes.push(like);
+	this.addLike = function() {
+		this.likes.push(this.restaurants[0]);
 	};
 });
