@@ -19,8 +19,9 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 		console.log(ev.type);
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();
+		$scope.restaurant = null;
 		$scope.restaurant = RestaurantService.grabRestaurant();
+		$scope.$apply();
 		console.log('scope restaurant: ', $scope.restaurant);
-		debugger;
 	});
 })
