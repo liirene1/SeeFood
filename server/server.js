@@ -1,6 +1,6 @@
 'use strict';
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 var express = require('express');
 var path = require('path');
@@ -12,18 +12,14 @@ var http = require('http');
 var stormpath = require('express-stormpath');
 var fs = require('fs');
 var cors = require('cors');
-
-require('dotenv').config();
-
 var mongoose = require('mongoose');
+
+if(!process.env.MONGODB_URI) require('dotenv').config();
 
 const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost/seefood';
 
-mongoose.connect(mongoUrl);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'));
-db.once('open', function() {
-    console.log(`successfully connected to ${mongoUrl}`);
+mongoose.connect(mongoUrl, err => {
+  console.log(err || `successfully connected to ${mongoUrl}`);
 });
 
 var app = express();
@@ -62,54 +58,16 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.send({
     message: err.message,
-    error: {}
+    error: err
   });
 });
 
 var server = http.createServer(app);
 
 app.on('stormpath.ready', function() {
-  app.listen(process.env.PORT || PORT);
+  app.listen(PORT);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
