@@ -3,33 +3,35 @@
 var app = angular.module('seeFoodApp');
 
 app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
-	console.log('swipeCtrl');
-
 	$scope.$watch(function() {
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
 		console.log('restos: ', newVal);
 		$scope.restaurant = newVal[0];
-		console.log('watch restaurant: ', $scope.restaurant);
 	});
 
 	var myElement = document.getElementById('pic');
 	var mc = new Hammer(myElement);
 
 	mc.on("swipeleft", function(ev) {
-		console.log(ev.type);
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
+		$scope.rejected();
 		$scope.$apply();
-		console.log('scope restaurant: ', $scope.restaurant);
 	});
 
 	mc.on("swiperight", function(ev) {
-		console.log(ev.type);
+		$scope.sheSaidYes();
+		$scope.$apply();
+	});
+
+	$scope.rejected = function() {
+		RestaurantService.swipeRestaurant();
+		$scope.restaurant = RestaurantService.grabRestaurant();
+	}
+
+	$scope.sheSaidYes = function() {
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();
 		$scope.restaurant = RestaurantService.grabRestaurant();
-		$scope.$apply();
-		console.log('scope restaurant: ', $scope.restaurant);
-	});
+	}
+
 })

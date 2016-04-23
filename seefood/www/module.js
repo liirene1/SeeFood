@@ -25,7 +25,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     controller: 'listCtrl'
   })
   .state('detail', {
-    url: '/detail',
+    url: '/detail/:id',
     templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl'
   })
