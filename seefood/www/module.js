@@ -17,6 +17,11 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     templateUrl: './swipe/partials/swipe.html',
     controller: 'swipeCtrl'
   })
+  .state('email', {
+    url: '/login',
+    templateUrl: './email/partials/email.html',
+    controller: 'emailCtrl'
+  })
   .state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',

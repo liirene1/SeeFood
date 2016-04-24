@@ -2,7 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('userService', function($http, API) {
+app.service('UserService', function($http, API) {
 
   this.fbLogin = function() {
    var catsup ={ sup: 'doe' };
@@ -11,4 +11,4 @@ app.service('userService', function($http, API) {
          err => console.error(err))
   };
 
-}
+});
