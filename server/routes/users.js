@@ -14,13 +14,13 @@ router.get('/', stormpath.isLoggedIn, function(req, res) {
 	res.send('hey');
 });
 
-app.get('/', stormpath.getUser, function (req, res) {
-  if (req.user) {
-    res.send('Hello, ' + req.user.email);
-  } else {
-    res.send('Not logged in');
-  }
-});
+// app.get('/', stormpath.getUser, function (req, res) {
+//   if (req.user) {
+//     res.send('Hello, ' + req.user.email);
+//   } else {
+//     res.send('Not logged in');
+//   }
+// });
 
 //create user
 router.post('/', function(req, res) {

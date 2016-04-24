@@ -11,8 +11,4 @@ router.put('/', stormpath.isLoggedIn, function(req, res) {
 		res.status(err ? 400 : 200).send(err || results)
 	});
 });
-
-web: {
-	logout:
-}
 module.exports = router;

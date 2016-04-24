@@ -28,4 +28,12 @@ app.service('RestaurantService', function() {
 	this.addLike = function() {
 		this.likes.push(this.restaurants[0]);
 	};
+	
+	this.findLike = function(param) {
+		console.log('param: ', param.id);
+		for (var i = 0; i < this.likes.length; i++) {
+			console.log('the likes id: ', this.likes[i].id);
+			if(this.likes[i].id === param.id) return this.likes[i];
+		}
+	}
 });
