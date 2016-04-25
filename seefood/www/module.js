@@ -35,8 +35,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     controller: 'detailCtrl'
   })
 
-
-
   $urlRouterProvider.otherwise('/');
 })
 
