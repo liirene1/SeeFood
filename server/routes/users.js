@@ -9,10 +9,10 @@ var User = require('../models/user');
 var Restaurant = require('../models/restaurant');
 
 //get user
-router.get('/', stormpath.isLoggedIn, function(req, res) {
-	console.log('sup user');
-	res.send('hey');
-});
+// router.get('/', stormpath.isLoggedIn, function(req, res) {
+// 	console.log('sup user');
+// 	res.send('hey');
+// });
 
 // app.get('/', stormpath.getUser, function (req, res) {
 //   if (req.user) {

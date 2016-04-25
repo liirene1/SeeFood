@@ -68,7 +68,7 @@ app.use(function(err, req, res, next) {
 
 var server = http.createServer(app);
 
-app.use('/profile',stormpath.loginRequired,require('./profile')());
+// app.use('/profile',stormpath.loginRequired,require('./profile')());
 
 app.on('stormpath.ready', function() {
   app.listen(PORT);
