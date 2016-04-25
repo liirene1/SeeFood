@@ -35,7 +35,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
   })
   .state('login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
+    templateUrl: './templates/login.html',
     controller: 'LoginCtrl as ctrl'
   })
 
