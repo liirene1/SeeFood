@@ -38,12 +38,14 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     templateUrl: './templates/login.html',
     controller: 'LoginCtrl as ctrl'
   })
-
-
+  .state('email', {
+    url: '/email',
+    templateUrl: './email/partials/email.html',
+    controller: 'emailCtrl'
+  })
 
   $urlRouterProvider.otherwise('/');
 })
-
 
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
