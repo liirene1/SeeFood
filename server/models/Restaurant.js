@@ -10,8 +10,8 @@ var yelp = new Yelp({
   token_secret: process.env.YELP_TOKEN_SECRET,
 });
 
-exports.getResults = function(req, hollaback) {
-	yelp.search({offset: count, limit: 20, radius_filter: '24140', term: 'restaurants', ll: `${req.body.lat},${req.body.lng}` })
+exports.getResults = function(coordObj, hollaback) {
+	yelp.search({offset: coordObj.count, limit: 20, radius_filter: '24140', term: 'restaurants', ll: `${coordObj.lat},${coordObj.lng}` })
 	.then(function(data) {
 		hollaback(null, data);
 	})
