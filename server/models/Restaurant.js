@@ -18,11 +18,11 @@ exports.getResults = function(coordsObj, hollaback) {
 	.catch(function(err) {
 		hollaback(err);
 	})
-  yelp.search({offset: 20, limit: 20, sort: 1, radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
-	.then(function(data) {
-		hollaback(null, data);
-	})
-	.catch(function(err) {
-		hollaback(err);
-	})
+  // yelp.search({offset: 60, limit: 20, radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
+	// .then(function(data) {
+	// 	hollaback(null, data);
+	// })
+	// .catch(function(err) {
+	// 	hollaback(err);
+	// })
 }
