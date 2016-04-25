@@ -6,7 +6,6 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 	$scope.$watch(function() {
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
-		console.log('restos: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 
