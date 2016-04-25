@@ -1,8 +1,10 @@
-'use strict';
+ 'use strict';
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', function() {
+app.service('RestaurantService', function(SwipeService) {
+
+
 	this.restaurants = [];
 	this.likes = [];
 
@@ -15,6 +17,10 @@ app.service('RestaurantService', function() {
 
 	this.swipeRestaurant = function() {
 		this.restaurants.splice(0, 1);
+
+		if(this.restaurants.length < 5) {
+			SwipeService.getRestaurants();
+		}
 	};
 
 	this.grabRestaurant = function() {
@@ -28,7 +34,7 @@ app.service('RestaurantService', function() {
 	this.addLike = function() {
 		this.likes.push(this.restaurants[0]);
 	};
-	
+
 	this.findLike = function(param) {
 		console.log('param: ', param.id);
 		for (var i = 0; i < this.likes.length; i++) {
