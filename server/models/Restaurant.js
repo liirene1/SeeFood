@@ -11,6 +11,7 @@ var yelp = new Yelp({
 });
 
 exports.getResults = function(coordObj, hollaback) {
+  console.log('coordObj:', coordObj)
 	yelp.search({offset: coordObj.count, limit: 20, radius_filter: '24140', term: 'restaurants', ll: `${coordObj.lat},${coordObj.lng}` })
 	.then(function(data) {
 		hollaback(null, data);

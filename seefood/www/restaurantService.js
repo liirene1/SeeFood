@@ -2,8 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', function(SwipeService) {
-
+app.service('RestaurantService', function($http, API) {
 
 	this.restaurants = [];
 	this.likes = [];
@@ -18,8 +17,8 @@ app.service('RestaurantService', function(SwipeService) {
 	this.swipeRestaurant = function() {
 		this.restaurants.splice(0, 1);
 
-		if(this.restaurants.length < 5) {
-			SwipeService.getRestaurants();
+		if(this.restaurants.length === 5) {
+			this.getRestaurants();
 		}
 	};
 
@@ -41,5 +40,25 @@ app.service('RestaurantService', function(SwipeService) {
 			console.log('the likes id: ', this.likes[i].id);
 			if(this.likes[i].id === param.id) return this.likes[i];
 		}
+	}
+
+	this.coordObj = {};
+
+	this.getRestaurants = function(lat, lng) {
+		if(lat || lng) {
+			this.coordObj = {
+				count: 0,
+				lat: lat,
+				lng: lng
+			}
+		}
+		return $http.put(`${API}/restaurants`, this.coordObj)
+		.then((res) => {
+			this.coordObj.count += res.data.businesses.length;
+			console.log('count:', this.coordObj.count);
+			this.setRestaurants(res.data);
+			console.log('data:', res.data)
+			return res;
+		}, err => console.error(err));
 	}
 });
