@@ -2,11 +2,11 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('homeCtrl', function($scope, HomeService) {
+app.controller('homeCtrl', function($scope, HomeService, UserService) {
 	console.log('homeCtrl');
 
 	$scope.fbLogin = function() {
-		HomeService.fbLogin();
+		UserService.fbLogin();
 	}
 
 })

@@ -19,6 +19,11 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     templateUrl: './swipe/partials/swipe.html',
     controller: 'swipeCtrl'
   })
+  .state('email', {
+    url: '/login',
+    templateUrl: './email/partials/email.html',
+    controller: 'emailCtrl'
+  })
   .state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
@@ -29,8 +34,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl'
   })
-
-
 
   $urlRouterProvider.otherwise('/');
 })
