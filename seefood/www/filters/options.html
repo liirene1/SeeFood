@@ -1,10 +1,15 @@
 
       <ion-modal-view>
         <ion-header-bar class="bar bar-header bar-positive">
-          <h1 class="title">New Contact</h1>
-          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+          <h1 class="title">Settings</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Log Out</button>
         </ion-header-bar>
         <ion-content class="padding">
+          <div class="item range">
+            <i class="icon ion-volume-low"></i>
+            <input type="range" name="volume">
+            <i class="icon ion-volume-high"></i>
+          </div>
           <div class="list">
             <label class="item item-input">
               <span class="input-label">First Name</span>
@@ -18,7 +23,8 @@
               <span class="input-label">Email</span>
               <input ng-model="newUser.email" type="text">
             </label>
-            <button class="button button-full button-positive" ng-click="createContact(newUser)">Create</button>
+            <button class="button button-full button-positive" ng-click="modal.hide()">Cancel</button>
+            <button class="button button-full button-positive" ng-click="">Update</button>
           </div>
         </ion-content>
       </ion-modal-view>
