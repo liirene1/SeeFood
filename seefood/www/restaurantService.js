@@ -1,8 +1,9 @@
-'use strict';
+ 'use strict';
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', function() {
+app.service('RestaurantService', function($http, API) {
+
 	this.restaurants = [];
 	this.likes = [];
 
@@ -15,6 +16,10 @@ app.service('RestaurantService', function() {
 
 	this.swipeRestaurant = function() {
 		this.restaurants.splice(0, 1);
+
+		if(this.restaurants.length === 5) {
+			this.getRestaurants();
+		}
 	};
 
 	this.grabRestaurant = function() {
@@ -28,12 +33,32 @@ app.service('RestaurantService', function() {
 	this.addLike = function() {
 		this.likes.push(this.restaurants[0]);
 	};
-	
+
 	this.findLike = function(param) {
 		console.log('param: ', param.id);
 		for (var i = 0; i < this.likes.length; i++) {
 			console.log('the likes id: ', this.likes[i].id);
 			if(this.likes[i].id === param.id) return this.likes[i];
 		}
+	}
+
+	this.coordObj = {};
+
+	this.getRestaurants = function(lat, lng) {
+		if(lat || lng) {
+			this.coordObj = {
+				count: 0,
+				lat: lat,
+				lng: lng
+			}
+		}
+		return $http.put(`${API}/restaurants`, this.coordObj)
+		.then((res) => {
+			this.coordObj.count += res.data.businesses.length;
+			console.log('count:', this.coordObj.count);
+			this.setRestaurants(res.data);
+			console.log('data:', res.data)
+			return res;
+		}, err => console.error(err));
 	}
 });

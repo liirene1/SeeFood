@@ -2,6 +2,10 @@
 
 
 #see-food {
-font-family: 'Pacifico', cursive;
-color: orange;
+	font-family: 'Pacifico', cursive;
+	color: orange;
+}
+
+.ion-gear-a {
+	font-size: 180%;
 }

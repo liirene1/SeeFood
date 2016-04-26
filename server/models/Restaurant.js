@@ -10,22 +10,11 @@ var yelp = new Yelp({
   token_secret: process.env.YELP_TOKEN_SECRET,
 });
 
-exports.getResults = function(coordsObj, hollaback) {
-	yelp.search({offset: 0, limit: 20, sort: 1, radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
+exports.getResults = function(coordObj, hollaback) {
+  console.log('coordObj:', coordObj)
+	yelp.search({offset: coordObj.count, limit: 20, radius_filter: '24140', term: 'restaurants', ll: `${coordObj.lat},${coordObj.lng}` })
 	.then(function(data) {
-		if(data.businesses.length < 40) {
-			function makenothercall() {
-			  yelp.search({offset: data.businesses.length, limit: 20, sort: 1, radius_filter: '24140', term: 'restaurants', ll: `${coordsObj.lat},${coordsObj.lng}` })
-				.then(function(moreData) {
-					data.businesses.concat(moreData.businesses);
-				})
-				.catch(function(err) {
-					hollaback(err);
-				})
-			}
-		} else {
-			hollaback(null, data);
-		}
+		hollaback(null, data);
 	})
 	.catch(function(err) {
 		hollaback(err);
