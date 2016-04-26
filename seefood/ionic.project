@@ -1,8 +1,10 @@
 {
   "name": "seefood",
   "app_id": "c7c31fe5",
-  "proxies": [{
-  	"path": "/users",
-  	"proxyUrl": "http://seefoodapp.herokuapp.com/users"
-  }]
+  "proxies": [
+    {
+      "path": "/users",
+      "proxyUrl": "http://seefoodapp.herokuapp.com/users"
+    }
+  ]
 }
