@@ -6,7 +6,7 @@ app.service('SwipeService', function($http, API, RestaurantService) {
 
   this.coordObj = {
     count: 0
-  }:
+  };
 
 	this.getRestaurants = function(lat, lng) {
     if(lat || lng) {
