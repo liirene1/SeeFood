@@ -13,4 +13,13 @@ app.controller('LoginCtrl', function(LoginCtrl) {
     };
   }
   LoginCtrl.$inject = ['Auth', '$state'];
+
+  var ref = new Firebase("http://seefoodapp.firebaseapp.com");
+    ref.authWithOAuthRedirect("facebook", function(error) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        // We'll never get here, as the page will redirect on success.
+      }
+    });
 });

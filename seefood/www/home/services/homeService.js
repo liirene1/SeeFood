@@ -12,21 +12,4 @@ app.service('HomeService', function($http, API, CacheFactory) {
  				err => console.error(err))
  };
 
-
-
-
- // if(!CacheFactory.get('restaurantCache')) {
- //  CacheFactory.createCache('restaurantCache', {
- // 	 deleteOnExpire: 'aggressive'
- //  });
- // }
- //
- //
- // var restaurantCache = CacheFactory.get('restaurantCache');
- //
- // console.log(restaurantCache);
-
-
-
-
 })
