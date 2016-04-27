@@ -8,18 +8,13 @@ app.service('RestaurantService', function($http, API) {
 	this.likes = [];
 
 	this.setRestaurants = function(data) {
-		data.businesses.forEach(ele => {
-			this.restaurants.push(ele);
-		});
+		data.businesses.forEach(ele => this.restaurants.push(ele));
 		this.restaurants = _.shuffle(this.restaurants);
 	};
 
 	this.swipeRestaurant = function() {
 		this.restaurants.splice(0, 1);
-
-		if(this.restaurants.length === 5) {
-			this.getRestaurants();
-		}
+		if(this.restaurants.length === 5) this.getRestaurants();
 	};
 
 	this.grabRestaurant = function() {
@@ -35,9 +30,7 @@ app.service('RestaurantService', function($http, API) {
 	};
 
 	this.findLike = function(param) {
-		console.log('param: ', param.id);
 		for (var i = 0; i < this.likes.length; i++) {
-			console.log('the likes id: ', this.likes[i].id);
 			if(this.likes[i].id === param.id) return this.likes[i];
 		}
 	}
@@ -53,11 +46,9 @@ app.service('RestaurantService', function($http, API) {
 			}
 		}
 		return $http.put(`${API}/restaurants`, this.coordObj)
-		.then((res) => {
+		.then(res => {
 			this.coordObj.count += res.data.businesses.length;
-			console.log('count:', this.coordObj.count);
 			this.setRestaurants(res.data);
-			console.log('data:', res.data)
 			return res;
 		}, err => console.error(err));
 	}
