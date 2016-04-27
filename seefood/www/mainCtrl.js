@@ -2,9 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('mainCtrl', function($scope, $ionicModal, $state) {
-
-	console.log('state: ', $state.current.name);
+app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService) {
 
   $ionicModal.fromTemplateUrl('/filters/options.html', {
       scope: $scope
@@ -18,7 +16,6 @@ app.controller('mainCtrl', function($scope, $ionicModal, $state) {
   };
 
   $scope.closeModal = function() {
-  	console.log('filter: ', $scope);
     $scope.modal.hide();
   };
 
@@ -28,6 +25,7 @@ app.controller('mainCtrl', function($scope, $ionicModal, $state) {
 
   $scope.createFilter = function(filter) {
   	console.log(filter);
+  	RestaurantService.buildFilter(filter);
   	$scope.modal.hide();
   }
 
