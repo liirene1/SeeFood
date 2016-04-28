@@ -38,6 +38,10 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		return this.restaurants[0];
 	};
 
+	this.clearRestaurant = function() {
+		this.restaurants = [];
+	};
+
 	this.grabLikes = function() {
 		return this.likes;
 	};
@@ -81,8 +85,12 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
 			console.log(res.data.businesses);
-			res.data.businesses.forEach(ele => {
-				ele.image_url = ele.image_url.replace(/\S{2}(\.jpg)$/, 'o.jpg');
+			res.data.businesses.forEach((ele, ind, arr) => {
+				if(!ele.image_url) {
+					res.data.businesses.splice(arr.indexOf(ele), 1);
+				} else {
+					ele.image_url = ele.image_url.replace(/\S{2}(\.jpg)$/, 'o.jpg');
+				}
 			});
 			this.filterObj.count += res.data.businesses.length;
 			this.setRestaurants(res.data);

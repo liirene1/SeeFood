@@ -17,13 +17,4 @@ app.controller('homeCtrl', function($scope, HomeService, Auth) {
     });
   };
 
-	Auth.$onAuth(function(authData) {
-		if (authData === null) {
-			console.log('Not logged in yet');
-		} else {
-			console.log('Logged in as', authData.uid);
-		}
-		$scope.authData = authData;
-	});
-
 })
