@@ -54,11 +54,10 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.buildFilter = function(obj) {
 		var categories = [];
-		this.filterObj = {
-			count: 0,
-			radius: obj.radius ? obj.radius * 1600 : 10 * 1600,
-			category: ''
-		}
+		this.filterObj.count = 0;
+		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
+		this.filterObj.category = '';
+
 		obj.glutenFree ? categories.push('gluten-free') : '';
 		obj.vegetarian ? categories.push('vegetarian') : '';
 		obj.vegan ? categories.push('vegan') : '';
@@ -72,9 +71,8 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
 					this.getRestaurants();
 				}, err => console.error(err));
-		} else if(!this.filterObj.lat || !this.filterObj.lng) {
-			this.findMe()
-			.then( res => this.getRestaurants());
+		} else {
+			this.getRestaurants();
 		}
 	}
 
