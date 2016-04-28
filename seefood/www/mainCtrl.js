@@ -24,7 +24,6 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService) {
   };
 
   $scope.createFilter = function(filter) {
-  	console.log(filter);
   	RestaurantService.buildFilter(filter);
   	$scope.modal.hide();
   }

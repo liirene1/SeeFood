@@ -2,11 +2,27 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', function($http, API) {
+app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.restaurants = [];
 	this.likes = [];
 	this.filterObj = {};
+
+	this.findMe = function() {
+	  var posOptions = {
+	    enableHighAccuracy: true,
+	    timeout: 20000,
+	    maximumAge: 0
+	  };
+
+	  return $cordovaGeolocation.getCurrentPosition(posOptions).then( position => {
+	    this.filterObj = {
+	      lat: position.coords.latitude,
+	      lng: position.coords.longitude
+	    }
+	    this.buildFilter(this.filterObj);
+	  });
+	}
 
 	this.setRestaurants = function(data) {
 		data.businesses.forEach(ele => this.restaurants.push(ele));
@@ -37,39 +53,33 @@ app.service('RestaurantService', function($http, API) {
 	}
 
 	this.buildFilter = function(obj) {
-		console.log('1st filterObj: ', this.filterObj);
+		var categories = [];
 		this.filterObj = {
 			count: 0,
-			radius: obj.radius ? obj.radius / 0.00062137 : 10 / 0.00062137,
+			radius: obj.radius ? obj.radius * 1600 : 10 * 1600,
 			category: ''
 		}
-		
-		if(obj.lat || obj.lng) {
-			this.filterObj.lat = obj.lat;
-			this.filterObj.lng = obj.lng;
-		}
+		obj.glutenFree ? categories.push('gluten-free') : '';
+		obj.vegetarian ? categories.push('vegetarian') : '';
+		obj.vegan ? categories.push('vegan') : '';
+		obj.kosher ? categories.push('kosher') : '';
+		this.filterObj.category = categories.join(',');
 		
 		if(obj.location) {
 			this.getCoords(obj.location)
 				.then(res => { 
 					this.filterObj.lat = res.data.results[0].geometry.location.lat;
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
-					console.log('this.filterObj promise: ', this.filterObj);
-				}, err => console.error(err));;
+					this.getRestaurants();
+				}, err => console.error(err));
+		} else if(!this.filterObj.lat || !this.filterObj.lng) {
+			this.findMe()
+			.then( res => this.getRestaurants());
 		}
-
-		var categories = [];
-		obj.glutenFree ? categories.push('gluten-free') : '';
-		obj.vegetarian ? categories.push('vegetarian') : '';
-		obj.vegan ? categories.push('vegan') : '';
-		obj.kosher ? categories.push('kosher') : '';
-		if(obj.glutenFree || obj.vegetarian || obj.vegan || obj.kosher)
-		this.filterObj.category = categories.join(',');
-		console.log('2nd filterObj: ', this.filterObj);
-		this.getRestaurants();
 	}
 
 	this.getRestaurants = function() {
+		console.log('filterObj: ', this.filterObj);
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
 			console.log(res.data.businesses);

@@ -65,12 +65,12 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
       maximumAge: 0
     };
 
-    $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-      var coords = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      }
-      RestaurantService.buildFilter(coords);
-    });
+    // $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+    //   var coords = {
+    //     lat: position.coords.latitude,
+    //     lng: position.coords.longitude
+    //   }
+      RestaurantService.findMe();
+    // });
   });
 });
