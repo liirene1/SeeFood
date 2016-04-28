@@ -1,32 +1,33 @@
 <ion-view>
   <ion-content>
-	<h1>listseseses</h1>
-  <div id="results" class="container">
-    <a href="/options.html"><i class="fa fa-bars"></i></a>
-    <a href="/swipe.html"><i class="fa fa-arrow-left"></i></a>
+  	<!-- <h1>List</h1> -->
+    <div id="results" class="container">
+      <a href="/options.html"><i class="fa fa-bars"></i></a>
+      <a ui-sref="swipe"><i class="fa fa-arrow-left"></i></a>
 
-    <div class="col-xs-12 text-center">
-      <h2 class="foodies-title">Foodies</h2>
-    </div>
+      <!-- <div class="col-xs-12 text-center">
+        <h2 class="foodies-title">Foodies</h2>
+      </div> -->
 
-    <div class="col-xs-12 text-center">
-      <h2 class="results-title">Results</h2>
-    </div>
+      <div class="col-xs-12 text-center">
+        <h2 class="results-title">Results</h2>
+      </div>
 
-    <div class="col-xs-10 col-xs-offset-1">
-      <div class="well">
-        <div class="panel panel-default">
-          <ul class="list-group">
-            <li class="list-group-item"><a href="/detail.html">Restaurant</a></li>
-            <li ng-repeat='item in likes' class="list-group-item"><a ng-click='seeDetails(item)'>{{item.name}}</a></li>
-          </ul>
+      <div class="col-xs-10 col-xs-offset-1">
+        <div id="listWell" class="well">
+          <div class="panel panel-default">
+            <ul class="list-group">
+              <!-- <li class="list-group-item"><a href="/detail.html">Restaurant</a></li> -->
+              <li ng-repeat='item in likes' class="list-group-item">
+                <a ng-click='seeDetails(item)'>
+                  <img id="listThumbnail"ng-src="{{item.image_url}}"></img>
+                  <span>{{item.name}}</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div> 
-
-
-
-
-  </div>
+    </div>
 	</ion-content>
 </ion-view>
