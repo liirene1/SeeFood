@@ -19,7 +19,15 @@
 
     <div class="col-xs-12 blurb">
       <div class="col-xs-6"><img ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
-      <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span></div>
+      <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span>
+      <br>
+      <br>
+        <div id="restaurant-address">
+          {{restaurant.location.display_address[0]}}
+          <br>
+          {{restaurant.location.display_address[1]}}
+        </div>
+      </div>
     </div>
 
     <center>
