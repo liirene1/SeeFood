@@ -5,10 +5,10 @@ var app = angular.module('seeFoodApp');
 app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth, $state) {
 
   $ionicModal.fromTemplateUrl('/filters/options.html', {
-      scope: $scope
+    scope: $scope
   })
   .then(function(modal) {
-      $scope.modal = modal;
+    $scope.modal = modal;
   });
 
 	$scope.openModal = function() {
@@ -29,10 +29,17 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth
   	$scope.modal.hide();
   }
 
+  $scope.logout = function() {
+    Auth.$onAuth(function(authData) {
+      authData = null;
+      $scope.modal.hide();
+      $state.go('home');
+    })
+  }
+
   Auth.$onAuth(function(authData) {
     if (authData === null) {
       console.log('mainCtrl Not logged in yet');
-      $state.go('home');
     } else {
       console.log('mainCtrl Logged in as', authData.uid);
       $state.go('swipe');

@@ -1,11 +1,7 @@
-// Ionic Starter App
+'use strict';
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents', 'angular-cache', 'firebase'])
 
-// angular.module('seeFoodApp'['starter', 'ionic', 'starter.controllers', 'starter.services', 'firebase'])
 .constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com')
 .service('rootRef', ['FirebaseUrl', Firebase])
 
@@ -21,17 +17,20 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
   .state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl'
+    controller: 'swipeCtrl',
+    onEnter: stateProtection
   })
   .state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
-    controller: 'listCtrl'
+    controller: 'listCtrl',
+    onEnter: stateProtection
   })
   .state('detail', {
     url: '/detail/:id',
     templateUrl: './detail/partials/detail.html',
-    controller: 'detailCtrl'
+    controller: 'detailCtrl',
+    onEnter: stateProtection
   })
   .state('login', {
     url: '/login',
@@ -68,3 +67,11 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
     RestaurantService.findMe();
   });
 });
+
+function stateProtection(Auth, $state) {
+  Auth.$onAuth(function(authData) {
+    if (authData === null) {
+      $state.go('home');
+    }
+  })
+}
