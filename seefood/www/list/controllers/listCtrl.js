@@ -3,10 +3,10 @@
 var app = angular.module('seeFoodApp');
 
 app.controller('listCtrl', function(RestaurantService, $scope, $state) {
-	console.log('listCtrl');
+//	console.log('listCtrl');
 	$scope.likes = RestaurantService.grabLikes();
 
-	$scope.seeDetails = function(item) {
+	$scope.seeDetails = function(item) {  //use state params for this! 
 		$state.go('detail', {id: item.id})
 	}
 })

@@ -2,13 +2,16 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('homeCtrl', function($scope, HomeService, Auth) {
+app.controller('homeCtrl', function($scope, $state, HomeService, Auth) {
 
 	$scope.login = function(authMethod) {
-    Auth.$authWithOAuthRedirect(authMethod).then(function(authData) {
+    Auth.$authWithOAuthRedirect(authMethod)
+		.then(function(authData) {
+			$state.go("swipe");
     }).catch(function(error) {
       if (error.code === 'TRANSPORT_UNAVAILABLE') {
-        Auth.$authWithOAuthPopup(authMethod).then(function(authData) {
+        Auth.$authWithOAuthPopup(authMethod)
+				.then(function(authData) {
         });
       } else {
         console.log(error);
@@ -24,5 +27,4 @@ app.controller('homeCtrl', function($scope, HomeService, Auth) {
 		}
 		$scope.authData = authData;
 	});
-
 })

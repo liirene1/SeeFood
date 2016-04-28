@@ -18,7 +18,7 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 	});
 
 	mc.on("swiperight", function(ev) {
-		$scope.sheSaidYes();
+		$scope.accepted();
 		$scope.$apply();
 	});
 
@@ -27,7 +27,7 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 		$scope.restaurant = RestaurantService.grabRestaurant();
 	}
 
-	$scope.sheSaidYes = function() {
+	$scope.accepted = function() {
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();
 		$scope.restaurant = RestaurantService.grabRestaurant();
