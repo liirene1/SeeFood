@@ -8,7 +8,8 @@
 }
 
 #pic {
-	height: 300px;
+  max-height: 13em;
+  max-width: 17em;
 }
 
 #listThumbnail {

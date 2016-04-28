@@ -30,13 +30,6 @@ router.post('/login', function(req, res, next) {
   });
 });
 
-//need to save filters?
-// router.get('/info', authMiddleware, function(req, res) {
-//   User.findById(req.user._id, function(err, user) {
-//     res.send(user);
-//   });
-// });
-
 router.get('/logout', function(req, res, next) {
   res.clearCookie('mytoken').redirect('/');
 });
