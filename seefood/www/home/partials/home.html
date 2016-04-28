@@ -4,7 +4,8 @@
 		<div id="tour" class="container">
 		  <a href="/options.html"><i class="fa fa-bars"></i></a>
 		  <div class="col-xs-12 text-center">
-		    <h1>FoodieApp</h1>
+		    <h1 id="see-food">SeeFood <i class="fa fa-cutlery" aria-hidden="true"></i>
+</h1>
 		  </div>
 		  <!-- <div class="col-xs-12 text-center">
 		    <img src="/home-food.jpg" alt="" width="250px">
@@ -22,7 +23,7 @@
 		    <!-- Wrapper for slides -->
 		    <div class="carousel-inner" role="listbox">
 		      <div class="item active">
-		        <img src="https://s-media-cache-ak0.pinimg.com/736x/07/7f/d7/077fd7f36284282488d7d0c570fc7813.jpg" alt="" width="250px">
+		        <img src="http://thethaichili.net/site/wp-content/uploads/2013/05/pad-thai.jpg" alt="" width="250px">
 		        <h4>Here&apos;s what you do</h4>
 		      </div>
 		      <div class="item">
@@ -46,11 +47,29 @@
 		    </a>
 		  </div>
 
-		  <div class="col-xs-12 text-center">
-		    <a ng-click='fbLogin()' class="btn btn-primary"><i class="fa fa-facebook"></i>&#xA0;&#xA0;Log In with Facebook</a>
-		    <p class="small">or</p>
-		    <a href=''>Email</a>
-		  </div>
+      <!-- <div class="padding">
+        <button class="button button-block button-assertive"
+                ng-click="ctrl.loginWithGoogle()">
+          Google
+        </button>
+      </div> -->
+      <div class="col-xs-12 text-center">
+        <a ng-click="login('facebook')" class="btn btn-primary"><i class="fa fa-facebook"></i>&#xA0;&#xA0;Log In with Facebook</a>
+        <p class="small">or</p>
+        <a ui-sref='email'>Or sign in with email</a>
+      </div>
+
+      <div ng-if="authData.facebook" class="list card">
+        <div class="item item-avatar">
+          <img ng-src="{{authData.facebook.cachedUserProfile.avatar_url}}" alt="">
+          <h2>{{authData.facebook.displayName}}</h2>
+          <p>{{authData.facebook.username}}</p>
+          <div ng-messages="myForm.myField.$error" role="alert">
+          <div ng-message="required">Please sign in with a valid Facebook account</div>
+        </div>
+          <p>Facebook</p>
+        </div>
+      </div>
 
 		</div>
   </ion-content>

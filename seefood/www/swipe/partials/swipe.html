@@ -1,24 +1,25 @@
 <ion-view>
 	<ion-content>
-		<h1>swipes</h1>
+		<!-- <h1>swipes</h1> -->
 
 		<div id="swipe" class="container">
-    <a href="/options.html"><i class="fa fa-bars"></i></a>
+    <a ng-click="openModal()"><i class="ion-gear-a"></i></a>
     <div class="col-xs-12 text-center">
-      <h2 class="foodies-title">Foodies</h2>
+      <h2 class="foodies-title">i see food, i eat food</h2>
     </div>
 
     <div class="col-xs-12 text-center">
-      <img id="pic" src="https://s-media-cache-ak0.pinimg.com/736x/07/7f/d7/077fd7f36284282488d7d0c570fc7813.jpg" alt="">
+      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
+      <h5 ng-repeat='type in restaurant.categories'>{{type[0]}}</h5>
     </div>
 
     <div class="col-xs-12">
-      <a href="" class="btn btn-warning fa fa-close"></a>
-      <a href="" class="btn btn-danger fa fa-heart"></a>
+      <a ng-click='rejected()' class="btn btn-warning fa fa-close"></a>
+      <a ng-click='sheSaidYes()' class="btn btn-danger fa fa-heart"></a>
     </div>
 
     <div class="col-xs-12 text-center">
-      <a href="/results.html" class="small results">See Results</a>
+      <a ui-sref='list' class="small results">See Results</a>
     </div>
 
 	</ion-content>

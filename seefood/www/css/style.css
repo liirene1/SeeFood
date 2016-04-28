@@ -1,1 +1,32 @@
 /* Empty. Add your own CSS if you like */
+
+
+#see-food {
+	font-family: 'Pacifico', cursive;
+	color: orange;
+}
+
+.ion-gear-a {
+	font-size: 180%;
+}
+
+#pic {
+	height: 300px;
+}
+
+#listThumbnail {
+	height: 50px;
+	border-radius: 25%;
+}
+
+#listWell {
+	width: 275px;
+}
+
+.angular-google-map-container {
+	height: 300px;
+}
+
+#restaurant-address {
+	font-style: bold;
+}

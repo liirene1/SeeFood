@@ -3,6 +3,7 @@
   "version": "1.1.1",
   "description": "seefood: An Ionic project",
   "dependencies": {
+    "cordova": "^6.1.1",
     "dotenv": "^2.0.0",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
@@ -23,9 +24,11 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [
-    "ios"
+    "ios",
+    "android"
   ]
 }
