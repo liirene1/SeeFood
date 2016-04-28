@@ -18,28 +18,40 @@
         <i class="fa fa-dollar"></i>
       </div>
 
-      <div class="col-xs-12 blurb">
-        <div class="col-xs-3"><img ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
-        <div class="col-xs-9 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span></div>
+    <div class="col-xs-12 blurb">
+      <div class="col-xs-6"><img ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
+      <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span>
+      <br>
+      <br>
+        <div id="restaurant-address">
+          {{restaurant.location.display_address[0]}}
+          <br>
+          {{restaurant.location.display_address[1]}}
+        </div>
       </div>
-
+    </div>
       <center>
         <div>
         {{distanceInMiles(restaurant.distance)}} miles away
         </div>
       </center>
+    <div class="col-xs-10 col-xs-offset-1 text-center">
+      <!-- <img src="http://placehold.it/250x200" alt="" class="map"> -->
+      <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+        <ui-gmap-marker
+          idKey='1'
+          coords='map.center'
+          >
+        </ui-gmap-marker>
+      </ui-gmap-google-map>
 
-      <div class="col-xs-10 col-xs-offset-1 text-center">
-        <img src="http://placehold.it/250x200" alt="" class="map">
-      </div>
+    </div>
 
-      <div class="col-xs-10 col-xs-offset-1 text-center ext-btns">
-        <a href="{{restaurant.url}}" class="btn btn-sm btn-default">Restaurant Site</a>
-        <a href="" class="btn btn-sm btn-default">Directions</a>
-        <br>
-        <a href="" class="button button-dark">Uber It</a>
-      </div>
-
+    <div class="col-xs-10 col-xs-offset-1 text-center ext-btns">
+      <a href="{{restaurant.url}}" class="btn btn-sm btn-default">Restaurant Site</a>
+      <a href="http://maps.google.com" class="btn btn-sm btn-default">Directions</a>
+      <br>
+      <a href="http://uber.com" class="button button-dark">Uber It</a>
     </div>
 
   </ion-content>
