@@ -64,7 +64,10 @@
           <img ng-src="{{authData.facebook.cachedUserProfile.avatar_url}}" alt="">
           <h2>{{authData.facebook.displayName}}</h2>
           <p>{{authData.facebook.username}}</p>
-          <p>Github</p>
+          <div ng-messages="myForm.myField.$error" role="alert">
+          <div ng-message="required">Please sign in with a valid Facebook account</div>
+        </div>
+          <p>Facebook</p>
         </div>
       </div>
 
