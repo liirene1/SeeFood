@@ -6,9 +6,13 @@ app.controller('detailCtrl', function($scope, $stateParams, RestaurantService) {
 	$scope.restaurant = RestaurantService.findLike($stateParams);
 	console.log('detail resto: ', $scope.restaurant);
 
-	$scope.distanceInMiles = function(meters) {
-		return Math.round(meters * 0.000621371192);
+	$scope.distanceInMiles = function(m) {
+		return Math.round(m * 0.000621371192);
 	}
 
-	console.log($scope.distanceInMiles($scope.restaurant.distance));
-})
+	$scope.map = { center: {
+		latitude: $scope.restaurant.location.coordinate.latitude,
+		longitude: $scope.restaurant.location.coordinate.longitude },
+		zoom: 8 };
+
+});

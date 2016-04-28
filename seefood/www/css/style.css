@@ -22,3 +22,7 @@
 #listWell {
 	width: 275px;
 }
+
+.angular-google-map-container {
+	height: 300px; 
+}
