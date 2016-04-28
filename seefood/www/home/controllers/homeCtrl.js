@@ -3,7 +3,6 @@
 var app = angular.module('seeFoodApp');
 
 app.controller('homeCtrl', function($scope, HomeService, Auth) {
-	console.log('homeCtrl');
 
 	$scope.login = function(authMethod) {
     Auth.$authWithOAuthRedirect(authMethod).then(function(authData) {
