@@ -9,3 +9,16 @@
 .ion-gear-a {
 	font-size: 180%;
 }
+
+#pic {
+	height: 300px;
+}
+
+#listThumbnail {
+	height: 50px;
+	border-radius: 25%;
+}
+
+#listWell {
+	width: 275px;
+}
