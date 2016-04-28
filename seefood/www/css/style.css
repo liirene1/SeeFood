@@ -1,6 +1,3 @@
-/* Empty. Add your own CSS if you like */
-
-
 #see-food {
 	font-family: 'Pacifico', cursive;
 	color: orange;
@@ -11,7 +8,8 @@
 }
 
 #pic {
-	height: 300px;
+  max-height: 13em;
+  max-width: 17em;
 }
 
 #listThumbnail {

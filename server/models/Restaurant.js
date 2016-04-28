@@ -1,4 +1,3 @@
-
 'use strict';
 
 var Yelp = require('yelp');
@@ -10,13 +9,20 @@ var yelp = new Yelp({
   token_secret: process.env.YELP_TOKEN_SECRET,
 });
 
-exports.getResults = function(coordObj, hollaback) {
+exports.getResults = function(coordObj, callback) {
   console.log('coordObj:', coordObj)
-	yelp.search({offset: coordObj.count, limit: 20, radius_filter: coordObj.radius, term: 'restaurants', ll: `${coordObj.lat},${coordObj.lng}`, category_filter: coordObj.category })
-	.then(function(data) {
-		hollaback(null, data);
-	})
-	.catch(function(err) {
-		hollaback(err);
-	})
+  yelp.search({
+    offset: coordObj.count,
+    limit: 20,
+    radius_filter: coordObj.radius,
+    term: 'restaurants',
+    ll: `${coordObj.lat},${coordObj.lng}`,
+    category_filter: coordObj.category
+  })
+  .then(function(data) {
+    callback(null, data);
+  })
+  .catch(function(err) {
+    callback(err);
+  })
 }

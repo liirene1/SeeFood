@@ -6,7 +6,7 @@ var router = express.Router();
 
 var authMiddleware = require('../config/auth');
 
-var User = require('../models/user');
+var User = require('../models/User');
 
 var ref = new Firebase('https://seefoodapp.firebaseio.com/');
 
@@ -29,13 +29,6 @@ router.post('/login', function(req, res, next) {
     });
   });
 });
-
-//need to save filters?
-// router.get('/info', authMiddleware, function(req, res) {
-//   User.findById(req.user._id, function(err, user) {
-//     res.send(user);
-//   });
-// });
 
 router.get('/logout', function(req, res, next) {
   res.clearCookie('mytoken').redirect('/');
