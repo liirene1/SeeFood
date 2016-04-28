@@ -25,8 +25,8 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.setRestaurants = function(data) {
-		var businesses = _.shuffle(data.businesses);
-		businesses.forEach(ele => this.restaurants.push(ele));
+		data.businesses.forEach(ele => this.restaurants.push(ele));
+		this.restaurants = _.shuffle(this.restaurants);
 	};
 
 	this.swipeRestaurant = function() {
