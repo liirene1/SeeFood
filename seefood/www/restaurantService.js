@@ -67,10 +67,10 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		obj.vegan ? categories.push('vegan') : '';
 		obj.kosher ? categories.push('kosher') : '';
 		this.filterObj.category = categories.join(',');
-		
+
 		if(obj.location) {
 			this.getCoords(obj.location)
-				.then(res => { 
+				.then(res => {
 					this.filterObj.lat = res.data.results[0].geometry.location.lat;
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
 					this.getRestaurants();
