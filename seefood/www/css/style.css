@@ -8,7 +8,8 @@
 }
 
 #pic {
-	height: 300px;
+  max-height: 13em;
+  max-width: 17em;
 }
 
 #listThumbnail {
@@ -18,4 +19,12 @@
 
 #listWell {
 	width: 275px;
+}
+
+.angular-google-map-container {
+	height: 300px;
+}
+
+#restaurant-address {
+	font-style: bold;
 }

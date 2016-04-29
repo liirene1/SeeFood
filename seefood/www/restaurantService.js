@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
 
 var app = angular.module('seeFoodApp');
 
@@ -25,8 +25,8 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.setRestaurants = function(data) {
-		var businesses = _.shuffle(data.businesses);
-		businesses.forEach(ele => this.restaurants.push(ele));
+		data.businesses = _.shuffle(data.businesses);
+		this.restaurants = this.restaurants.concat(data.businesses);
 	};
 
 	this.swipeRestaurant = function() {
@@ -36,6 +36,10 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.grabRestaurant = function() {
 		return this.restaurants[0];
+	};
+
+	this.clearRestaurant = function() {
+		this.restaurants = [];
 	};
 
 	this.grabLikes = function() {
@@ -83,6 +87,15 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		.then(res => {
 			console.log(res.data.businesses);
       //$ionicLoading.hide();
+
+			res.data.businesses.forEach((ele, ind, arr) => {
+				if(!ele.image_url) {
+					res.data.businesses.splice(arr.indexOf(ele), 1);
+				} else {
+					ele.image_url = ele.image_url.replace(/\S{2}(\.jpg)$/, 'o.jpg');
+				}
+			});
+
 			this.filterObj.count += res.data.businesses.length;
 			this.setRestaurants(res.data);
 		}, err => console.error(err));
