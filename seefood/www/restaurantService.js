@@ -78,9 +78,11 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.getRestaurants = function() {
 		console.log('filterObj: ', this.filterObj);
+    //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
 			console.log(res.data.businesses);
+      //$ionicLoading.hide();
 			this.filterObj.count += res.data.businesses.length;
 			this.setRestaurants(res.data);
 		}, err => console.error(err));

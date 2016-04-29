@@ -11,7 +11,6 @@ var userSchema = new mongoose.Schema({
   //filters??
 });
 
-// instance method
 userSchema.methods.generateToken = function() {
   var payload = {
     uid: this.uid,

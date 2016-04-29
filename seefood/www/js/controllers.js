@@ -20,6 +20,7 @@ app.controller('LoginCtrl', function(LoginCtrl) {
       console.log("Login Failed!", error);
     } else {
       // We'll never get here, as the page will redirect on success.
+      $state.go("swipe");
     }
   });
 });
