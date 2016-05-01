@@ -2,10 +2,15 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
+app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $state, $ionicLoading) { //$ionicLoading
+  $scope.$parent.state = $state.current.name;
+	//$ionicLoading.show({ template: 'Loading...'})
+  console.log('state: ', $state.current.name);
+
 	$scope.$watch(function() {
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
+		$ionicLoading.hide();
 		$scope.restaurant = newVal[0];
 	});
 
@@ -18,7 +23,7 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 	});
 
 	mc.on("swiperight", function(ev) {
-		$scope.sheSaidYes();
+		$scope.accepted();
 		$scope.$apply();
 	});
 
@@ -27,7 +32,7 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService) {
 		$scope.restaurant = RestaurantService.grabRestaurant();
 	}
 
-	$scope.sheSaidYes = function() {
+	$scope.accepted = function() {
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();
 		$scope.restaurant = RestaurantService.grabRestaurant();
