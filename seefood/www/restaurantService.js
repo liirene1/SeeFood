@@ -15,7 +15,8 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	    maximumAge: 0
 	  };
 
-	  return $cordovaGeolocation.getCurrentPosition(posOptions).then( position => {
+	  return $cordovaGeolocation.getCurrentPosition(posOptions)
+		.then(function(position) {
 	    this.filterObj = {
 	      lat: position.coords.latitude,
 	      lng: position.coords.longitude
@@ -70,11 +71,13 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 		if(obj.location) {
 			this.getCoords(obj.location)
-				.then(res => {
+				.then(function(res) {
 					this.filterObj.lat = res.data.results[0].geometry.location.lat;
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
 					this.getRestaurants();
-				}, err => console.error(err));
+				}, function(err) {
+					console.error(err)
+				});
 		} else {
 			this.getRestaurants();
 		}
@@ -84,11 +87,11 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		console.log('filterObj: ', this.filterObj);
     //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
-		.then(res => {
+		.then(function(res) {
 			console.log(res.data.businesses);
       //$ionicLoading.hide();
 
-			res.data.businesses.forEach((ele, ind, arr) => {
+			res.data.businesses.forEach(function(ele, ind, arr){
 				if(!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
 				} else {
@@ -98,7 +101,9 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 			this.filterObj.count += res.data.businesses.length;
 			this.setRestaurants(res.data);
-		}, err => console.error(err));
+		}, function(err) {
+			console.error(err)
+		});
 	}
 
 	this.getCoords = function(address) {
