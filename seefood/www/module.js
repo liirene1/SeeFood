@@ -14,8 +14,8 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents'
   $stateProvider
   .state('home', {
     url: '/',
-    templateUrl: './home/partials/home.html',
-    controller: 'homeCtrl'
+    templateUrl: './home/partials/home.html'
+    //controller: 'homeCtrl'
   })
   .state('swipe', {
     url: '/photos',

@@ -7,6 +7,7 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
   $scope.$parent.state = $state.current.name;
 
 	$scope.login = function(authMethod) {
+		console.log('login click working');
     Auth.$authWithOAuthRedirect(authMethod)
 		.then(function(authData) {
 			$state.go("swipe");
@@ -14,6 +15,7 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
       if (error.code === 'TRANSPORT_UNAVAILABLE') {
         Auth.$authWithOAuthPopup(authMethod)
 				.then(function(authData) {
+					$state.go("swipe");
         });
       } else {
         console.log(error);
@@ -22,10 +24,12 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
   };
 
 	Auth.$onAuth(function(authData) {
+		console.log('auth working');
 		if (authData === null) {
 			console.log('Not logged in yet');
 		} else {
 			console.log('Logged in as', authData.uid);
+			$state.go("swipe");
 		}
 		$scope.authData = authData;
 	});

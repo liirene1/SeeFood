@@ -9,7 +9,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
-var stormpath = require('express-stormpath');
+//var stormpath = require('express-stormpath');
 var fs = require('fs');
 var cors = require('cors');
 var mongoose = require('mongoose');
@@ -30,16 +30,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 
-app.use(stormpath.init(app, {
-  website: true,
-  enableFacebook: true,
-  social: {
-    facebook: {
-      appId: process.env.id,
-      appSecret: process.env.secret,
-    },
-  },
-}));
+// app.use(stormpath.init(app, {
+//   website: true,
+//   enableFacebook: true,
+//   social: {
+//     facebook: {
+//       appId: process.env.id,
+//       appSecret: process.env.secret,
+//     },
+//   },
+// }));
 
 app.get('/', function(req, res) {
   var testPath = path.join(__dirname, 'test.html');
@@ -68,6 +68,6 @@ app.use(function(err, req, res, next) {
 
 var server = http.createServer(app);
 
-app.on('stormpath.ready', function() {
-  app.listen(PORT);
-});
+// app.on('stormpath.ready', function() {
+//   app.listen(PORT);
+// });

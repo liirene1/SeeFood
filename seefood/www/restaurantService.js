@@ -82,9 +82,12 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.getRestaurants = function() {
 		console.log('filterObj: ', this.filterObj);
+    //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
 			console.log(res.data.businesses);
+      //$ionicLoading.hide();
+
 			res.data.businesses.forEach((ele, ind, arr) => {
 				if(!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
@@ -92,6 +95,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 					ele.image_url = ele.image_url.replace(/\S{2}(\.jpg)$/, 'o.jpg');
 				}
 			});
+
 			this.filterObj.count += res.data.businesses.length;
 			this.setRestaurants(res.data);
 		}, err => console.error(err));
