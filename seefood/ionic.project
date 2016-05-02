@@ -1,6 +1,7 @@
 {
   "name": "seefood",
   "app_id": "bc99a82d",
+  "gulpStartupTasks": ["babel", "watch"],
   "proxies": [
     {
       "path": "/users",
