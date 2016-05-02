@@ -2,7 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('HomeService', function($http, API, CacheFactory) {
+app.service('HomeService', function($http) { //CacheFactory, API
  // this.fbLogin = function() {
  // 	var catsup = { sup: 'doe' };
  // 	$http.post(`${API}/users`, catsup)
