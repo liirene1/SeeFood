@@ -26,6 +26,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.setRestaurants = function(data) {
+		console.log('data', data);
 		data.businesses = _.shuffle(data.businesses);
 		this.restaurants = this.restaurants.concat(data.businesses);
 	};
