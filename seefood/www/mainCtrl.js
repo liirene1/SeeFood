@@ -2,8 +2,8 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('mainCtrl', function($scope, $ionicModal, Auth, $state) {
-//app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth, $state) {
+// app.controller('mainCtrl', function($scope, $ionicModal, Auth, $state) {
+app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth, $state) {
 
   // $ionicModal.fromTemplateUrl('/filters/options.html', {
   //   scope: $scope
