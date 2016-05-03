@@ -12,6 +12,11 @@
   max-width: 17em;
 }
 
+#picdiv {
+	height: 75vh;
+	border: 1px solid black;
+}
+
 #listThumbnail {
 	height: 50px;
 	border-radius: 25%;
@@ -27,4 +32,34 @@
 
 #restaurant-address {
 	font-style: bold;
+	border: 1px solid black;
+}
+
+#resultbutton {
+	margin-right: 15px;
+	margin-left: 15px;
+
+}
+
+#categorylist {
+	text-align: center;
+}
+
+#restaurantthumbnail {
+	height: 30vh;
+	width: 50vw;
+}
+
+#mapdiv {
+	height: 40vh;
+	border: 1px solid black;
+	margin-bottom: 5px;
+}
+
+#settings {
+	float: right;
+}
+
+#backarrow {
+	float:left;
 }

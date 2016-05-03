@@ -38,7 +38,8 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
     onEnter: stateProtection
   })
   .state('detail', {
-    url: '/detail/:id',
+    //url: '/detail/:id',
+    url: '/detail',
     templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl',
     onEnter: stateProtection

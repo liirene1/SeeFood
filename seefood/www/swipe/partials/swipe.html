@@ -5,22 +5,24 @@
 		<div id="swipe" class="container">
     	<a ng-click="openModal()"><i class="ion-gear-a"></i></a>
     	<div class="col-xs-12 text-center">
-      	<h2 class="foodies-title">i see food, i eat food</h2>
+      	<h2 class="foodies-title">LOGO</h2>
     	</div>
 
-	    <div class="col-xs-12 text-center">
+	    <div class="col-xs-12 text-center" id="picdiv">
 	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
-	      <h5 ng-repeat='type in restaurant.categories'>{{type[0]}}</h5>
+	      <h5 id="categorylist" ng-repeat='type in restaurant.categories'>{{type[0]}}</h5>
 	    </div>
 
 	    <div class="col-xs-12">
-	      <a ng-click='rejected()' class="btn btn-warning fa fa-close"></a>
-	      <a ng-click='accepted()' class="btn btn-danger fa fa-heart"></a>
+	      <a ng-click='rejected()' class="btn-floating btn-large cyan lighten-2"><i class="fa fa-thumbs-down" aria-hidden="true"></i></a>
+				<a ui-sref='list' id="resultbutton" class="btn btn-large grey darken-2">See Results</a>
+	      <a ng-click='accepted()' class="btn-floating btn-large deep-orange lighten-1"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
 	    </div>
 
-	    <div class="col-xs-12 text-center">
+			<button ui-sref="detail">Detail</button>
+	    <!-- <div class="col-xs-12 text-center">
 	      <a ui-sref='list' class="small results">See Results</a>
-	    </div>
+	    </div> -->
 		</div>
 	</ion-content>
 </ion-view>
