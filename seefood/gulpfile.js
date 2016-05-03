@@ -11,13 +11,14 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
+var _ = require('lodash');
 
 var paths = {
   js: ['./src/**/*.js'],
   sass: ['./scss/**/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'babel']);
 
 gulp.task('babel', function(done) {
   gulp.src('./src/**/*.js')

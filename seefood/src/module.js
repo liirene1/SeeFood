@@ -4,8 +4,8 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
-// angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents', 'angular-cache', 'firebase', 'uiGmapgoogle-maps', 'homeCtrl'])
+// angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'hmTouchEvents', 'angular-cache',*/ 'firebase', 'uiGmapgoogle-maps'])
 .constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com')
 .service('rootRef', ['FirebaseUrl', Firebase])
 
@@ -23,13 +23,8 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
   .state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl'
-    // resolve: {
-    //   restaurants: ['RestaurantService', function(RestaurantService) {
-    //     return RestaurantService.get();
-    //   }]
-    // },
-    //onEnter: stateProtection
+    controller: 'swipeCtrl',
+    onEnter: stateProtection
   })
   .state('list', {
     url: '/list',
@@ -43,25 +38,22 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
     controller: 'detailCtrl',
     onEnter: stateProtection
   })
-  // .state('login', {
-  //   url: '/login',
-  //   templateUrl: './templates/login.html',
-  //   controller: 'LoginCtrl as ctrl'
-  // })
-  // .state('email', {
-  //   url: '/email',
-  //   templateUrl: './email/partials/email.html',
-  //   controller: 'emailCtrl'
-  // })
 
   $urlRouterProvider.otherwise('/');
+
+  function stateProtection(Auth, $state) {
+    Auth.$onAuth(function(authData) {
+      if (authData === null) {
+        $state.go('home');
+      }
+    })
+  }
 })
 
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
-.run(function($ionicPlatform, $cordovaGeolocation) {
-
-//.run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
+.run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
+  console.log('runs');
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -71,20 +63,13 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
       StatusBar.styleDefault();
     }
 
-    // var posOptions = {
-    //   enableHighAccuracy: true,
-    //   timeout: 20000,
-    //   maximumAge: 0
-    // };
+    var posOptions = {
+      enableHighAccuracy: true,
+      timeout: 20000,
+      maximumAge: 0
+    };
 
-    // RestaurantService.findMe();
+    RestaurantService.findMe();
   });
 });
 
-function stateProtection(Auth, $state) {
-  Auth.$onAuth(function(authData) {
-    if (authData === null) {
-      $state.go('home');
-    }
-  })
-}

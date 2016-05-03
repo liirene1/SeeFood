@@ -9,12 +9,15 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	this.filterObj = {};
 
 	this.findMe = function() {
+		console.log('find me works');
 	  var posOptions = {
 	    enableHighAccuracy: true,
 	    timeout: 20000,
 	    maximumAge: 0
 	  };
 
+
+	  	
 	  return $cordovaGeolocation.getCurrentPosition(posOptions)
 		.then(position => {
 	    this.filterObj = {
@@ -23,6 +26,8 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	    }
 	    this.buildFilter(this.filterObj);
 	  });
+
+
 	}
 
 	this.setRestaurants = function(data) {
@@ -59,6 +64,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.buildFilter = function(obj) {
+		console.log('filter works, obj: ', obj);
 		var categories = [];
 		this.filterObj.count = 0;
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;

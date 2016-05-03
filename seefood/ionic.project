@@ -1,11 +1,15 @@
 {
   "name": "seefood",
-  "app_id": "bc99a82d",
-  "gulpStartupTasks": ["sass", "babel", "watch"],
+  "gulpStartupTasks": [
+    "sass",
+    "babel",
+    "watch"
+  ],
   "proxies": [
     {
       "path": "/users",
       "proxyUrl": "http://seefoodapp.herokuapp.com/users"
     }
-  ]
+  ],
+  "app_id": "bc99a82d"
 }
