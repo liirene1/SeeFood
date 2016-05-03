@@ -203,7 +203,7 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
       console.log('mainCtrl Not logged in yet');
     } else {
       console.log('mainCtrl Logged in as', authData.uid);
-      // $state.go('swipe');
+      $state.go('swipe');
     }
     $scope.authData = authData;
   });
@@ -274,6 +274,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.filterObj = {};
 
 	this.findMe = function () {
+		var _this = this;
+
 		console.log('find me works');
 		var posOptions = {
 			enableHighAccuracy: true,
@@ -281,17 +283,13 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 			maximumAge: 0
 		};
 
-		setTimeout(function () {
-			var _this = this;
-
-			return $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-				_this.filterObj = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
-				_this.buildFilter(_this.filterObj);
-			});
-		}, 10000);
+		return $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+			_this.filterObj = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
+			_this.buildFilter(_this.filterObj);
+		});
 	};
 
 	this.setRestaurants = function (data) {

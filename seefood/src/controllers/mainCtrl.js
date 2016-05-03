@@ -42,7 +42,7 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth
       console.log('mainCtrl Not logged in yet');
     } else {
       console.log('mainCtrl Logged in as', authData.uid);
-      // $state.go('swipe');
+      $state.go('swipe');
     }
     $scope.authData = authData;
   });
