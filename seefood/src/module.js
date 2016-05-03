@@ -23,13 +23,13 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
   .state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl',
+    controller: 'swipeCtrl'
     // resolve: {
     //   restaurants: ['RestaurantService', function(RestaurantService) {
     //     return RestaurantService.get();
     //   }]
     // },
-    onEnter: stateProtection
+    //onEnter: stateProtection
   })
   .state('list', {
     url: '/list',
@@ -59,9 +59,9 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
 
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
-// .run(function($ionicPlatform, $cordovaGeolocation) {
+.run(function($ionicPlatform, $cordovaGeolocation) {
 
-.run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
+//.run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -71,13 +71,13 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
       StatusBar.styleDefault();
     }
 
-    var posOptions = {
-      enableHighAccuracy: true,
-      timeout: 20000,
-      maximumAge: 0
-    };
+    // var posOptions = {
+    //   enableHighAccuracy: true,
+    //   timeout: 20000,
+    //   maximumAge: 0
+    // };
 
-    RestaurantService.findMe();
+    // RestaurantService.findMe();
   });
 });
 

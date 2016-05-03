@@ -5,30 +5,30 @@ var app = angular.module('seeFoodApp');
 app.controller('detailCtrl', function($scope, $stateParams, RestaurantService, $state) {
   console.log("Im in detail state");
   // console.log('state: ', $state.current.name);
-	// $scope.$parent.state = $state.current.name;
+  // $scope.$parent.state = $state.current.name;
   //
-	// $scope.restaurant = RestaurantService.findLike($stateParams);
-	// console.log('detail resto: ', $scope.restaurant);
+  // $scope.restaurant = RestaurantService.findLike($stateParams);
+  // console.log('detail resto: ', $scope.restaurant);
   //
-	// $scope.distanceInMiles = function(m) {
-	// 	return Math.round(m * 0.000621371192);
-	// }
+  // $scope.distanceInMiles = function(m) {
+  //  return Math.round(m * 0.000621371192);
+  // }
   //
-	// $scope.map = { center: {
-	// 	latitude: $scope.restaurant.location.coordinate.latitude,
-	// 	longitude: $scope.restaurant.location.coordinate.longitude },
-	// 	zoom: 12 };
+  // $scope.map = { center: {
+  //  latitude: $scope.restaurant.location.coordinate.latitude,
+  //  longitude: $scope.restaurant.location.coordinate.longitude },
+  //  zoom: 12 };
   //
-	// $scope.map.options = {
+  // $scope.map.options = {
   //     draggable: false,
   //     labelContent: "lat: " + $scope.restaurant.location.coordinate.latitude + ' ' + 'lon: ' +  $scope.restaurant.location.coordinate.longitude,
   //     labelAnchor: "100 0",
   //     labelClass: "marker-labels"
   //   };
 
-		// var homeLatLng = new google.maps.LatLng($scope.restaurant.location.coordinate.latitude, $scope.restaurant.location.coordinate.longitude);
-		//
-		// var marker1 = new MarkerWithLabel({
+    // var homeLatLng = new google.maps.LatLng($scope.restaurant.location.coordinate.latitude, $scope.restaurant.location.coordinate.longitude);
+    //
+    // var marker1 = new MarkerWithLabel({
     //    position: homeLatLng,
     //    draggable: true,
     //    raiseOnDrag: true,
@@ -38,9 +38,9 @@ app.controller('detailCtrl', function($scope, $stateParams, RestaurantService, $
     //    labelClass: "labels", // the CSS class for the label
     //    labelStyle: {opacity: 0.75}
     //  });
-		//
-		//
-		// var iw1 = new google.maps.InfoWindow({
+    //
+    //
+    // var iw1 = new google.maps.InfoWindow({
     //    content: $scope.restaurant.location.display_address[0] + "\n" + $scope.restaurant.location.display_address[1]
     //  });
     //  google.maps.event.addListener(marker1, "click", function (e) { iw1.open($scope.map, this); });

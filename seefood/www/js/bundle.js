@@ -19,13 +19,13 @@ angular.module('seeFoodApp', ['ionic', 'firebase', 'ui.router', 'ngCordova'])
   }).state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl',
+    controller: 'swipeCtrl'
     // resolve: {
     //   restaurants: ['RestaurantService', function(RestaurantService) {
     //     return RestaurantService.get();
     //   }]
     // },
-    onEnter: stateProtection
+    //onEnter: stateProtection
   }).state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
@@ -49,11 +49,9 @@ angular.module('seeFoodApp', ['ionic', 'firebase', 'ui.router', 'ngCordova'])
   // })
 
   $urlRouterProvider.otherwise('/');
-}]).constant('API', 'http://seefoodapp.herokuapp.com')
+}]).constant('API', 'http://seefoodapp.herokuapp.com').run(["$ionicPlatform", "$cordovaGeolocation", function ($ionicPlatform, $cordovaGeolocation) {
 
-// .run(function($ionicPlatform, $cordovaGeolocation) {
-
-.run(["$ionicPlatform", "$cordovaGeolocation", "RestaurantService", function ($ionicPlatform, $cordovaGeolocation, RestaurantService) {
+  //.run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
   $ionicPlatform.ready(function () {
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -63,13 +61,13 @@ angular.module('seeFoodApp', ['ionic', 'firebase', 'ui.router', 'ngCordova'])
       StatusBar.styleDefault();
     }
 
-    var posOptions = {
-      enableHighAccuracy: true,
-      timeout: 20000,
-      maximumAge: 0
-    };
+    // var posOptions = {
+    //   enableHighAccuracy: true,
+    //   timeout: 20000,
+    //   maximumAge: 0
+    // };
 
-    RestaurantService.findMe();
+    // RestaurantService.findMe();
   });
 }]);
 
@@ -93,13 +91,13 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
   // console.log('detail resto: ', $scope.restaurant);
   //
   // $scope.distanceInMiles = function(m) {
-  // 	return Math.round(m * 0.000621371192);
+  //  return Math.round(m * 0.000621371192);
   // }
   //
   // $scope.map = { center: {
-  // 	latitude: $scope.restaurant.location.coordinate.latitude,
-  // 	longitude: $scope.restaurant.location.coordinate.longitude },
-  // 	zoom: 12 };
+  //  latitude: $scope.restaurant.location.coordinate.latitude,
+  //  longitude: $scope.restaurant.location.coordinate.longitude },
+  //  zoom: 12 };
   //
   // $scope.map.options = {
   //     draggable: false,
@@ -183,55 +181,6 @@ app.controller('listCtrl', ["RestaurantService", "$scope", "$state", function (R
 
 var app = angular.module('seeFoodApp');
 
-app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth", "$state", function ($scope, $ionicModal, RestaurantService, Auth, $state) {
-  //app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth, $state) {
-
-  $ionicModal.fromTemplateUrl('/filters/options.html', {
-    scope: $scope
-  }).then(function (modal) {
-    $scope.modal = modal;
-  });
-
-  $scope.openModal = function () {
-    $scope.modal.show();
-  };
-
-  $scope.closeModal = function () {
-    $scope.modal.hide();
-  };
-
-  $scope.cancelModal = function () {
-    $scope.modal.hide();
-  };
-
-  $scope.createFilter = function (filter) {
-    RestaurantService.clearRestaurant();
-    RestaurantService.buildFilter(filter);
-    $scope.modal.hide();
-  };
-
-  $scope.logout = function () {
-    Auth.$onAuth(function (authData) {
-      authData = null;
-      $scope.modal.hide();
-      $state.go('home');
-    });
-  };
-
-  Auth.$onAuth(function (authData) {
-    if (authData === null) {
-      console.log('mainCtrl Not logged in yet');
-    } else {
-      console.log('mainCtrl Logged in as', authData.uid);
-      $state.go('swipe');
-    }
-    $scope.authData = authData;
-  });
-}]);
-'use strict';
-
-var app = angular.module('seeFoodApp');
-
 app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$state", "$ionicLoading", function ($scope, HomeService, RestaurantService, $state, $ionicLoading) {
 	console.log("i am in swipe state");
 	$scope.$parent.state = $state.current.name;
@@ -258,17 +207,17 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 	// 	$scope.accepted();
 	// 	$scope.$apply();
 	// });
-
-	$scope.rejected = function () {
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
-	};
-
-	$scope.accepted = function () {
-		RestaurantService.addLike();
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
-	};
+	//
+	// $scope.rejected = function() {
+	// 	RestaurantService.swipeRestaurant();
+	// 	$scope.restaurant = RestaurantService.grabRestaurant();
+	// }
+	//
+	// $scope.accepted = function() {
+	// 	RestaurantService.addLike();
+	// 	RestaurantService.swipeRestaurant();
+	// 	$scope.restaurant = RestaurantService.grabRestaurant();
+	// }
 }]);
 'use strict';
 
@@ -299,18 +248,20 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.filterObj = {};
 
 	this.findMe = function () {
+		var _this = this;
+
 		var posOptions = {
 			enableHighAccuracy: true,
 			timeout: 20000,
 			maximumAge: 0
 		};
 
-		return $cordovaGeolocation.getCurrentPosition(posOptions).then(position => {
-			this.filterObj = {
+		return $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+			_this.filterObj = {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
-			this.buildFilter(this.filterObj);
+			_this.buildFilter(_this.filterObj);
 		});
 	};
 
@@ -348,6 +299,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.buildFilter = function (obj) {
+		var _this2 = this;
+
 		var categories = [];
 		this.filterObj.count = 0;
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
@@ -360,10 +313,10 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 		this.filterObj.category = categories.join(',');
 
 		if (obj.location) {
-			this.getCoords(obj.location).then(res => {
-				this.filterObj.lat = res.data.results[0].geometry.location.lat;
-				this.filterObj.lng = res.data.results[0].geometry.location.lng;
-				this.getRestaurants();
+			this.getCoords(obj.location).then(function (res) {
+				_this2.filterObj.lat = res.data.results[0].geometry.location.lat;
+				_this2.filterObj.lng = res.data.results[0].geometry.location.lng;
+				_this2.getRestaurants();
 			}, function (err) {
 				console.error(err);
 			});
@@ -373,13 +326,15 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.getRestaurants = function () {
+		var _this3 = this;
+
 		console.log('filterObj: ', this.filterObj);
 		//$ionicLoading.show({ template: 'Loading...'})
-		return $http.put(`${ API }/restaurants`, this.filterObj).then(res => {
+		return $http.put(API + '/restaurants', this.filterObj).then(function (res) {
 			console.log(res.data.businesses);
 			//$ionicLoading.hide();
 
-			res.data.businesses.forEach((ele, ind, arr) => {
+			res.data.businesses.forEach(function (ele, ind, arr) {
 				if (!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
 				} else {
@@ -387,8 +342,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 				}
 			});
 
-			this.filterObj.count += res.data.businesses.length;
-			this.setRestaurants(res.data);
+			_this3.filterObj.count += res.data.businesses.length;
+			_this3.setRestaurants(res.data);
 		}, function (err) {
 			console.error(err);
 		});
@@ -396,11 +351,13 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 
 	this.getCoords = function (address) {
 		var urlAddress = address.split(' ').join('+');
-		return $http.get(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCVFibjTMF6wEQUlCV_O5zILn5urQUZ6Zo&address=${ urlAddress }`);
+		return $http.get('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCVFibjTMF6wEQUlCV_O5zILn5urQUZ6Zo&address=' + urlAddress);
 	};
 }]);
 'use strict';
 
 var app = angular.module('seeFoodApp');
 
-app.service('SwipeService', function () {});
+// app.service('SwipeService', function() {
+//
+// });

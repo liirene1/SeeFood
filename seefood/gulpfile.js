@@ -13,16 +13,16 @@ var uglify = require('gulp-uglify');
 var babel = require('gulp-babel');
 
 var paths = {
-  js: ['./js/**/*.js'],
+  js: ['./src/**/*.js'],
   sass: ['./scss/**/*.scss']
 };
 
 gulp.task('default', ['sass']);
 
 gulp.task('babel', function(done) {
-  gulp.src('./js/**/*.js')
+  gulp.src('./src/**/*.js')
     .pipe(ngAnnotate())
-    .pipe(babel())
+    .pipe(babel({presets: ['es2015']}))
     .pipe(concat('bundle.js'))
     // .pipe(uglify())
     .pipe(gulp.dest('./www/js/'))
@@ -44,7 +44,7 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(path.js, ['babel']);
+  gulp.watch(paths.js, ['babel']);
 });
 
 gulp.task('install', ['git-check'], function() {
