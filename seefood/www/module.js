@@ -24,7 +24,7 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router'])
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
     controller: 'swipeCtrl',
-    onEnter: stateProtection
+    onEnter: stateProtection,
   })
   // .state('list', {
   //   url: '/list',
