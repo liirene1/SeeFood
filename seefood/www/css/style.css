@@ -1,7 +1,12 @@
-#see-food {
+body {
+font-family: 'Questrial', sans-serif;
+}
+
+
+.see-food {
 	font-family: 'Pacifico', cursive;
-	color: #FF7043;
-	font-size: 45px;
+	color: #263238;
+	font-size: 55px;
 	margin-top: 15px;
 }
 
@@ -10,7 +15,9 @@
 }
 
 #pic {
-  max-height: 13em;
+	margin-top: 15px;
+	margin-bottom: 5px;
+  max-height: 45em;
   max-width: 17em;
 }
 
@@ -29,4 +36,60 @@
 
 #restaurant-address {
 	font-style: bold;
+}
+
+.fb-login {
+	margin-top: 10px;
+	background: #263238;
+}
+
+.carousel-inner {
+	background: black;
+}
+
+.swipe-btn {
+	margin: 7px;
+	margin-left: 40px;
+}
+
+.fa-cogs {
+	margin-top: 10px;
+	color: #263238;
+}
+
+#yes {
+	background: #4dd0e1;
+	height: 75px;
+	width: 75px;
+	padding: 7px;
+}
+
+#no {
+	background: #FF7043;
+	height: 75px;
+	width: 75px;
+	padding: 7px;
+}
+
+#listWell {
+	margin-top: 25px;
+	background: none;
+}
+
+.results {
+	background: black;
+}
+
+.bar-footer {
+	height: 50px;
+}
+
+.swipe {
+	margin-top: 15px;
+}
+
+.list-head {
+	margin-top: 27px;
+	color: #4dd0e1;
+	font-size: 25px;
 }

@@ -2,6 +2,6 @@
 
 var app = angular.module('seeFoodApp');
 
-// app.service('SwipeService', function() {
-//
-// });
+app.service('SwipeService', function() {
+
+});
