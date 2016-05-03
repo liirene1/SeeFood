@@ -55,6 +55,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
 .run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
   console.log('runs');
   $ionicPlatform.ready(function() {
+  console.log('runs inside');
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
