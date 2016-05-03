@@ -4,6 +4,7 @@
   "description": "seefood: An Ionic project",
   "dependencies": {
     "cordova": "^6.1.1",
+    "cordova-plugin-geolocation": "^2.2.0",
     "dotenv": "^2.0.0",
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",
