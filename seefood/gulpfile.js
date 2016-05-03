@@ -24,7 +24,7 @@ gulp.task('babel', function(done) {
     .pipe(ngAnnotate())
     .pipe(babel())
     .pipe(concat('bundle.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
 });

@@ -16,7 +16,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	  };
 
 	  return $cordovaGeolocation.getCurrentPosition(posOptions)
-		.then(function(position) {
+		.then(position => {
 	    this.filterObj = {
 	      lat: position.coords.latitude,
 	      lng: position.coords.longitude
@@ -72,7 +72,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 		if(obj.location) {
 			this.getCoords(obj.location)
-				.then(function(res) {
+				.then(res => {
 					this.filterObj.lat = res.data.results[0].geometry.location.lat;
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
 					this.getRestaurants();
@@ -88,11 +88,11 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		console.log('filterObj: ', this.filterObj);
     //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
-		.then(function(res) {
+		.then(res => {
 			console.log(res.data.businesses);
       //$ionicLoading.hide();
 
-			res.data.businesses.forEach(function(ele, ind, arr){
+			res.data.businesses.forEach((ele, ind, arr) => {
 				if(!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
 				} else {
