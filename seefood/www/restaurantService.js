@@ -77,11 +77,11 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
 					this.getRestaurants();
 				}, function(err) {
-					console.error(err));
-		} else {
-			this.getRestaurants();
-		}
-	}
+					console.error(err);
+				})
+				this.getRestaurants();
+		};
+	};
 
 	this.getRestaurants = function() {
 		console.log('filterObj: ', this.filterObj);
