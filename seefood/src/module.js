@@ -45,7 +45,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
     Auth.$onAuth(function(authData) {
       if (authData === null) {
         $state.go('home');
-      }
+      } 
     })
   }
 })
@@ -68,6 +68,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
       timeout: 20000,
       maximumAge: 0
     };
+    console.log('posOptions', posOptions);
 
     RestaurantService.findMe();
   });

@@ -57,6 +57,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
       timeout: 20000,
       maximumAge: 0
     };
+    console.log('posOptions', posOptions);
 
     RestaurantService.findMe();
   });
@@ -113,37 +114,60 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
 var app = angular.module('seeFoodApp');
 
 app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function ($scope, HomeService, Auth, $state) {
-		console.log('state: ', $state.current.name);
-		$scope.$parent.state = $state.current.name;
+  console.log('state: ', $state.current.name);
+  $scope.$parent.state = $state.current.name;
 
-		$scope.login = function (authMethod) {
-				console.log('login click working');
-				Auth.$authWithOAuthRedirect(authMethod).then(function (authData) {
-						$state.go("swipe");
-						console.log("in login function - swipe");
-				}).catch(function (error) {
-						if (error.code === 'TRANSPORT_UNAVAILABLE') {
-								Auth.$authWithOAuthPopup(authMethod).then(function (authData) {
-										$state.go("swipe");
-								});
-						} else {
-								console.log(error);
-						}
-				});
-		};
+  $scope.login = function (authMethod) {
+    console.log('login click working');
+    // Auth.$authWithOAuthRedirect(authMethod)
+    // var ref = cordova.InAppBrowser.open('http://apache.org', '_self', 'location=yes')
+    Auth.$authWithOAuthPopup(authMethod).then(function (authData) {
+      // ref.close();
+      // $state.go("swipe");
+      console.log("in login function - swipe");
+    }).catch(function (error) {
+      $state.go("home");
+      console.log('no FB login');
+    });
+  };
 
-		Auth.$onAuth(function (authData) {
-				console.log('auth working');
-				if (authData === null) {
-						console.log('Not logged in yet');
-				} else {
-						console.log('Logged in as', authData.uid);
-						$state.go("swipe");
-						console.log("state.go executed");
-				}
-				$scope.authData = authData;
-		});
+  Auth.$onAuth(function (authData) {
+    console.log('auth working');
+    if (authData === null) {
+      console.log('Not logged in yet');
+    } else {
+      console.log('Logged in as', authData.uid);
+      $state.go("swipe");
+      console.log("state.go executed");
+    }
+    $scope.authData = authData;
+  });
 }]);
+
+// $scope.login = function(authMethod) {
+// 	console.log('login click working');
+//    // Auth.$onAuth(function(authMethod) {
+//    Auth.$authWithOAuthRedirect(authMethod)
+//    Auth.$authWithOAuthPopup(authMethod)
+// 	.then(function(authData) {
+// 		console.log('authData:', authData);
+// 		// ref.addEventListener(authData, function() {
+// 			$state.go("swipe");
+// 		// });
+//      console.log("in login function - swipe");
+//    }).catch(function(error) {
+//      if (error.code === 'TRANSPORT_UNAVAILABLE') {
+//        Auth.$authWithOAuthPopup(authMethod)
+// 			.then(function(authData) {
+//          // var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
+//          // ref.close();
+// 				$state.go("swipe");
+//        });
+//      } else {
+//        console.log(error);
+//      }
+//    });
+//  };
 'use strict';
 
 var app = angular.module('seeFoodApp');
@@ -274,8 +298,6 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.filterObj = {};
 
 	this.findMe = function () {
-		var _this = this;
-
 		console.log('find me works');
 		var posOptions = {
 			enableHighAccuracy: true,
@@ -283,13 +305,17 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 			maximumAge: 0
 		};
 
-		return $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-			_this.filterObj = {
-				lat: position.coords.latitude,
-				lng: position.coords.longitude
-			};
-			_this.buildFilter(_this.filterObj);
-		});
+		//  return $cordovaGeolocation.getCurrentPosition(posOptions)
+		// .then(position => {
+		this.filterObj = {
+			// lat: position.coords.latitude,
+			// lng: position.coords.longitude	     
+			lat: 37.499298682877,
+			lng: -121.93347930908203
+		};
+		console.log('this.filterObj', this.filterObj);
+		this.buildFilter(this.filterObj);
+		// });
 	};
 
 	this.setRestaurants = function (data) {
@@ -326,7 +352,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.buildFilter = function (obj) {
-		var _this2 = this;
+		var _this = this;
 
 		console.log('filter works, obj: ', obj);
 		var categories = [];
@@ -342,9 +368,9 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 
 		if (obj.location) {
 			this.getCoords(obj.location).then(function (res) {
-				_this2.filterObj.lat = res.data.results[0].geometry.location.lat;
-				_this2.filterObj.lng = res.data.results[0].geometry.location.lng;
-				_this2.getRestaurants();
+				_this.filterObj.lat = res.data.results[0].geometry.location.lat;
+				_this.filterObj.lng = res.data.results[0].geometry.location.lng;
+				_this.getRestaurants();
 			}, function (err) {
 				console.error(err);
 			});
@@ -354,7 +380,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.getRestaurants = function () {
-		var _this3 = this;
+		var _this2 = this;
 
 		console.log('filterObj: ', this.filterObj);
 		//$ionicLoading.show({ template: 'Loading...'})
@@ -370,8 +396,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 				}
 			});
 
-			_this3.filterObj.count += res.data.businesses.length;
-			_this3.setRestaurants(res.data);
+			_this2.filterObj.count += res.data.businesses.length;
+			_this2.setRestaurants(res.data);
 		}, function (err) {
 			console.error(err);
 		});
