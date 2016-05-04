@@ -51,7 +51,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 .fb-login {
-	margin-top: 45px;
+	margin-top: 5px;
 	margin-right: 45px;
 	background: #263238;
 }
@@ -103,10 +103,10 @@ font-family: 'Questrial', sans-serif;
 }
 
 .item {
-	border: 1px solid gray;
+	/*border: 1px solid gray;*/
 	padding: 1px;
 	display: inline-block;
-	width: 210px;
+	width: 100%;
 }
 
 .bar-footer {
@@ -136,6 +136,18 @@ font-family: 'Questrial', sans-serif;
 	border: 2px solid black;
 }
 
-.carousel-indicators {
-	color: black;
+#demo-box {
+	margin-top: 60px;
+}
+
+#foot-home {
+	background: #80DEEA;
+}
+
+/*.bar-dark {
+	background: #4dd0e1;
+}*/
+
+.fa-cogs {
+	color: #d84315;
 }
