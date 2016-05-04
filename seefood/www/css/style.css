@@ -126,3 +126,11 @@ font-family: 'Questrial', sans-serif;
 	float: left;
 	margin: 25px;
 }
+
+#border {
+	border: 2px solid black;
+}
+
+.carousel-control {
+	background: white;
+}

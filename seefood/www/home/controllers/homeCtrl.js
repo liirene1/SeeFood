@@ -5,9 +5,11 @@ var app = angular.module('seeFoodApp');
 app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
 
   $(document).ready(function(){
-
-    $('.slider').slider({full_width: true});
-
+    $('.main-carousel').flickity({
+      // options
+      cellAlign: 'left',
+      contain: true
+    });
   });
 
 
