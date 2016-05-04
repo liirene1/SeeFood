@@ -13,6 +13,7 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
 		$ionicLoading.hide();
+		console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 

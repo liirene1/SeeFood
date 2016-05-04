@@ -19,7 +19,7 @@
             <!--"panel panel-default"-->
             <ul class="list-group">
               <!-- <li class="list-group-item"><a href="/detail.html">Restaurant</a></li> -->
-              <li ng-repeat='item in likes' class="list-group-item item">
+              <li ng-repeat='item in likes track by $index' class="list-group-item item">
                 <a ng-click='seeDetails(item)'>
                   <img id="listThumbnail"ng-src="{{item.image_url}}"></img>
                   <!-- <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img> -->

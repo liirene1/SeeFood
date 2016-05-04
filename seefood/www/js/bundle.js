@@ -248,6 +248,7 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 		return RestaurantService.restaurants;
 	}, function (newVal, oldVal) {
 		$ionicLoading.hide();
+		console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 
@@ -378,7 +379,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
 		this.filterObj.category = '';
 
-		obj.glutenFree ? categories.push('gluten-free') : '';
+		obj.glutenFree ? categories.push('gluten_free') : '';
 		obj.vegetarian ? categories.push('vegetarian') : '';
 		obj.vegan ? categories.push('vegan') : '';
 		obj.kosher ? categories.push('kosher') : '';

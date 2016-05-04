@@ -86,7 +86,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
 		this.filterObj.category = '';
 
-		obj.glutenFree ? categories.push('gluten-free') : '';
+		obj.glutenFree ? categories.push('gluten_free') : '';
 		obj.vegetarian ? categories.push('vegetarian') : '';
 		obj.vegan ? categories.push('vegan') : '';
 		obj.kosher ? categories.push('kosher') : '';
