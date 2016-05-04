@@ -3,6 +3,16 @@
 var app = angular.module('seeFoodApp');
 
 app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
+
+  $(document).ready(function(){
+    $('.main-carousel').flickity({
+      // options
+      cellAlign: 'left',
+      contain: true
+    });
+  });
+
+
   console.log('state: ', $state.current.name);
   $scope.$parent.state = $state.current.name;
 

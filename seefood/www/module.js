@@ -1,6 +1,5 @@
 'use strict';
 
-
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -34,19 +33,15 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova','ui.m
   .state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
-    controller: 'listCtrl',
-    onEnter: stateProtection
+    controller: 'listCtrl'
+    // onEnter: stateProtection
   })
   .state('detail', {
     //url: '/detail/:id',
     url: '/detail',
     templateUrl: './detail/partials/detail.html',
-    controller: 'detailCtrl',
-    onEnter: stateProtection
-  })
-  .state('slide', {
-    url: '/slide',
-    templateUrl: 'slide.html'
+    controller: 'detailCtrl'
+    // onEnter: stateProtection
   })
   // .state('login', {
   //   url: '/login',
