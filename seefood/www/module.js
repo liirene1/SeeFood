@@ -4,7 +4,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
+angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova','ui.materialize'])
 // angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'hmTouchEvents', 'angular-cache', 'firebase', 'uiGmapgoogle-maps', 'homeCtrl'])
 .constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com')
 .service('rootRef', ['FirebaseUrl', Firebase])
@@ -43,6 +43,10 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
     templateUrl: './detail/partials/detail.html',
     controller: 'detailCtrl',
     onEnter: stateProtection
+  })
+  .state('slide', {
+    url: '/slide',
+    templateUrl: 'slide.html'
   })
   // .state('login', {
   //   url: '/login',

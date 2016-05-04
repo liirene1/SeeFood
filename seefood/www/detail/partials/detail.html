@@ -18,7 +18,7 @@
       <div class="row">
         <!-- <div class="col-xs-6"><img ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div> -->
         <div class="col s6"><img id="restaurantthumbnail" ng-src="http://images.wisegeek.com/crisscrossed-steak.jpg"></div>
-        <div class="col s6 offset-s1">
+        <div class="col s6 offset-s1" id="restaurantdetails">
           <span>Steak</span>
           <br>
           <i class="fa fa-star" aria-hidden="true"></i>
@@ -27,7 +27,8 @@
           <i class="fa fa-dollar"></i>&nbsp;
           <i class="fa fa-dollar"></i>&nbsp;
           <i class="fa fa-dollar"></i>
-          <a href="{{restaurant.url}}" class="btn cyan lighten-2">Website</a>
+          <a href="{{restaurant.url}}" id="website">Website</a>
+          
           <br>
 
         </div>
