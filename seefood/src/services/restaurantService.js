@@ -16,19 +16,17 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	    maximumAge: 0
 	  };
 
-
-	  	
-	 //  return $cordovaGeolocation.getCurrentPosition(posOptions)
-		// .then(position => {
-	    this.filterObj = {
-	      // lat: position.coords.latitude,
-	      // lng: position.coords.longitude	      
-	      lat: 37.499298682877,
-	      lng: -121.93347930908203
-	    }
-	    console.log('this.filterObj', this.filterObj);
+	  $cordovaGeolocation.getCurrentPosition(posOptions)
+		.then(position => {
+			if(position.coords) {
+		    this.filterObj = {
+		      lat: position.coords.latitude,
+		      lng: position.coords.longitude
+		    }
+			}
+	    console.log('filter: ', this.filterObj);
 	    this.buildFilter(this.filterObj);
-	  // });
+	  });
 
 
 	}

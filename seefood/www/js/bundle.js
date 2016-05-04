@@ -53,12 +53,12 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
       StatusBar.styleDefault();
     }
 
-    var posOptions = {
-      enableHighAccuracy: true,
-      timeout: 20000,
-      maximumAge: 0
-    };
-    console.log('posOptions', posOptions);
+    // var posOptions = {
+    //   enableHighAccuracy: true,
+    //   timeout: 20000,
+    //   maximumAge: 0
+    // };
+    // console.log('posOptions', posOptions);
 
     RestaurantService.findMe();
   });
@@ -299,6 +299,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.filterObj = {};
 
 	this.findMe = function () {
+		var _this = this;
+
 		console.log('find me works');
 		var posOptions = {
 			enableHighAccuracy: true,
@@ -306,17 +308,16 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 			maximumAge: 0
 		};
 
-		  return $cordovaGeolocation.getCurrentPosition(posOptions)
-		 .then(position => {
-		this.filterObj = {
-			 lat: position.coords.latitude,
-			 lng: position.coords.longitude
-//			lat: 37.499298682877,
-//			lng: -121.93347930908203
-		};
-		console.log('this.filterObj', this.filterObj);
-		this.buildFilter(this.filterObj);
-		 });
+		$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+			if (position.coords) {
+				_this.filterObj = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
+			}
+			console.log('filter: ', _this.filterObj);
+			_this.buildFilter(_this.filterObj);
+		});
 	};
 
 	this.setRestaurants = function (data) {
@@ -353,7 +354,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.buildFilter = function (obj) {
-		var _this = this;
+		var _this2 = this;
 
 		console.log('filter works, obj: ', obj);
 		var categories = [];
@@ -369,9 +370,9 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 
 		if (obj.location) {
 			this.getCoords(obj.location).then(function (res) {
-				_this.filterObj.lat = res.data.results[0].geometry.location.lat;
-				_this.filterObj.lng = res.data.results[0].geometry.location.lng;
-				_this.getRestaurants();
+				_this2.filterObj.lat = res.data.results[0].geometry.location.lat;
+				_this2.filterObj.lng = res.data.results[0].geometry.location.lng;
+				_this2.getRestaurants();
 			}, function (err) {
 				console.error(err);
 			});
@@ -381,7 +382,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.getRestaurants = function () {
-		var _this2 = this;
+		var _this3 = this;
 
 		console.log('filterObj: ', this.filterObj);
 		//$ionicLoading.show({ template: 'Loading...'})
@@ -397,8 +398,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 				}
 			});
 
-			_this2.filterObj.count += res.data.businesses.length;
-			_this2.setRestaurants(res.data);
+			_this3.filterObj.count += res.data.businesses.length;
+			_this3.setRestaurants(res.data);
 		}, function (err) {
 			console.error(err);
 		});

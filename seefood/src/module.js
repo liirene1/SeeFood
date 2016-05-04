@@ -64,12 +64,12 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
       StatusBar.styleDefault();
     }
 
-    var posOptions = {
-      enableHighAccuracy: true,
-      timeout: 20000,
-      maximumAge: 0
-    };
-    console.log('posOptions', posOptions);
+    // var posOptions = {
+    //   enableHighAccuracy: true,
+    //   timeout: 20000,
+    //   maximumAge: 0
+    // };
+    // console.log('posOptions', posOptions);
 
     RestaurantService.findMe();
   });
