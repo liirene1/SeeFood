@@ -23,8 +23,6 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
   .state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl',
-    onEnter: stateProtection,
     controller: 'swipeCtrl'
     // resolve: {
     //   restaurants: ['RestaurantService', function(RestaurantService) {
@@ -36,14 +34,14 @@ angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
   .state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
-    controller: 'listCtrl',
-    onEnter: stateProtection
+    controller: 'listCtrl'
+    // onEnter: stateProtection
   })
   .state('detail', {
     url: '/detail/:id',
     templateUrl: './detail/partials/detail.html',
-    controller: 'detailCtrl',
-    onEnter: stateProtection
+    controller: 'detailCtrl'
+    // onEnter: stateProtection
   })
   // .state('login', {
   //   url: '/login',

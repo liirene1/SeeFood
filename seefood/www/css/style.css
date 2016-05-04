@@ -7,6 +7,10 @@ font-family: 'Questrial', sans-serif;
 	font-family: 'Pacifico', cursive;
 	color: #263238;
 	font-size: 55px;
+	margin-top: 55px;
+}
+
+.foodle {
 	margin-top: 15px;
 }
 
@@ -18,16 +22,20 @@ font-family: 'Questrial', sans-serif;
 	margin-top: 15px;
 	margin-bottom: 5px;
   max-height: 45em;
-  max-width: 17em;
+  max-width: 20em;
+  box-shadow: 5px 5px 5px #888888;
 }
 
 #listThumbnail {
 	height: 50px;
 	border-radius: 25%;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 #listWell {
 	width: 275px;
+	margin-right: 15px;
 }
 
 .angular-google-map-container {
@@ -39,35 +47,44 @@ font-family: 'Questrial', sans-serif;
 }
 
 .fb-login {
-	margin-top: 10px;
+	margin-top: 60px;
 	background: #263238;
 }
 
+
 .carousel-inner {
-	background: black;
+	background: none;
 }
 
 .swipe-btn {
-	margin: 7px;
-	margin-left: 40px;
+	margin: 10px;
+	margin-left: 34px;
 }
 
 .fa-cogs {
-	margin-top: 10px;
+	float: right;
+	margin: 20px;
 	color: #263238;
 }
 
 #yes {
 	background: #4dd0e1;
-	height: 75px;
-	width: 75px;
-	padding: 7px;
+	height: 81px;
+	width: 81px;
+	padding: 10px;
 }
 
 #no {
 	background: #FF7043;
-	height: 75px;
-	width: 75px;
+	height: 81px;
+	width: 81px;
+	padding: 10px;
+}
+
+#res {
+	background: black;
+	height: 80px;
+	width: 80px;
 	padding: 7px;
 }
 
@@ -80,8 +97,15 @@ font-family: 'Questrial', sans-serif;
 	background: black;
 }
 
+.item {
+	border: 1px solid gray;
+	padding: 1px;
+	display: inline-block;
+	width: 210px;
+}
+
 .bar-footer {
-	height: 50px;
+	height: 65px;
 }
 
 .swipe {
@@ -89,7 +113,16 @@ font-family: 'Questrial', sans-serif;
 }
 
 .list-head {
-	margin-top: 27px;
+	margin-top: 7px;
 	color: #4dd0e1;
-	font-size: 25px;
+	font-size: 35px;
+}
+
+.title {
+	font-size: 35px;
+}
+
+.fa-arrow-left {
+	float: left;
+	margin: 25px;
 }

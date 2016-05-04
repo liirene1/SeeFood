@@ -1,16 +1,16 @@
 <ion-view>
   <ion-content>
   	<!-- <h1>List</h1> -->
-    <div id="results" class="container">
       <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
       <a ui-sref="swipe"><i class="fa fa-arrow-left"></i></a>
 
+      <div id="results" class="container">
       <div class="col-xs-12 text-center">
         <h1 class="see-food">foodle.</h1>
       </div>
 
       <div class="col-xs-12 text-center">
-        <p class="list-head">YOUR PICKS</p>
+          <!-- <p class="list-head">YOUR PICKS</p> -->
       </div>
 
       <div class="col-xs-10 col-xs-offset-1">
@@ -22,9 +22,36 @@
               <li ng-repeat='item in likes' class="list-group-item">
                 <a ng-click='seeDetails(item)'>
                   <!-- <img id="listThumbnail"ng-src="{{item.image_url}}"></img> -->
+                  <li class="item">
                   <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
+                  Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
+                  </li>
+                  <li class="item">
+                  <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
+                  Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
+
+                  </li>
+                  <li class="item">
+                  <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
+                  Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
+
+                  </li>
+                  <li class="item">
+                  <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
+                  Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
+
+                  </li>
+                  <li class="item">
+                  <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
+                  Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
+
+                  </li>
+                  <li class="item">
+                  <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
+                  Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
+
+                  </li>
                   <span>{{item.name}}</span>
-                  <li>Olive Garden</li>
                 </a>
               </li>
             </ul>
@@ -36,11 +63,11 @@
 </ion-view>
 
 
-<table>
+<!-- <table>
   <tbody>
     <tr>
       <td><img id="listThumbnail"></td>
       <td>Olive Garden</td>
     </tr>
   </tbody>
-</table>
+</table> -->
