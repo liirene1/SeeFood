@@ -308,27 +308,32 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 			maximumAge: 0
 		};
 
-		// var geolocateTimer = window.setTimeout(() => {
-		// 	console.log('timer coords');
-		// 	this.filterObj = {
-		//      lat: 37.5489946970847,
-		//      lng: -121.9429642028612
-		//    }
-		//    this.buildFilter(this.filterObj);
-		// }, 10000);
+		var geolocateTimer = window.setTimeout(function () {
+			console.log('timer coords');
+			_this.filterObj = {
+				lat: 37.5489946970847,
+				lng: -121.9429642028612
+			};
+			_this.buildFilter(_this.filterObj);
+		}, 10000);
 
 		$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-			if (position.coords) {
-				// window.clearTimeout(geolocateTimer);
-				// console.log('geolocator coords');
-				_this.filterObj = {
-					lat: position.coords.latitude,
-					lng: position.coords.longitude
-				};
-			}
+			window.clearTimeout(geolocateTimer);
+			console.log('geolocator coords');
+			_this.filterObj = {
+				lat: position.coords.latitude,
+				lng: position.coords.longitude
+			};
 			console.log('filter: ', _this.filterObj);
 			_this.buildFilter(_this.filterObj);
 		});
+		// .catch(err => {
+		// 	this.filterObj = {
+		//     lat: 37.5489946970847,
+		//     lng: -121.9429642028612
+		//   }
+		//   this.buildFilter(this.filterObj);
+		// })
 	};
 
 	this.setRestaurants = function (data) {
