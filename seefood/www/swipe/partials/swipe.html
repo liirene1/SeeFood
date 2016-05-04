@@ -1,26 +1,35 @@
 <ion-view>
 	<ion-content>
-		<!-- <h1>swipes</h1> -->
 
 		<div id="swipe" class="container">
-    	<a ng-click="openModal()"><i class="ion-gear-a"></i></a>
-    	<div class="col-xs-12 text-center">
-      	<h2 class="foodies-title">i see food, i eat food</h2>
+    	<a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
+    	<div class="col-xs-12 text-center foodle">
+				<h1 class="see-food">foodle.
+          <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
+        </h1>
     	</div>
 
-	    <div class="col-xs-12 text-center">
+	    <div class="col-xs-12 text-center" id="picdiv">
 	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
+	      <!-- <img id="pic" src="http://static1.squarespace.com/static/53ffb08fe4b0a9868676061c/53ffb0bbe4b006127c1eae3e/53ffcd46e4b0cd9fe3d11696/1409273160709/pasta.jpg" alt="waiting...."> -->
 	      <h5 ng-repeat='type in restaurant.categories'>{{type[0]}}</h5>
+				<!-- <h4>Italian</h4> -->
 	    </div>
 
-	    <div class="col-xs-12">
-	      <a ng-click='rejected()' class="btn btn-warning fa fa-close"></a>
-	      <a ng-click='accepted()' class="btn btn-danger fa fa-heart"></a>
+	    <div class="col-xs-12 swipe">
+	      <a ng-click='rejected()' id="no" class="btn-floating btn-large btn-warning fa fa-thumbs-down fa-3x swipe-btn"></a>
+	      <!-- <a ui-sref='list' id="res" class="btn-floating btn-large btn-warning fa fa-list fa-2x swipe-btn"></a> -->
+	      <a ng-click='accepted()' id="yes" class="btn-floating btn-large btn-danger fa fa-thumbs-up fa-3x swipe-btn"></a>
 	    </div>
 
 	    <div class="col-xs-12 text-center">
-	      <a ui-sref='list' class="small results">See Results</a>
+	      <!-- <a ui-sref='list' class="small results btn"></a> -->
 	    </div>
 		</div>
 	</ion-content>
+	<div class="bar bar-footer bar-dark">
+		<div class="title" ui-sref='list'>VIEW RESULTS
+			<i class="fa fa-list"></i>
+		</div>
+	</div>
 </ion-view>
