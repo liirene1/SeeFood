@@ -2,6 +2,10 @@ body {
 font-family: 'Questrial', sans-serif;
 }
 
+#intro {
+	margin-top: 10px;
+}
+
 
 .see-food {
 	font-family: 'Pacifico', cursive;
@@ -47,7 +51,8 @@ font-family: 'Questrial', sans-serif;
 }
 
 .fb-login {
-	margin-top: 60px;
+	margin-top: 45px;
+	margin-right: 45px;
 	background: #263238;
 }
 
@@ -131,6 +136,6 @@ font-family: 'Questrial', sans-serif;
 	border: 2px solid black;
 }
 
-.carousel-control {
-	background: white;
+.carousel-indicators {
+	color: black;
 }
