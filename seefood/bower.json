@@ -12,6 +12,8 @@
     "AngularHammer": "ryanmullins-angular-hammer#^2.1.10",
     "firebase": "^2.4.2",
     "angularfire": "^1.2.0",
-    "Materialize": "materialize#^0.97.6"
+    "Materialize": "materialize#^0.97.6",
+    "lodash": "^4.11.2",
+    "ng-lodash": "^0.4.0"
   }
 }

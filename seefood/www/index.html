@@ -7,9 +7,12 @@
     <title></title>
 
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Questrial' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-kVo/Eh0sv7ZdiwZK32nRsp1FrDT3sLRLx3zVpSSTI9UdO5H02LJNLBg5F1gwvKg0" crossorigin="anonymous">
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-kVo/Eh0sv7ZdiwZK32nRsp1FrDT3sLRLx3zVpSSTI9UdO5H02LJNLBg5F1gwvKg0" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="https://npmcdn.com/flickity@1.2/dist/flickity.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -19,11 +22,14 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-    <script src="lib/angular-cache/dist/angular-cache.min.js"></script>
+    <!-- <script src="lib/angular-cache/dist/angular-cache.min.js"></script> -->
 
+    <!-- lodash -->
+    <script src="lib/ng-lodash/build/ng-lodash.min.js"></script>
+    <script src="lib/lodash/dist/lodash.min.js"></script>
+    
     <!-- hammerjs -->
     <!-- <script src="lib/hammerjs/hammer.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js"></script>
     <script src="lib/AngularHammer/angular.hammer.min.js"></script> -->
 
     <!--angular google maps -->
@@ -32,9 +38,10 @@
     <script src="lib/angular-google-maps/dist/angular-google-maps.min.js"></script>
 
     <!--jquery and bootstrap js -->
-    <!-- <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="https://npmcdn.com/flickity@1.2/dist/flickity.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <!-- Firebase & AngularFire -->
     <script src="lib/firebase/firebase.js"></script>
@@ -45,24 +52,25 @@
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
-    <script src="module.js"></script>
+    <script src="js/bundle.js"></script>
+    <!-- <script src="module.js"></script> -->
     <!-- <script src="js/services.js"></script> -->
     <!-- <script src="js/controllers.js"></script> -->
     <!-- <script src="mainCtrl.js"></script> -->
-    <script src="detail/controllers/detailCtrl.js"></script>
-    <script src="home/controllers/homeCtrl.js"></script>
-    <script src="home/services/homeService.js"></script>
-    <script src="swipe/controllers/swipeCtrl.js"></script>
-    <script src="swipe/services/swipeService.js"></script>
+    <!-- <script src="detail/controllers/detailCtrl.js"></script> -->
+    <!-- <script src="home/controllers/homeCtrl.js"></script> -->
+    <!-- <script src="home/services/homeService.js"></script> -->
+    <!-- <script src="swipe/controllers/swipeCtrl.js"></script> -->
+    <!-- <script src="swipe/services/swipeService.js"></script> -->
     <!--<script src="email/controllers/emailCtrl.js"></script>
     <script src="email/services/emailService.js"></script> -->
-    <script src="list/controllers/listCtrl.js"></script>
+    <!-- <script src="list/controllers/listCtrl.js"></script> -->
     <!-- <script src="/map/mapCtrl.js"></script> -->
-    <script src="restaurantService.js"></script>
+    <!-- <script src="restaurantService.js"></script> -->
   </head>
   <!-- <body ng-app="seeFoodApp" ng-controller="mainCtrl" style="background-color:white"> -->
-  <body ng-app="seeFoodApp">
-    <!-- <ion-pane> -->
+  <body ng-app="seeFoodApp" ng-controller="mainCtrl">
+    <ion-pane>
         <!-- <h1>sup</h1>
         <button ui-sref='home' class="button button-positive">
           home
@@ -80,6 +88,6 @@
           detail
         </button> -->
       <ion-nav-view></ion-nav-view>
-    <!-- </ion-pane> -->
+    </ion-pane>
   </body>
 </html>

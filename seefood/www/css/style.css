@@ -1,6 +1,17 @@
-#see-food {
+body {
+font-family: 'Questrial', sans-serif;
+}
+
+
+.see-food {
 	font-family: 'Pacifico', cursive;
-	color: orange;
+	color: #263238;
+	font-size: 55px;
+	margin-top: 55px;
+}
+
+.foodle {
+	margin-top: 15px;
 }
 
 .ion-gear-a {
@@ -8,17 +19,28 @@
 }
 
 #pic {
-  max-height: 13em;
-  max-width: 17em;
+	margin-top: 15px;
+	margin-bottom: 5px;
+  max-height: 45em;
+  max-width: 20em;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+#picdiv {
+	height: 60vh;
+	border: 1px solid black;
 }
 
 #listThumbnail {
 	height: 50px;
 	border-radius: 25%;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 #listWell {
 	width: 275px;
+	margin-right: 15px;
 }
 
 .angular-google-map-container {
@@ -27,8 +49,137 @@
 
 #restaurant-address {
 	font-style: bold;
+	border: 1px solid black;
 }
 
+#resultbutton {
+	margin-right: 15px;
+	margin-left: 15px;
+
+}
+
+#categorylist {
+	text-align: center;
+}
+
+#restaurantthumbnail {
+	height: 30vh;
+	width: 50vw;
+}
+
+#mapdiv {
+	height: 40vh;
+	border: 1px solid black;
+	margin-bottom: 5px;
+}
+
+#settings {
+	float: right;
+}
+
+#backarrow {
+	float:left;
+}
+
+#restaurantdetails {
+	margin-left: 32px;
+}
+
+<<<<<<< HEAD
 .swiper {
 	margin-bottom: 20px;
 }
+=======
+#website {
+	width: 100px;
+}
+
+.fb-login {
+	margin-top: 60px;
+	background: #263238;
+}
+
+
+.carousel-inner {
+	background: none;
+}
+
+.swipe-btn {
+	margin: 10px;
+	margin-left: 34px;
+}
+
+.fa-cogs {
+	float: right;
+	margin: 20px;
+	color: #263238;
+}
+
+#yes {
+	background: #4dd0e1;
+	height: 81px;
+	width: 81px;
+	padding: 10px;
+}
+
+#no {
+	background: #FF7043;
+	height: 81px;
+	width: 81px;
+	padding: 10px;
+}
+
+#res {
+	background: black;
+	height: 80px;
+	width: 80px;
+	padding: 7px;
+}
+
+#listWell {
+	margin-top: 25px;
+	background: none;
+}
+
+.results {
+	background: black;
+}
+
+.item {
+	border: 1px solid gray;
+	padding: 1px;
+	display: inline-block;
+	width: 210px;
+}
+
+.bar-footer {
+	height: 65px;
+}
+
+.swipe {
+	margin-top: 15px;
+}
+
+.list-head {
+	margin-top: 7px;
+	color: #4dd0e1;
+	font-size: 35px;
+}
+
+.title {
+	font-size: 35px;
+}
+
+.fa-arrow-left {
+	float: left;
+	margin: 25px;
+}
+
+#border {
+	border: 2px solid black;
+}
+
+.carousel-control {
+	background: white;
+}
+>>>>>>> 59d26b6f6f72db4ebdc618ef349bc9c7f2e71add
