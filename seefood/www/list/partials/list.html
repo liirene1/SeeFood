@@ -4,7 +4,7 @@
       <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
       <a ui-sref="swipe"><i class="fa fa-arrow-left"></i></a>
 
-      <div id="results" class="container">
+    <div id="results" class="container">
       <div class="col-xs-12 text-center">
         <h1 class="see-food">foodle.</h1>
       </div>
@@ -12,17 +12,58 @@
       <div class="col-xs-12 text-center">
           <!-- <p class="list-head">YOUR PICKS</p> -->
       </div>
+    </div>
 
-      <div class="col-xs-10 col-xs-offset-1">
+
+      <div class="ion-list">
+        <ion-list>
+           <!-- add a section header -->
+           <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
+              <!-- iterate thru each item in the list, use $index as item identifier -->
+              <!-- <ion-item ng-repeat="item in itemsList track by $index"> -->
+                <ion-item>
+                <a class="item item-thumbnail-right" href="#">
+                  <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
+                  <h2 class="rest-name">Italian Restaurant</h2>
+                  <p>Something here.</p>
+                </a>
+              {{$index}} - {{item.name}} - {{item.room}}
+              </ion-item>
+              <ion-item>
+              <a class="item item-thumbnail-right" href="#">
+                <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
+                <h2 class="rest-name">Italian Restaurant</h2>
+                <p>Something here.</p>
+              </a>
+            {{$index}} - {{item.name}} - {{item.room}}
+            </ion-item>
+            <ion-item>
+            <a class="item item-thumbnail-right" href="#">
+              <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
+              <h2 class="rest-name">Italian Restaurant</h2>
+              <p>Something here.</p>
+            </a>
+          {{$index}} - {{item.name}} - {{item.room}}
+          </ion-item>
+        </ion-list>
+      </div>
+
+
+
+
+
+
+
+      <!-- <div class="col-xs-10 col-xs-offset-1">
         <div id="listWell" class="well">
-          <div class="list">
+          <div class="list"> -->
             <!--"panel panel-default"-->
-            <ul class="list-group">
+            <!-- <ul class="list-group"> -->
               <!-- <li class="list-group-item"><a href="/detail.html">Restaurant</a></li> -->
-              <li ng-repeat='item in likes' class="list-group-item">
-                <a ng-click='seeDetails(item)'>
+              <!-- <li ng-repeat='item in likes' class="list-group-item">
+                <a ng-click='seeDetails(item)'> -->
                   <!-- <img id="listThumbnail"ng-src="{{item.image_url}}"></img> -->
-                  <li class="item">
+                  <!-- <li class="item">
                   <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img>
                   Olive Garden <i class="fa fa-eye" aria-hidden="true"></i>
                   </li>
@@ -57,7 +98,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 	</ion-content>
 </ion-view>

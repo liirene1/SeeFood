@@ -1,4 +1,4 @@
-body {
+* {
 font-family: 'Questrial', sans-serif;
 }
 
@@ -144,10 +144,23 @@ font-family: 'Questrial', sans-serif;
 	background: #80DEEA;
 }
 
-/*.bar-dark {
-	background: #4dd0e1;
-}*/
-
 .fa-cogs {
 	color: #d84315;
+}
+
+.ion-list {
+	margin-top: 25px;
+}
+
+.item-divider {
+	background: #263238;
+	color: #fff;
+}
+
+.rest-name {
+	color: #4dd0e1;
+}
+
+.fa-arrow-left {
+	color: black;
 }
