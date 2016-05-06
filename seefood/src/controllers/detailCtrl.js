@@ -6,7 +6,7 @@ app.controller('detailCtrl', function($scope, $stateParams, RestaurantService, $
   console.log("Im in detail state");
   console.log('state: ', $state.current.name);
   $scope.$parent.state = $state.current.name;
-  
+
   $scope.restaurant = RestaurantService.findLike($stateParams);
   console.log('detail resto: ', $scope.restaurant);
   
@@ -14,14 +14,30 @@ app.controller('detailCtrl', function($scope, $stateParams, RestaurantService, $
    return Math.round(m * 0.000621371192);
   }
   
-  $scope.map = { 
-    center: {
-      latitude: $scope.restaurant.location.coordinate.latitude,
-      longitude: $scope.restaurant.location.coordinate.longitude
-    },
-    zoom: 12 
-  };
+  // $scope.map = { 
+  //   center: {
+  //     latitude: $scope.restaurant.location.coordinate.latitude,
+  //     longitude: $scope.restaurant.location.coordinate.longitude
+  //   },
+  //   zoom: 12 
+  // };
   
+  initMap();
+  function initMap() {
+    var myLatLng = {lat: $scope.restaurant.location.coordinate.latitude, lng: $scope.restaurant.location.coordinate.longitude};
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
+
   // $scope.map.options = {
   //   draggable: true,
   //   labelContent: "lat: " + $scope.restaurant.location.coordinate.latitude + ' ' + 'lon: ' +  $scope.restaurant.location.coordinate.longitude,

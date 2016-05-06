@@ -72,13 +72,29 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
     return Math.round(m * 0.000621371192);
   };
 
-  $scope.map = {
-    center: {
-      latitude: $scope.restaurant.location.coordinate.latitude,
-      longitude: $scope.restaurant.location.coordinate.longitude
-    },
-    zoom: 12
-  };
+  // $scope.map = {
+  //   center: {
+  //     latitude: $scope.restaurant.location.coordinate.latitude,
+  //     longitude: $scope.restaurant.location.coordinate.longitude
+  //   },
+  //   zoom: 12
+  // };
+
+  initMap();
+  function initMap() {
+    var myLatLng = { lat: $scope.restaurant.location.coordinate.latitude, lng: $scope.restaurant.location.coordinate.longitude };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
 
   // $scope.map.options = {
   //   draggable: true,
@@ -236,14 +252,18 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 	// });
 
 	$scope.rejected = function () {
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
+		if ($scope.restaurant) {
+			RestaurantService.swipeRestaurant();
+			$scope.restaurant = RestaurantService.grabRestaurant();
+		}
 	};
 
 	$scope.accepted = function () {
-		RestaurantService.addLike();
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
+		if ($scope.restaurant) {
+			RestaurantService.addLike();
+			RestaurantService.swipeRestaurant();
+			$scope.restaurant = RestaurantService.grabRestaurant();
+		}
 	};
 }]);
 'use strict';

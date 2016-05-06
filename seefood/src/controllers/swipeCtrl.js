@@ -31,14 +31,18 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
 	// });
   
 	$scope.rejected = function() {
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
+		if($scope.restaurant) {
+			RestaurantService.swipeRestaurant();
+			$scope.restaurant = RestaurantService.grabRestaurant();
+		}
 	}
   
 	$scope.accepted = function() {
-		RestaurantService.addLike();
-		RestaurantService.swipeRestaurant();
-		$scope.restaurant = RestaurantService.grabRestaurant();
+		if($scope.restaurant) {
+			RestaurantService.addLike();
+			RestaurantService.swipeRestaurant();
+			$scope.restaurant = RestaurantService.grabRestaurant();
+		}
 	}
 
 })
