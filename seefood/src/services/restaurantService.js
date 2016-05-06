@@ -106,6 +106,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	};
 
 	this.getRestaurants = function() {
+		console.log('inside this.getRestaurants');
 		console.log('filterObj: ', this.filterObj);
     //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)

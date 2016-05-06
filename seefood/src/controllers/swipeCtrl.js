@@ -29,12 +29,12 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
 	// 	$scope.accepted();
 	// 	$scope.$apply();
 	// });
-  
+
 	$scope.rejected = function() {
 		RestaurantService.swipeRestaurant();
 		$scope.restaurant = RestaurantService.grabRestaurant();
 	}
-  
+
 	$scope.accepted = function() {
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();

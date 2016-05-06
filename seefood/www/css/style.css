@@ -30,8 +30,8 @@ font-family: 'Questrial', sans-serif;
 }
 
 #picdiv {
-	height: 60vh;
-	border: 1px solid black;
+	height: 55vh;
+	border: 0px solid black;
 }
 
 #listThumbnail {
@@ -103,8 +103,8 @@ font-family: 'Questrial', sans-serif;
 }
 
 .swipe-btn {
-	margin: 10px;
-	margin-left: 34px;
+	margin: 15px;
+	margin-left: 45px;
 }
 
 .fa-cogs {
@@ -165,6 +165,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 .title {
+	padding-top: 10px;
 	font-size: 35px;
 }
 
@@ -189,8 +190,8 @@ font-family: 'Questrial', sans-serif;
 }
 
 .swipe-btn {
-	margin: 10px;
-	margin-left: 34px;
+	margin: 5px;
+	margin-left: 55px;
 }
 
 .fa-cogs {
