@@ -1,7 +1,7 @@
 <ion-view>
   <ion-content>
       <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
-      <a ui-sref="swipe"><i class="fa fa-arrow-left"></i></a>
+      <a ui-sref="swipe"><i class="fa fa-arrow-left fa-2x"></i></a>
 
       <div id="results" class="container">
       <div class="col-xs-12 text-center">
@@ -17,8 +17,8 @@
                   <a class="item item-thumbnail-right" ng-click="seeDetails(item)">
                     <img ng-src="{{item.image_url}}">
                     <h1 class="rest-name">{{item.name}}</h1>
-                    <p>{{item.categories[0][0]}}</p>
-                    <img ng-src="{{item.rating_img_url_small}}" alt="">
+                    <h3 class="rest-cat">{{item.categories[0][0]}}</h3>
+                    <img class="rest-rate" ng-src="{{item.rating_img_url_small}}" alt="">
                   </a>
 
                 </ion-item>

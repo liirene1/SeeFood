@@ -31,7 +31,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 #picdiv {
-	height: 60vh;
+	height: 55vh;
 	text-align: center;
 }
 
@@ -166,10 +166,6 @@ font-family: 'Questrial', sans-serif;
 	font-size: 35px;
 }
 
-.title {
-	font-size: 35px;
-}
-
 .fa-arrow-left {
 	float: left;
 	margin: 25px;
@@ -297,7 +293,8 @@ font-family: 'Questrial', sans-serif;
 
 .rest-name {
 	color: #263238;
-	font-size: 12px;
+	margin-left: 10px;
+	font-size: 17px;
 	font-weight: bold;
 }
 
@@ -373,4 +370,25 @@ div.swipe {
 #yelp-logo {
 	height: 20px;
 	wigth: 50px;
+}
+
+#swipe-foodle {
+	margin-left: 65px;
+}
+
+div#viewTitle {
+	font-size: 20px;
+	font-weight: bold;
+	/*color: black;*/
+	color: #263238;
+}
+
+h3.rest-cat {
+	color: #263238;
+	margin-left: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+img.rest-rate {
+	margin-left: 10px;
 }

@@ -4,14 +4,13 @@
 		<div id="swipe" class="container">
     	<a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
     	<div class="col-xs-12 text-center foodle">
-				<h1 class="see-food">foodle.
-          <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
+				<h1 id="swipe-foodle" class="see-food">foodle.
         </h1>
     	</div>
 
 	    <div class="col-xs-12" id="picdiv" on-swipe-left="rejected()" on-swipe-right="accepted()">
 	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
-	      <h5 ng-repeat='type in restaurant.categories track by $index'>{{type[0]}}</h5>
+	      <h4 ng-repeat='type in restaurant.categories track by $index'>{{type[0]}}</h4>
 	    </div>
 
 	    <div class="col-xs-12 swipe">
@@ -24,7 +23,7 @@
 		</div>
 	</ion-content>
 	<div id="foot-swipe" class="bar bar-footer bar-dark">
-		<div class="title" ui-sref='list'>VIEW RESULTS
+		<div id="viewTitle" class="title" ui-sref='list'>VIEW RESULTS&nbsp;&nbsp;
 			<i class="fa fa-list"></i>
 		</div>
 	</div>
