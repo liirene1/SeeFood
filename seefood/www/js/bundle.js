@@ -249,7 +249,7 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 		console.log('restaurant', RestaurantService.restaurants);
 		return RestaurantService.restaurants;
 	}, function (newVal, oldVal) {
-		$ionicLoading.hide();
+		//$ionicLoading.hide();
 		console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
@@ -295,7 +295,7 @@ app.factory('Auth', ["$firebaseAuth", function ($firebaseAuth) {
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", function ($http, API, $cordovaGeolocation) {
+app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", "$ionicLoading", function ($http, API, $cordovaGeolocation, $ionicLoading) {
 
 	this.restaurants = [];
 	this.likes = [];
@@ -304,6 +304,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.findMe = function () {
 		var _this = this;
 
+		$ionicLoading.show({ template: 'Loading...' });
 		console.log('find me works');
 		var posOptions = {
 			enableHighAccuracy: true,
@@ -404,10 +405,9 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 		var _this3 = this;
 
 		console.log('filterObj: ', this.filterObj);
-		//$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(API + '/restaurants', this.filterObj).then(function (res) {
 			console.log(res.data.businesses);
-			//$ionicLoading.hide();
+			$ionicLoading.hide();
 
 			res.data.businesses.forEach(function (ele, ind, arr) {
 				if (!ele.image_url) {

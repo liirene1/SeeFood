@@ -2,13 +2,14 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
+app.service('RestaurantService', function($http, API, $cordovaGeolocation, $ionicLoading) {
 
 	this.restaurants = [];
 	this.likes = [];
 	this.filterObj = {};
 
 	this.findMe = function() {
+		$ionicLoading.show({ template: 'Loading...'})
 		console.log('find me works');
 	  var posOptions = {
 	    enableHighAccuracy: true,
@@ -108,11 +109,10 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.getRestaurants = function() {
 		console.log('filterObj: ', this.filterObj);
-    //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
 			console.log(res.data.businesses);
-      //$ionicLoading.hide();
+      $ionicLoading.hide();
 
 			res.data.businesses.forEach((ele, ind, arr) => {
 				if(!ele.image_url) {

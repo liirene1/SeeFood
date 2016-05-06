@@ -3,6 +3,7 @@
 
 		<div id="swipe" class="container">
     	<a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
+
     	<div class="col-xs-12 text-center foodle">
 				<h1 class="see-food">foodle.
           <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
@@ -10,7 +11,7 @@
     	</div>
 
 	    <div class="col-xs-12 text-center" id="picdiv">
-	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
+	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="">
 	      <!-- <img id="pic" src="http://static1.squarespace.com/static/53ffb08fe4b0a9868676061c/53ffb0bbe4b006127c1eae3e/53ffcd46e4b0cd9fe3d11696/1409273160709/pasta.jpg" alt="waiting...."> -->
 	      <h5 ng-repeat='type in restaurant.categories track by $index'>{{type[0]}}</h5>
 				<!-- <h4>Italian</h4> -->

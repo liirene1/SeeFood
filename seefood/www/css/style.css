@@ -24,11 +24,11 @@ font-family: 'Questrial', sans-serif;
   max-height: 45em;
   max-width: 20em;
   box-shadow: 5px 5px 5px #888888;
+	height: 40vh;
 }
 
 #picdiv {
-	height: 60vh;
-	border: 1px solid black;
+	max-height: 50vh;
 }
 
 #listThumbnail {
@@ -50,6 +50,7 @@ font-family: 'Questrial', sans-serif;
 #restaurant-address {
 	font-style: bold;
 	border: 1px solid black;
+	margin-top: -28px;
 }
 
 #resultbutton {
@@ -58,19 +59,18 @@ font-family: 'Questrial', sans-serif;
 
 }
 
+#restaurant-name {
+	margin-bottom: -6px;
+}
+
 #categorylist {
 	text-align: center;
 }
 
 #restaurantthumbnail {
-	height: 30vh;
+	height: 20vh;
 	width: 50vw;
-}
-
-#mapdiv {
-	height: 40vh;
-	border: 1px solid black;
-	margin-bottom: 5px;
+	margin-left: 6px;
 }
 
 #settings {
@@ -82,7 +82,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 #restaurantdetails {
-	margin-left: 32px;
+	margin-left: 2px;
 }
 
 #website {
@@ -141,10 +141,10 @@ font-family: 'Questrial', sans-serif;
 }
 
 .item {
-	border: 1px solid gray;
+	/*border: 1px solid gray;
 	padding: 1px;
 	display: inline-block;
-	width: 210px;
+	width: 210px;*/
 }
 
 .bar-footer {
@@ -176,4 +176,40 @@ font-family: 'Questrial', sans-serif;
 
 .carousel-control {
 	background: white;
+}
+
+.filter-buttons {
+	text-align: center;
+	color: black;
+}
+
+.toggle input:checked + .track .handle {
+  background-color: #ff7043;
+
+}
+
+.toggle input:checked + .track {
+	background-color: #ff7043;
+	
+}
+
+input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #ff7043;
+}
+
+#radius-range {
+	color: #ff7043;
+}
+
+#options-header {
+	background-color: #ff7043;
+
+}
+
+#settings-title {
+	text-align: center;
+}
+
+.thumb {
+	display: none;
 }
