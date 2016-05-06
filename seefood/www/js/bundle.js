@@ -84,6 +84,7 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
       latitude: $scope.restaurant.location.coordinate.latitude,
       longitude: $scope.restaurant.location.coordinate.longitude
     },
+    draggable: false,
     zoom: 12
   };
 
