@@ -28,7 +28,6 @@ font-family: 'Questrial', sans-serif;
   max-width: 20em;
   box-shadow: 5px 5px 5px #888888;
 	height: 40vh;
-	width: 40vh;
 }
 
 #picdiv {
@@ -100,7 +99,8 @@ font-family: 'Questrial', sans-serif;
 }
 
 .fb-login {
-	margin-top: 60px;
+	margin-top: 30px;
+	margin-left: 60px;
 	background: #263238;
 }
 
@@ -265,7 +265,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 #demo-box {
-	margin-top: 60px;
+	margin-top: 10px;
 }
 
 #foot-home {
@@ -341,6 +341,7 @@ input[type=text]:focus:not([readonly]){
 	display: none;
 }
 
+/*swipe view styles*/
 div#restaurantthumbnail {
 	border-color: 2px solid #ff7043;
 }
@@ -358,4 +359,18 @@ div.swipe {
 	background: #80DEEA;
 	height: 45px;
 	margin-top: 100px;
+}
+
+.slider-slides {
+	margin-top: -30px;
+	padding-top: 20px;
+}
+
+.slider-pager {
+	padding-top: 30px;
+}
+
+#yelp-logo {
+	height: 20px;
+	wigth: 50px;
 }
