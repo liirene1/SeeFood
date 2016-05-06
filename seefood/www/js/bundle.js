@@ -23,13 +23,13 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
   }).state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
-    controller: 'listCtrl',
-    onEnter: stateProtection
+    controller: 'listCtrl'
+    // onEnter: stateProtection
   }).state('detail', {
     url: '/detail/:id',
     templateUrl: './detail/partials/detail.html',
-    controller: 'detailCtrl',
-    onEnter: stateProtection
+    controller: 'detailCtrl'
+    // onEnter: stateProtection
   });
 
   $urlRouterProvider.otherwise('/');
@@ -42,7 +42,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
     });
   }
 }]).constant('API', 'http://seefoodapp.herokuapp.com').run(["$ionicPlatform", "$cordovaGeolocation", "RestaurantService", function ($ionicPlatform, $cordovaGeolocation, RestaurantService) {
-  console.log('runs');
+
   $ionicPlatform.ready(function () {
     console.log('runs inside');
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -371,20 +371,19 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 			}, function (err) {
 				console.error(err);
 			});
-		} else {
 			this.getRestaurants();
-		}
+		};
 	};
 
 	this.getRestaurants = function () {
 		var _this3 = this;
 
+		console.log('inside this.getRestaurants');
 		console.log('filterObj: ', this.filterObj);
 		//$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(API + '/restaurants', this.filterObj).then(function (res) {
 			console.log(res.data.businesses);
 			//$ionicLoading.hide();
-
 			res.data.businesses.forEach(function (ele, ind, arr) {
 				if (!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
@@ -408,7 +407,3 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 'use strict';
 
 var app = angular.module('seeFoodApp');
-
-// app.service('SwipeService', function() {
-//
-// });

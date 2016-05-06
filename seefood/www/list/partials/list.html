@@ -1,10 +1,11 @@
 <ion-view>
   <ion-content>
-    <!-- <h1>List</h1> -->
+  	<!-- <h1>List</h1> -->
       <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
       <a ui-sref="swipe"><i class="fa fa-arrow-left"></i></a>
 
-      <div id="results" class="container">
+    <div id="results" class="container">
+
       <div class="col-xs-12 text-center">
         <h1 class="see-food">foodle.</h1>
       </div>
@@ -12,34 +13,40 @@
       <div class="col-xs-12 text-center">
           <!-- <p class="list-head">YOUR PICKS</p> -->
       </div>
-
-      <div class="col-xs-10 col-xs-offset-1">
-        <div id="listWell" class="well">
-          <div class="list">
-            <!--"panel panel-default"-->
-            <ul class="list-group">
-              <!-- <li class="list-group-item"><a href="/detail.html">Restaurant</a></li> -->
-              <li ng-repeat='item in likes track by $index' class="list-group-item item">
-                <a ng-click='seeDetails(item)'>
-                  <img id="listThumbnail"ng-src="{{item.image_url}}"></img>
-                  <!-- <img id="listThumbnail" src="http://foodio54.com/images/tipusers/79/0/1077900.jpg"></img> -->
-                  {{item.name}} <i class="fa fa-eye" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
+
+
+      <div class="ion-list">
+        <ion-list>
+           <!-- add a section header -->
+           <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
+              <!-- iterate thru each item in the list, use $index as item identifier -->
+              <!-- <ion-item ng-repeat="item in itemsList track by $index"> -->
+                <ion-item>
+                <a class="item item-thumbnail-right" href="#">
+                  <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
+                  <h2 class="rest-name">Italian Restaurant</h2>
+                  <p>Something here.</p>
+                </a>
+              {{$index}} - {{item.name}} - {{item.room}}
+              </ion-item>
+              <ion-item>
+              <a class="item item-thumbnail-right" href="#">
+                <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
+                <h2 class="rest-name">Italian Restaurant</h2>
+                <p>Something here.</p>
+              </a>
+            {{$index}} - {{item.name}} - {{item.room}}
+            </ion-item>
+            <ion-item>
+            <a class="item item-thumbnail-right" href="#">
+              <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
+              <h2 class="rest-name">Italian Restaurant</h2>
+              <p>Something here.</p>
+            </a>
+          {{$index}} - {{item.name}} - {{item.room}}
+          </ion-item>
+        </ion-list>
+      </div>
   </ion-content>
 </ion-view>
-
-
-<!-- <table>
-  <tbody>
-    <tr>
-      <td><img id="listThumbnail"></td>
-      <td>Olive Garden</td>
-    </tr>
-  </tbody>
-</table> -->

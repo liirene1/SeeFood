@@ -29,14 +29,14 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
   .state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
-    controller: 'listCtrl',
-    onEnter: stateProtection
+    controller: 'listCtrl'
+    // onEnter: stateProtection
   })
   .state('detail', {
     url: '/detail/:id',
     templateUrl: './detail/partials/detail.html',
-    controller: 'detailCtrl',
-    onEnter: stateProtection
+    controller: 'detailCtrl'
+    // onEnter: stateProtection
   })
 
   $urlRouterProvider.otherwise('/');
@@ -54,6 +54,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
 
 .run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
   console.log('runs');
+
   $ionicPlatform.ready(function() {
   console.log('runs inside');
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -63,7 +64,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
 
     // var posOptions = {
     //   enableHighAccuracy: true,
