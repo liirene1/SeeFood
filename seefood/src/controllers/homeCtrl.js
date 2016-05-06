@@ -33,6 +33,3 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
 		$scope.authData = authData;
 	});
 })
-
-
-	

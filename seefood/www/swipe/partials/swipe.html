@@ -9,8 +9,8 @@
         </h1>
     	</div>
 
-			<!-- picdiv is added here - border? -->
-	    <div class="col-xs-12 text-center" id="picdiv">
+
+	    <div class="col-xs-12 text-center" id="picdiv" on-swipe-left="rejected()" on-swipe-right="accepted()">
 	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
 	      <!-- <img id="pic" src="http://static1.squarespace.com/static/53ffb08fe4b0a9868676061c/53ffb0bbe4b006127c1eae3e/53ffcd46e4b0cd9fe3d11696/1409273160709/pasta.jpg" alt="waiting...."> -->
 	      <h5 ng-repeat='type in restaurant.categories track by $index'>{{type[0]}}</h5>

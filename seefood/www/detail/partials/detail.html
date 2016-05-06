@@ -2,66 +2,65 @@
   <ion-content>
     <div id="detail" class="container">
 
-      <div class="col-xs-12 text-center">
-        <a id="backarrow" ui-sref="list"><i class="fa fa-arrow-left fa-2x"></i></a>
-        <h2 class="foodies-title">LOGO</h2>
-        <a id="settings" ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
-      </div>
+      <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
+      <a ui-sref="list"><i class="fa fa-arrow-left"></i></a>
 
-      <div class="col-xs-12 text-center">
-        <h2 class="detail-title">{{restaurant.name}}</h2>
-        <!-- <h2 class="detail-title">RESTAURANT</h2> -->
+      <div id="results" class="container">
+        <div class="col-xs-12 text-center">
+          <h1 class="see-food">foodle.</h1>
+        </div>
 
-      </div>
+        <div class="col-xs-12 text-center">
+          <!-- <p class="list-head">YOUR PICKS</p> -->
+        </div>
 
-      <div class="row">
-        <div class="col-xs-6"><img id="restaurantthumbnail" ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
-        <!-- <div class="col s6"><img id="restaurantthumbnail" ng-src="http://images.wisegeek.com/crisscrossed-steak.jpg"></div> -->
-        <div class="col s6 offset-s1" id="restaurantdetails">
-          <!-- <span>Steak</span> -->
-          <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span>
-          <br>
-          <img ng-src="{{restaurant.rating_img_url_small}}">
-          <!-- <i class="fa fa-star" aria-hidden="true"></i>
-          <i class="fa fa-star" aria-hidden="true"></i> -->
-          <br>
-          <i class="fa fa-dollar"></i>&nbsp;
-          <i class="fa fa-dollar"></i>&nbsp;
-          <i class="fa fa-dollar"></i>
-          <a href="{{restaurant.url}}" id="website">Website</a>
-          
-          <br>
+        <div class="col-xs-12 text-center">
+          <h2 id="restaurant-name" class="detail-title">{{restaurant.name}}</h2>
+          <!-- <h2 class="detail-title">RESTAURANT</h2> -->
 
         </div>
+
+        <div class="row">
+          <div class="col-xs-6"><img id="restaurantthumbnail" ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
+          <!-- <div class="col s6"><img id="restaurantthumbnail" ng-src="http://images.wisegeek.com/crisscrossed-steak.jpg"></div> -->
+          <div class="col s6 offset-s1" id="restaurantdetails">
+            <!-- <span>Steak</span> -->
+            <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span>
+              <br>
+              <img ng-src="{{restaurant.rating_img_url_small}}">
+              <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
+              <br>
+              <a href="{{restaurant.url}}" id="website">Yelp It</a>
+
+              <br>
+
+            </div>
+          </div>
+
+
+        </div>
+
+        <div id="restaurant-address" class=text-center>
+          {{restaurant.location.display_address[0]}}
+          <br>
+          {{restaurant.location.display_address[1]}}
+
+        </div>
+
+        <!-- <center>
+        <div>
+        {{distanceInMiles(restaurant.distance)}} miles away
       </div>
-      
-
-    </div>
-
-<div id="restaurant-address" class=text-center>
-        {{restaurant.location.display_address[0]}}
-        <br>
-        {{restaurant.location.display_address[1]}}
-        <!-- 349 Harvard Count
-        <br>
-        Fremont, CA 94539 -->
-      </div>
-      <div id="mapdiv">MAP</div>
-
-    <!-- <center>
-    <div>
-    {{distanceInMiles(restaurant.distance)}} miles away
-  </div>
-</center> -->
-<!-- <div class="col-xs-10 col-xs-offset-1 text-center"> -->
-<!-- <img src="http://placehold.it/250x200" alt="" class="map"> -->
-<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-<ui-gmap-marker
-idKey='1'
-coords='map.center'
->
-</ui-gmap-marker>
-</ui-gmap-google-map>
+    </center> -->
+    <!-- <div class="col-xs-10 col-xs-offset-1 text-center"> -->
+    <!-- <img src="http://placehold.it/250x200" alt="" class="map"> -->
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+      <ui-gmap-marker
+      idKey='1'
+      coords='map.center'
+      >
+    </ui-gmap-marker>
+  </ui-gmap-google-map>
 
 </div>
 
@@ -74,3 +73,49 @@ coords='map.center'
 
 </ion-content>
 </ion-view>
+<!-- <ion-view>
+  <ion-content>
+    <div id="detail" class="container">
+
+      <div class="col-xs-12 text-center">
+        <a id="backarrow" ui-sref="list"><i class="fa fa-arrow-left fa-2x"></i></a>
+        <h2 class="foodies-title">LOGO</h2>
+        <a id="settings" ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
+      </div>
+
+      <div class="col-xs-12 text-center">
+        <h2 class="detail-title">{{restaurant.name}}</h2>
+
+      </div>
+
+      <div class="row">
+        <div class="col-xs-6"><img id="restaurantthumbnail" ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
+        <div class="col s6 offset-s1" id="restaurantdetails">
+          <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span>
+          <br>
+          <img ng-src="{{restaurant.rating_img_url_small}}">
+          <br>
+          <a href="{{restaurant.url}}" id="website">Yelp It</a>
+          <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
+
+          <br>
+
+        </div>
+      </div>
+    </div>
+
+<div id="restaurant-address" class=text-center>
+        {{restaurant.location.display_address[0]}}
+        <br>
+        {{restaurant.location.display_address[1]}}
+      </div>
+      <div id="mapdiv">MAP</div>
+
+<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+  <ui-gmap-marker idKey='1' coords='map.center'></ui-gmap-marker>
+</ui-gmap-google-map>
+
+</div>
+
+</ion-content>
+</ion-view> -->

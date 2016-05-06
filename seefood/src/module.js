@@ -1,17 +1,10 @@
 'use strict';
 
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
-angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'hmTouchEvents', 'angular-cache',*/ 'firebase', 'uiGmapgoogle-maps'])
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'firebase', 'uiGmapgoogle-maps'])
 .constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com')
 .service('rootRef', ['FirebaseUrl', Firebase])
 
 .config(function($stateProvider, $urlRouterProvider) {
-// .config(function($stateProvider, $urlRouterProvider, CacheFactoryProvider) {
-  // angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
 
   console.log("config being hit");
   $stateProvider
@@ -53,9 +46,9 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
 .run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
-
+  console.log('runs');
   $ionicPlatform.ready(function() {
-  console.log('runs inside');
+    console.log('runs inside');
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -63,6 +56,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
 
     // var posOptions = {
     //   enableHighAccuracy: true,

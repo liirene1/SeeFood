@@ -10,7 +10,7 @@ font-family: 'Questrial', sans-serif;
 	font-family: 'Pacifico', cursive;
 	color: #263238;
 	font-size: 55px;
-	margin-top: 55px;
+	margin-top: 35px;
 }
 
 .foodle {
@@ -27,11 +27,12 @@ font-family: 'Questrial', sans-serif;
   max-height: 45em;
   max-width: 20em;
   box-shadow: 5px 5px 5px #888888;
+	height: 40vh;
 }
 
 #picdiv {
-	height: 55vh;
-	border: 0px solid black;
+	height: 60vh;
+	border: 1px solid black;
 }
 
 #listThumbnail {
@@ -88,7 +89,7 @@ font-family: 'Questrial', sans-serif;
 	margin-left: 32px;
 }
 
-/*from josh's merge*/
+/*this was from Josh's merge*/
 .swiper {
 	margin-bottom: 20px;
 }
@@ -97,11 +98,20 @@ font-family: 'Questrial', sans-serif;
 	width: 100px;
 }
 
+.fb-login {
+	margin-top: 30px;
+	margin-left: 60px;
+	background: #263238;
+}
 
+
+.carousel-inner {
+	background: none;
+}
 
 .swipe-btn {
-	margin: 15px;
-	margin-left: 45px;
+	margin: 10px;
+	margin-left: 34px;
 }
 
 .fa-cogs {
@@ -140,15 +150,15 @@ font-family: 'Questrial', sans-serif;
 	background: black;
 }
 
-.item {
+/*.item {
 	border: 1px solid gray;
 	padding: 1px;
 	display: inline-block;
 	width: 210px;
-}
+}*/
 
 .bar-footer {
-	height: 25px;
+	height: 55px;
 }
 
 .swipe {
@@ -162,7 +172,6 @@ font-family: 'Questrial', sans-serif;
 }
 
 .title {
-	padding-top: 10px;
 	font-size: 35px;
 }
 
@@ -180,7 +189,6 @@ font-family: 'Questrial', sans-serif;
 	margin-right: 45px;
 	background: #263238;
 }
-
 
 .carousel-inner {
 	background: none;
@@ -262,13 +270,15 @@ font-family: 'Questrial', sans-serif;
 }
 
 #demo-box {
-	margin-top: 60px;
+	margin-top: 40px;
 }
 
 #foot-home {
-	margin-top: 15px;
 	background: #80DEEA;
 	height: 45px;
+}
+#foot-list {
+	background: #80DEEA;
 }
 
 .fa-cogs {
@@ -280,24 +290,69 @@ font-family: 'Questrial', sans-serif;
 }
 
 .item-divider {
-	padding-top: 12px;
-	color: #263238;
-	height: 50px;
-	font-size: 15px;
-}
-
-.rest-name {
-	color: #4dd0e1;
-	font-size: 18px;
+	background: #d84315;
+	color: #fff;
 }
 
 .fa-arrow-left {
 	color: black;
 }
 
-.fb-login {
-	margin-top: px;
-	/* margin-: ;right: 5px; */
-	/* margin-bottom: 10px; */
-	background: #263238;
+.rest-name {
+	color: #263238;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.carousel-control {
+	background: white;
+}
+
+.filter-buttons {
+	text-align: center;
+	color: black;
+}
+
+.toggle input:checked + .track .handle {
+  background-color: #ff7043;
+
+}
+
+.toggle input:checked + .track {
+	background-color: #ff7043;
+
+}
+
+input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #ff7043;
+}
+
+#radius-range {
+	color: #ff7043;
+}
+
+#options-header {
+	background-color: #ff7043;
+
+}
+
+#settings-title {
+	text-align: center;
+}
+
+.thumb {
+	display: none;
+}
+
+div#restaurantthumbnail {
+	border-color: 2px solid #ff7043;
+}
+
+.slider-slide {
+	margin-top: -30px;
+	padding-top: 20px;
+}
+
+.slider-pager {
+	padding-top: 30px;
 }

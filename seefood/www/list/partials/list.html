@@ -1,6 +1,5 @@
 <ion-view>
   <ion-content>
-  	<!-- <h1>List</h1> -->
       <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
       <a ui-sref="swipe"><i class="fa fa-arrow-left"></i></a>
 
@@ -9,44 +8,26 @@
       <div class="col-xs-12 text-center">
         <h1 class="see-food">foodle.</h1>
       </div>
-
-      <div class="col-xs-12 text-center">
-          <!-- <p class="list-head">YOUR PICKS</p> -->
-      </div>
     </div>
-
-
       <div class="ion-list">
-        <ion-list>
-           <!-- add a section header -->
-           <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
-              <!-- iterate thru each item in the list, use $index as item identifier -->
-              <!-- <ion-item ng-repeat="item in itemsList track by $index"> -->
-                <ion-item>
-                <a class="item item-thumbnail-right" href="#">
-                  <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
-                  <h1 class="rest-name">Italian Restaurant</h1>
-                  <p>Something here.</p>
-                </a>
-              {{$index}} - {{item.name}} - {{item.room}}
-              </ion-item>
-              <ion-item>
-              <a class="item item-thumbnail-right" href="#">
-                <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
-                <h1 class="rest-name">Italian Restaurant</h1>
-                <p>Something here.</p>
-              </a>
-            {{$index}} - {{item.name}} - {{item.room}}
-            </ion-item>
-            <ion-item>
-            <a class="item item-thumbnail-right" href="#">
-              <img src="http://images.bigoven.com/image/upload/t_recipe-256/cajun-chicken-pasta-8.jpg">
-              <h1 class="rest-name">Italian Restaurant</h1>
-              <p>Something here.</p>
-            </a>
-          {{$index}} - {{item.name}} - {{item.room}}
-          </ion-item>
-        </ion-list>
+          <ion-list>
+             <!-- add a section header -->
+             <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
+                <!-- iterate thru each item in the list, use $index as item identifier -->
+                <ion-item ng-repeat="item in likes track by $index">
+                  <a class="item item-thumbnail-right" ng-click="seeDetails(item)">
+                    <img ng-src="{{item.image_url}}">
+                    <h1 class="rest-name">{{item.name}}</h1>
+                    <p>{{item.categories[0][0]}}</p>
+                    <img ng-src="{{item.rating_img_url_small}}" alt="">
+                  </a>
+                </ion-item>
+          </ion-list>
+        </div>
+    </ion-content>
+
+    <div id="foot-list" class="bar bar-footer bar-dark">
+      <div class="title" ui-sref='list'>
+        </div>
       </div>
-  </ion-content>
-</ion-view>
+  </ion-view>

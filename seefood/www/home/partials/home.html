@@ -1,77 +1,70 @@
 <ion-view>
   <ion-content>
-		<!-- <h1>homes</h1> -->
 		<div id="tour" class="container">
-		  <!-- <a href="/options.html"><i class="fa fa-bars"></i></a> -->
 		  <div class="col-xs-12 text-center foodle">
         <h1 class="see-food">foodle.
         </h1>
 		  </div>
       <div id="demo-box" class="container">
 
-        <ion-slide-box>
+              <ion-slide-box>
 
-          <ion-slide>
-            <div ng-click="nextSlide()">
-              <div class="box" ng-click="nextSlide()">
-                <!-- <button ng-click="nextSlide()">Next slide!</button> -->
-                <center><h4>Welcome to Foodle.</h4>
-                  It's as easy as 1, 2, 3!
-              </div>
+                <ion-slide>
+                  <div ng-click="nextSlide()">
+                    <div class="box" ng-click="nextSlide()">
+                      <!-- <button ng-click="nextSlide()">Next slide!</button> -->
+                      <center><h4>Welcome to Foodle.</h4>
+                        It's as easy as 1, 2, 3!
+                    </div>
+                      <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
+                    <center>
+                    <img id="pic" src="https://65.media.tumblr.com/2dc3216205a2ed4485e5edb9f420e2a9/tumblr_o6mgi6UTQt1qexhx7o1_1280.png" height="275">
+                    </center>
+                  </div>
+
+                </ion-slide>
+
+                <ion-slide>
+                  <div ng-click="nextSlide()">
+                    <div class="box" ng-click="nextSlide()">
+                      <center><h4>Thumbs up, thumbs down.</h4>
+
+                        Let your eyes lead the way...
+                    </div>
+                      <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
+                    <center>
+                    <img id="pic" src="https://65.media.tumblr.com/2dc3216205a2ed4485e5edb9f420e2a9/tumblr_o6mgi6UTQt1qexhx7o1_1280.png" height="275">
+                    </center>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                  <div class="box" ng-click="toBeginning()">
+                    <center><h4>It's a match!</h4>
+                      It's never been easier to choose your dinner destination.
+                  </div>
+                    <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
+                  </h1>
+                  <center>
+                  <img id="pic" src="https://65.media.tumblr.com/2dc3216205a2ed4485e5edb9f420e2a9/tumblr_o6mgi6UTQt1qexhx7o1_1280.png" height="275">
+                  </center>
+                  </div>
+                </ion-slide>
+              </ion-slide-box>
+
                 <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
-              <center>
-              <img id="pic" src="https://65.media.tumblr.com/2dc3216205a2ed4485e5edb9f420e2a9/tumblr_o6mgi6UTQt1qexhx7o1_1280.png" height="275">
-              </center>
+              </h1>
+      		  </div>
+            <br>
+            <div class="col-xs-12 text-center">
+              <a ng-click="login('facebook')" class="btn btn-primary fb-login"><i class="fa fa-facebook"></i>&#xA0;&#xA0;Log In with Facebook</a>
+              <!-- <p class="small">or</p> -->
+              <!-- <a ui-sref='email'>Or sign in with email</a> -->
             </div>
-
-          </ion-slide>
-
-          <ion-slide>
-            <div ng-click="nextSlide()">
-              <div class="box" ng-click="nextSlide()">
-                <center><h4>Thumbs up,</h4>
-                <h4>thumbs down.</h4>
-                  Let your eyes lead the way...
-              </div>
-                <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
-              <center>
-              <img id="pic" src="https://65.media.tumblr.com/2dc3216205a2ed4485e5edb9f420e2a9/tumblr_o6mgi6UTQt1qexhx7o1_1280.png" height="275">
-              </center>
-              </div>
-          </ion-slide>
-
-          <ion-slide>
-            <div class="box" ng-click="toBeginning()">
-              <center><h4>It's a match!</h4>
-                It's never been easier to choose your dinner destination.
             </div>
-              <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
-            </h1>
-            <center>
-            <img id="pic" src="https://65.media.tumblr.com/2dc3216205a2ed4485e5edb9f420e2a9/tumblr_o6mgi6UTQt1qexhx7o1_1280.png" height="275">
-            </center>
+      		</div>
+        </ion-content>
+        <div id="foot-home" class="bar bar-footer bar-dark">
+          <div class="title" ui-sref='list'>
             </div>
-          </ion-slide>
-        </ion-slide-box>
-
-          <!-- <i class="fa fa-cutlery" aria-hidden="true"></i> -->
-        </h1>
-		  </div>
-
-
-
-      <br>
-      <br>
-      <div class="col-xs-12 text-center">
-        <a ng-click="login('facebook')" class="btn btn-primary fb-login"><i class="fa fa-facebook"></i>&#xA0;&#xA0;Log In with Facebook</a>
-        <!-- <p class="small">or</p> -->
-        <!-- <a ui-sref='email'>Or sign in with email</a> -->
-      </div>
-      </div>
-		</div>
-  </ion-content>
-  <div id="foot-home" class="bar bar-footer bar-dark">
-    <div class="title" ui-sref='list'>
-      </div>
-    </div>
-</ion-view>
+          </div>
+      </ion-view>
