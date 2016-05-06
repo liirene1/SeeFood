@@ -30,7 +30,7 @@
               <img ng-src="{{restaurant.rating_img_url_small}}">
               <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
               <br>
-              <a href="{{restaurant.url}}" id="website">Yelp It</a>
+              <a href="{{restaurant.url}}" id="website" class='btn'><img ng-src='//s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/5cb298e8a186/assets/img/yelp-logo-xsmall@2x.png' alt=""></a>
 
               <br>
 
@@ -40,11 +40,11 @@
 
         </div>
 
-        <div id="restaurant-address" class=text-center>
-          {{restaurant.location.display_address[0]}}
-          <br>
-          {{restaurant.location.display_address[1]}}
-
+        <div id="restaurant-address"  class=text-center>
+          <div ng-repeat='address in restaurant.location.display_address' id='detailAddress'>
+            {{address}}
+            <br>
+          </div>
         </div>
 
         <!-- <center>

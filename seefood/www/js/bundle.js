@@ -177,10 +177,12 @@ var app = angular.module('seeFoodApp');
 
 app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth", "$state", function ($scope, $ionicModal, RestaurantService, Auth, $state) {
 
-  $ionicModal.fromTemplateUrl('/filters/options.html', {
+  $ionicModal.fromTemplateUrl('filters/options.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
+  }).catch(function (err) {
+    return console.error('modal err: ', err);
   });
 
   $scope.openModal = function () {
@@ -196,9 +198,12 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
   };
 
   $scope.createFilter = function (filter) {
-    RestaurantService.clearRestaurant();
-    RestaurantService.buildFilter(filter);
-    $scope.modal.hide();
+    console.log('gimme dat filter: ', filter);
+    if (filter) {
+      RestaurantService.clearRestaurant();
+      RestaurantService.buildFilter(filter);
+      $scope.modal.hide();
+    }
   };
 
   $scope.logout = function () {
