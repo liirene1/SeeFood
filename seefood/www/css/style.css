@@ -270,7 +270,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 #demo-box {
-	margin-top: 40px;
+	margin-top: 10px;
 }
 
 #foot-home {
@@ -355,4 +355,9 @@ div#restaurantthumbnail {
 
 .slider-pager {
 	padding-top: 30px;
+}
+
+#yelp-logo {
+	height: 20px;
+	wigth: 50px;
 }
