@@ -1,13 +1,6 @@
 'use strict';
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// angular.module('seeFoodApp', ['ionic','firebase', 'ui.router', 'ngCordova'])
-
-angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'hmTouchEvents', 'angular-cache',*/'firebase', 'uiGmapgoogle-maps']).constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com').service('rootRef', ['FirebaseUrl', Firebase]).config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
-  // .config(function($stateProvider, $urlRouterProvider, CacheFactoryProvider) {
-  // angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'firebase', 'uiGmapgoogle-maps']).constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com').service('rootRef', ['FirebaseUrl', Firebase]).config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
 
   stateProtection.$inject = ["Auth", "$state"];
   console.log("config being hit");
