@@ -45,21 +45,15 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
     Auth.$onAuth(function(authData) {
       if (authData === null) {
         $state.go('home');
-      } 
+      }
     })
   }
 })
 
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
-<<<<<<< HEAD:seefood/www/module.js
-.run(function($ionicPlatform, $cordovaGeolocation) {
-
-// .run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
-=======
 .run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
   console.log('runs');
->>>>>>> 59d26b6f6f72db4ebdc618ef349bc9c7f2e71add:seefood/src/module.js
   $ionicPlatform.ready(function() {
   console.log('runs inside');
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -70,15 +64,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
       StatusBar.styleDefault();
     }
 
-<<<<<<< HEAD:seefood/www/module.js
-  //   var posOptions = {
-  //     enableHighAccuracy: true,
-  //     timeout: 20000,
-  //     maximumAge: 0
-  //   };
-  //
-  //   RestaurantService.findMe();
-=======
+
     // var posOptions = {
     //   enableHighAccuracy: true,
     //   timeout: 20000,
@@ -87,7 +73,5 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', /*'
     // console.log('posOptions', posOptions);
 
     RestaurantService.findMe();
->>>>>>> 59d26b6f6f72db4ebdc618ef349bc9c7f2e71add:seefood/src/module.js
   });
 });
-

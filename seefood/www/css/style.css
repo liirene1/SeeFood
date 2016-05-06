@@ -85,11 +85,11 @@ font-family: 'Questrial', sans-serif;
 	margin-left: 32px;
 }
 
-<<<<<<< HEAD
+/*this was from Josh's merge*/
 .swiper {
 	margin-bottom: 20px;
 }
-=======
+
 #website {
 	width: 100px;
 }
@@ -182,4 +182,3 @@ font-family: 'Questrial', sans-serif;
 .carousel-control {
 	background: white;
 }
->>>>>>> 59d26b6f6f72db4ebdc618ef349bc9c7f2e71add
