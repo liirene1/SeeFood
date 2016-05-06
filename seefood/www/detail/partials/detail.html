@@ -25,11 +25,12 @@
           <!-- <div class="col s6"><img id="restaurantthumbnail" ng-src="http://images.wisegeek.com/crisscrossed-steak.jpg"></div> -->
           <div class="col s6 offset-s1" id="restaurantdetails">
             <!-- <span>Steak</span> -->
-            <div class="col-xs-6 small"><span>{{restaurant.categories[0][0]}},  {{restaurant.categories[1][0]}}</span>
-              <br>
+            <div class="col-xs-6 small">
+              <div id='detailCateg'>
+                <p ng-repeat='category in restaurant.categories'>{{category[0]}}</p>
+              </div>
               <img ng-src="{{restaurant.rating_img_url_small}}">
               <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
-              <br>
               <a href="{{restaurant.url}}" id="website" class='btn'><img ng-src='//s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/5cb298e8a186/assets/img/yelp-logo-xsmall@2x.png' alt=""></a>
 
               <br>

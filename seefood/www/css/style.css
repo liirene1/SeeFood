@@ -84,7 +84,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 #restaurantdetails {
-	margin-left: 32px;
+	margin-left: 5px;
 }
 
 .swiper {
@@ -228,12 +228,6 @@ font-family: 'Questrial', sans-serif;
 	font-size: 135%;
 }
 
-.item {
-	padding: 1px;
-	display: inline-block;
-	width: 100%;
-}
-
 .bar-footer {
 	height: 65px;
 }
@@ -308,6 +302,11 @@ font-family: 'Questrial', sans-serif;
   height: 5vh;
 }
 
+div#restaurant-address {
+  margin-top: -5%;
+  margin-bottom: 5%;
+}
+
 a#website {
   padding: 0%;
   padding-top: 2%;
@@ -321,6 +320,10 @@ a#website {
 .toggle input:checked + .track {
 	background-color: #ff7043;
 
+}
+
+#detailCateg {
+	margin-bottom: 3%;
 }
 
 input[type=text]:focus:not([readonly]){
