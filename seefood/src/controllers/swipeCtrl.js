@@ -13,6 +13,7 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
 		$ionicLoading.hide();
+		console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 
@@ -28,16 +29,16 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
 	// 	$scope.accepted();
 	// 	$scope.$apply();
 	// });
-  //
-	// $scope.rejected = function() {
-	// 	RestaurantService.swipeRestaurant();
-	// 	$scope.restaurant = RestaurantService.grabRestaurant();
-	// }
-  //
-	// $scope.accepted = function() {
-	// 	RestaurantService.addLike();
-	// 	RestaurantService.swipeRestaurant();
-	// 	$scope.restaurant = RestaurantService.grabRestaurant();
-	// }
+  
+	$scope.rejected = function() {
+		RestaurantService.swipeRestaurant();
+		$scope.restaurant = RestaurantService.grabRestaurant();
+	}
+  
+	$scope.accepted = function() {
+		RestaurantService.addLike();
+		RestaurantService.swipeRestaurant();
+		$scope.restaurant = RestaurantService.grabRestaurant();
+	}
 
 })

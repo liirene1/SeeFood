@@ -9,20 +9,41 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	this.filterObj = {};
 
 	this.findMe = function() {
+		console.log('find me works');
 	  var posOptions = {
 	    enableHighAccuracy: true,
 	    timeout: 20000,
 	    maximumAge: 0
 	  };
 
-	  return $cordovaGeolocation.getCurrentPosition(posOptions)
-		.then(function(position) {
+	  var geolocateTimer = window.setTimeout(() => {
+	  	console.log('timer coords');
+	  	this.filterObj = {
+		      lat: 37.5489946970847,
+		      lng: -121.9429642028612
+		    }
+		    this.buildFilter(this.filterObj);
+	  }, 10000);
+
+	  $cordovaGeolocation.getCurrentPosition(posOptions)
+		.then(position => {
+			window.clearTimeout(geolocateTimer);
+			console.log('geolocator coords');
 	    this.filterObj = {
 	      lat: position.coords.latitude,
 	      lng: position.coords.longitude
 	    }
+	    console.log('filter: ', this.filterObj);
 	    this.buildFilter(this.filterObj);
-	  });
+	  })
+	  // .catch(err => {
+	  // 	this.filterObj = {
+	  //     lat: 37.5489946970847,
+	  //     lng: -121.9429642028612
+	  //   }
+	  //   this.buildFilter(this.filterObj);
+	  // })
+
 	}
 
 	this.setRestaurants = function(data) {
@@ -59,12 +80,13 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.buildFilter = function(obj) {
+		console.log('filter works, obj: ', obj);
 		var categories = [];
 		this.filterObj.count = 0;
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
 		this.filterObj.category = '';
 
-		obj.glutenFree ? categories.push('gluten-free') : '';
+		obj.glutenFree ? categories.push('gluten_free') : '';
 		obj.vegetarian ? categories.push('vegetarian') : '';
 		obj.vegan ? categories.push('vegan') : '';
 		obj.kosher ? categories.push('kosher') : '';
@@ -72,7 +94,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 		if(obj.location) {
 			this.getCoords(obj.location)
-				.then(function(res) {
+				.then(res => {
 					this.filterObj.lat = res.data.results[0].geometry.location.lat;
 					this.filterObj.lng = res.data.results[0].geometry.location.lng;
 					this.getRestaurants();
@@ -87,10 +109,10 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 		console.log('filterObj: ', this.filterObj);
     //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
-		.then(function(res) {
+		.then(res => {
 			console.log(res.data.businesses);
       //$ionicLoading.hide();
-			res.data.businesses.forEach(function(ele, ind, arr){
+			res.data.businesses.forEach((ele, ind, arr) => {
 				if(!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
 				} else {
