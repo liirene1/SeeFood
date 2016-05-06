@@ -97,10 +97,7 @@ font-family: 'Questrial', sans-serif;
 	width: 100px;
 }
 
-.fb-login {
-	margin-top: 60px;
-	background: #263238;
-}
+
 
 .swipe-btn {
 	margin: 15px;
@@ -151,7 +148,7 @@ font-family: 'Questrial', sans-serif;
 }
 
 .bar-footer {
-	height: 65px;
+	height: 25px;
 }
 
 .swipe {
@@ -269,7 +266,9 @@ font-family: 'Questrial', sans-serif;
 }
 
 #foot-home {
+	margin-top: 15px;
 	background: #80DEEA;
+	height: 45px;
 }
 
 .fa-cogs {
@@ -281,14 +280,24 @@ font-family: 'Questrial', sans-serif;
 }
 
 .item-divider {
-	background: #263238;
-	color: #fff;
+	padding-top: 12px;
+	color: #263238;
+	height: 50px;
+	font-size: 15px;
 }
 
 .rest-name {
 	color: #4dd0e1;
+	font-size: 18px;
 }
 
 .fa-arrow-left {
 	color: black;
+}
+
+.fb-login {
+	margin-top: px;
+	/* margin-: ;right: 5px; */
+	/* margin-bottom: 10px; */
+	background: #263238;
 }
