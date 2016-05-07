@@ -53,7 +53,7 @@ font-family: 'Questrial', sans-serif;
 
 #restaurant-address {
 	font-style: bold;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 #resultbutton {
@@ -71,7 +71,7 @@ font-family: 'Questrial', sans-serif;
 	width: 50vw;
 }
 
-#mapdiv {
+#map {
 	height: 40vh;
 	border: 1px solid black;
 	margin-bottom: 5px;
@@ -86,10 +86,9 @@ font-family: 'Questrial', sans-serif;
 }
 
 #restaurantdetails {
-	margin-left: 32px;
+	margin-left: 5px;
 }
 
-/*this was from Josh's merge*/
 .swiper {
 	margin-bottom: 20px;
 }
@@ -227,6 +226,10 @@ font-family: 'Questrial', sans-serif;
 	margin-top: 15px;
 }
 
+#detailAddress {
+	font-size: 135%;
+}
+
 .list-head {
 	margin-top: 7px;
 	color: #4dd0e1;
@@ -293,6 +296,27 @@ font-family: 'Questrial', sans-serif;
 	color: black;
 }
 
+/*details view*/
+#website>img {
+  height: 5vh;
+}
+
+div#restaurant-address {
+  margin-top: -5%;
+  margin-bottom: 5%;
+}
+
+a#website {
+  padding: 0%;
+  padding-top: 2%;
+  background-color: #d84315;
+}
+
+#detailCateg {
+	margin-bottom: 3%;
+}
+
+/*options view*/
 .toggle input:checked + .track .handle {
   background-color: #ff7043;
 

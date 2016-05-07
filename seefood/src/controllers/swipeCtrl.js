@@ -18,23 +18,12 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
 	});
 
 	var myElement = document.getElementById('pic');
-	// var mc = new Hammer(myElement);
-  //
-	// mc.on("swipeleft", function(ev) {
-	// 	$scope.rejected();
-	// 	$scope.$apply();
-	// });
-  //
-	// mc.on("swiperight", function(ev) {
-	// 	$scope.accepted();
-	// 	$scope.$apply();
-	// });
-  
+
 	$scope.rejected = function() {
 		RestaurantService.swipeRestaurant();
 		$scope.restaurant = RestaurantService.grabRestaurant();
 	}
-  
+
 	$scope.accepted = function() {
 		RestaurantService.addLike();
 		RestaurantService.swipeRestaurant();

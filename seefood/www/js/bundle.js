@@ -72,13 +72,29 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
     return Math.round(m * 0.000621371192);
   };
 
-  $scope.map = {
-    center: {
-      latitude: $scope.restaurant.location.coordinate.latitude,
-      longitude: $scope.restaurant.location.coordinate.longitude
-    },
-    zoom: 12
-  };
+  // $scope.map = {
+  //   center: {
+  //     latitude: $scope.restaurant.location.coordinate.latitude,
+  //     longitude: $scope.restaurant.location.coordinate.longitude
+  //   },
+  //   zoom: 12
+  // };
+
+  initMap();
+  function initMap() {
+    var myLatLng = { lat: $scope.restaurant.location.coordinate.latitude, lng: $scope.restaurant.location.coordinate.longitude };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Hello World!'
+    });
+  }
 
   // $scope.map.options = {
   //   draggable: true,
@@ -113,7 +129,7 @@ app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function 
 	console.log('state: ', $state.current.name);
 	$scope.$parent.state = $state.current.name;
 
-	$scope.login = function (authMethod) {
+	$scope.login = function (authMethod, $event) {
 		console.log('login click working');
 		// Auth.$authWithOAuthRedirect(authMethod)
 		// var ref = cordova.InAppBrowser.open('http://apache.org', '_self', 'location=yes')
@@ -134,9 +150,10 @@ app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function 
 		} else {
 			console.log('Logged in as', authData.uid);
 			$state.go("swipe");
-			console.log("state.go executed");
+			console.log("homeCtrl onAuth state.go executed");
 		}
 		$scope.authData = authData;
+		console.log('homeCtrl onAuth scope authData: ', $scope.authData);
 	});
 }]);
 'use strict';
@@ -161,10 +178,12 @@ var app = angular.module('seeFoodApp');
 
 app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth", "$state", function ($scope, $ionicModal, RestaurantService, Auth, $state) {
 
-  $ionicModal.fromTemplateUrl('/filters/options.html', {
+  $ionicModal.fromTemplateUrl('filters/options.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
+  }).catch(function (err) {
+    return console.error('modal err: ', err);
   });
 
   $scope.openModal = function () {
@@ -180,24 +199,36 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
   };
 
   $scope.createFilter = function (filter) {
-    RestaurantService.clearRestaurant();
-    RestaurantService.buildFilter(filter);
-    $scope.modal.hide();
+    console.log('gimme dat filter: ', filter);
+    if (filter) {
+      RestaurantService.clearRestaurant();
+      RestaurantService.buildFilter(filter);
+      $scope.modal.hide();
+    }
   };
 
   $scope.logout = function () {
-    Auth.$onAuth(function (authData) {
-      authData = null;
-      $scope.modal.hide();
-      $state.go('home');
-    });
+    // Auth.$onAuth(function(authData) {
+    console.log("logout authData: ", $scope.authData);
+    $state.go('home');
+    $scope.authData = null;
+    window.localStorage.clear();
+    $scope.modal.hide();
+    console.log('window store: ', window.localStorage);
+    console.log('authDate after unauth: ', $scope.authData);
+    // })
   };
 
   Auth.$onAuth(function (authData) {
+    console.log('onAuth authData: ', authData);
     if (authData === null) {
-      console.log('mainCtrl Not logged in yet');
+      console.log('null mainCtrl Not logged in yet');
+      $state.go('home');
+    } else if (authData === {}) {
+      console.log('{} mainCtrl Not logged in yet');
+      $state.go('home');
     } else {
-      console.log('mainCtrl Logged in as', authData.uid);
+      console.log('else mainCtrl Logged in as', authData.uid);
       $state.go('swipe');
     }
     $scope.authData = authData;
@@ -223,17 +254,6 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 	});
 
 	var myElement = document.getElementById('pic');
-	// var mc = new Hammer(myElement);
-	//
-	// mc.on("swipeleft", function(ev) {
-	// 	$scope.rejected();
-	// 	$scope.$apply();
-	// });
-	//
-	// mc.on("swiperight", function(ev) {
-	// 	$scope.accepted();
-	// 	$scope.$apply();
-	// });
 
 	$scope.rejected = function () {
 		RestaurantService.swipeRestaurant();

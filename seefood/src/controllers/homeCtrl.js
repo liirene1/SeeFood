@@ -6,7 +6,7 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
   console.log('state: ', $state.current.name);
   $scope.$parent.state = $state.current.name;
 
-	$scope.login = function(authMethod) {
+	$scope.login = function(authMethod, $event) {
 		console.log('login click working');
     // Auth.$authWithOAuthRedirect(authMethod)
     // var ref = cordova.InAppBrowser.open('http://apache.org', '_self', 'location=yes')
@@ -28,8 +28,9 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
 		} else {
 			console.log('Logged in as', authData.uid);
 			$state.go("swipe");
-      console.log("state.go executed");
+      console.log("homeCtrl onAuth state.go executed");
 		}
 		$scope.authData = authData;
+		console.log('homeCtrl onAuth scope authData: ', $scope.authData);
 	});
 })
