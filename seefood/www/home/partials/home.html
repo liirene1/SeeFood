@@ -62,15 +62,15 @@
             <br>
             <br>
             <div class="col-xs-12 text-center">
-              <a ng-click="login('facebook')" class="btn btn-primary fb-login"><i class="fa fa-facebook"></i>&#xA0;&#xA0;Log In with Facebook</a>
+              <a ng-click="login('facebook', $event); $event.stopPropagation();" class="btn btn-primary fb-login"><i class="fa fa-facebook"></i>&#xA0;&#xA0;Log In with Facebook</a>
               <!-- <p class="small">or</p> -->
               <!-- <a ui-sref='email'>Or sign in with email</a> -->
             </div>
             </div>
       		</div>
         </ion-content>
-        <div id="foot-home" class="bar bar-footer bar-dark">
+<!--         <div id="foot-home" class="bar bar-footer bar-dark">
           <div class="title" ui-sref='list'>
             </div>
-          </div>
+          </div> -->
       </ion-view>

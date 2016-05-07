@@ -9,11 +9,11 @@ app.controller('swipeCtrl', function($scope, HomeService, RestaurantService, $st
   console.log('state: ', $state.current.name);
 
 	$scope.$watch(function() {
-    console.log('restaurant', RestaurantService.restaurants);
+    // console.log('restaurant', RestaurantService.restaurants);
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
 		$ionicLoading.hide();
-		console.log('newVal: ', newVal);
+		// console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 

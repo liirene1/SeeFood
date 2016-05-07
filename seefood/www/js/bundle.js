@@ -7,12 +7,13 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
   $stateProvider.state('home', {
     url: '/',
     templateUrl: 'home/partials/home.html',
-    controller: 'homeCtrl'
+    controller: 'homeCtrl',
+    resolve: {}
   }).state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl',
-    onEnter: stateProtection
+    controller: 'swipeCtrl'
+    // onEnter: stateProtection
   }).state('list', {
     url: '/list',
     templateUrl: './list/partials/list.html',
@@ -29,6 +30,8 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
 
   function stateProtection(Auth, $state) {
     Auth.$onAuth(function (authData) {
+      console.log('state prot name: ', $state.current.name);
+      console.log('state protection authData: ', authData);
       if (authData === null) {
         $state.go('home');
       }
@@ -129,7 +132,9 @@ app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function 
 	console.log('state: ', $state.current.name);
 	$scope.$parent.state = $state.current.name;
 
-	$scope.login = function (authMethod) {
+	$scope.login = function (authMethod, $event) {
+		$event.stopPropagation();
+		$event.preventDefault();
 		console.log('login click working');
 		// Auth.$authWithOAuthRedirect(authMethod)
 		// var ref = cordova.InAppBrowser.open('http://apache.org', '_self', 'location=yes')
@@ -150,9 +155,10 @@ app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function 
 		} else {
 			console.log('Logged in as', authData.uid);
 			$state.go("swipe");
-			console.log("state.go executed");
+			console.log("homeCtrl onAuth state.go executed");
 		}
 		$scope.authData = authData;
+		console.log('homeCtrl onAuth scope authData: ', $scope.authData);
 	});
 }]);
 'use strict';
@@ -207,18 +213,27 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
   };
 
   $scope.logout = function () {
-    Auth.$onAuth(function (authData) {
-      authData = null;
-      $scope.modal.hide();
-      $state.go('home');
-    });
+    // Auth.$onAuth(function(authData) {
+    console.log("logout authData: ", $scope.authData);
+    $state.go('home');
+    $scope.authData = null;
+    window.localStorage.clear();
+    $scope.modal.hide();
+    console.log('window store: ', window.localStorage);
+    console.log('authDate after unauth: ', $scope.authData);
+    // })
   };
 
   Auth.$onAuth(function (authData) {
+    console.log('onAuth authData: ', authData);
     if (authData === null) {
-      console.log('mainCtrl Not logged in yet');
+      console.log('null mainCtrl Not logged in yet');
+      $state.go('home');
+    } else if (authData === {}) {
+      console.log('{} mainCtrl Not logged in yet');
+      $state.go('home');
     } else {
-      console.log('mainCtrl Logged in as', authData.uid);
+      console.log('else mainCtrl Logged in as', authData.uid);
       $state.go('swipe');
     }
     $scope.authData = authData;
@@ -235,11 +250,11 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 	console.log('state: ', $state.current.name);
 
 	$scope.$watch(function () {
-		console.log('restaurant', RestaurantService.restaurants);
+		// console.log('restaurant', RestaurantService.restaurants);
 		return RestaurantService.restaurants;
 	}, function (newVal, oldVal) {
 		$ionicLoading.hide();
-		console.log('newVal: ', newVal);
+		// console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 
@@ -334,7 +349,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	};
 
 	this.setRestaurants = function (data) {
-		console.log('data', data);
+		// console.log('data', data);
 		data.businesses = _.shuffle(data.businesses);
 		this.restaurants = this.restaurants.concat(data.businesses);
 	};
@@ -369,7 +384,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.buildFilter = function (obj) {
 		var _this2 = this;
 
-		console.log('filter works, obj: ', obj);
+		// console.log('filter works, obj: ', obj);
 		var categories = [];
 		this.filterObj.count = 0;
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
@@ -397,7 +412,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.getRestaurants = function () {
 		var _this3 = this;
 
-		console.log('filterObj: ', this.filterObj);
+		// console.log('filterObj: ', this.filterObj);
 		//$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(API + '/restaurants', this.filterObj).then(function (res) {
 			console.log(res.data.businesses);

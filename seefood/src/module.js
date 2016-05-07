@@ -11,13 +11,16 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
   .state('home', {
     url: '/',
     templateUrl: 'home/partials/home.html',
-    controller: 'homeCtrl'
+    controller: 'homeCtrl',
+    resolve: {
+
+    }
   })
   .state('swipe', {
     url: '/photos',
     templateUrl: './swipe/partials/swipe.html',
-    controller: 'swipeCtrl',
-    onEnter: stateProtection
+    controller: 'swipeCtrl'
+    // onEnter: stateProtection
   })
   .state('list', {
     url: '/list',
@@ -36,6 +39,8 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
 
   function stateProtection(Auth, $state) {
     Auth.$onAuth(function(authData) {
+      console.log('state prot name: ', $state.current.name);
+      console.log('state protection authData: ', authData);
       if (authData === null) {
         $state.go('home');
       }

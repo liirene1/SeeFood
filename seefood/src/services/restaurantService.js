@@ -47,7 +47,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.setRestaurants = function(data) {
-		console.log('data', data);
+		// console.log('data', data);
 		data.businesses = _.shuffle(data.businesses);
 		this.restaurants = this.restaurants.concat(data.businesses);
 	};
@@ -80,7 +80,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.buildFilter = function(obj) {
-		console.log('filter works, obj: ', obj);
+		// console.log('filter works, obj: ', obj);
 		var categories = [];
 		this.filterObj.count = 0;
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
@@ -107,7 +107,7 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	}
 
 	this.getRestaurants = function() {
-		console.log('filterObj: ', this.filterObj);
+		// console.log('filterObj: ', this.filterObj);
     //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {

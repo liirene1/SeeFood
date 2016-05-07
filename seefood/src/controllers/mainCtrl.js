@@ -33,18 +33,27 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth
   }
 
   $scope.logout = function() {
-    Auth.$onAuth(function(authData) {
-      authData = null;
-      $scope.modal.hide();
+    // Auth.$onAuth(function(authData) {
+      console.log("logout authData: ", $scope.authData);
       $state.go('home');
-    })
+      $scope.authData = null;
+      window.localStorage.clear();
+      $scope.modal.hide();
+      console.log('window store: ', window.localStorage);
+      console.log('authDate after unauth: ', $scope.authData);
+    // })
   }
 
   Auth.$onAuth(function(authData) {
+    console.log('onAuth authData: ', authData);
     if (authData === null) {
-      console.log('mainCtrl Not logged in yet');
+      console.log('null mainCtrl Not logged in yet');
+      $state.go('home');
+    } else if (authData === {}) {
+      console.log('{} mainCtrl Not logged in yet');
+      $state.go('home');
     } else {
-      console.log('mainCtrl Logged in as', authData.uid);
+      console.log('else mainCtrl Logged in as', authData.uid);
       $state.go('swipe');
     }
     $scope.authData = authData;
