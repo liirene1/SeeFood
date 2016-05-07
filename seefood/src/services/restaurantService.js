@@ -95,7 +95,6 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation, $ioni
 	this.getRestaurants = function() {
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
-			console.log('res.data: ', res.data);
 			res.data.businesses.forEach((ele, ind, arr) => {
 				if(!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);
