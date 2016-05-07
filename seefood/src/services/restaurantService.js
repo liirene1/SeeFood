@@ -2,7 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
+app.service('RestaurantService', function($http, API, $cordovaGeolocation, $ionicLoading) {
 	this.restaurants = [];
 	this.likes = [];
 	this.filterObj = {};

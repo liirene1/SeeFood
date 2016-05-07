@@ -13,6 +13,7 @@ app.controller('homeCtrl', function($scope, Auth, $state) {
 
 	Auth.$onAuth(function(authData) {
 		if (authData === null) {
+			$state.go("home");
 		} else {
 			$state.go("swipe");
 		}

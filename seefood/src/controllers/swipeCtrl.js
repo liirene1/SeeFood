@@ -2,11 +2,10 @@
 
 var app = angular.module('seeFoodApp');
 
-app.controller('swipeCtrl', function($scope, RestaurantService, $state, $ionicLoading) {
+app.controller('swipeCtrl', function($scope, RestaurantService, $state) {
 	$scope.$watch(function() {
 		return RestaurantService.restaurants;
 	}, function(newVal, oldVal) {
-		$ionicLoading.hide();
 		$scope.restaurant = newVal[0];
 	});
 

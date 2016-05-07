@@ -1,3 +1,7 @@
+body {
+	margin-top: 1%;
+}
+
 * {
 font-family: 'Questrial', sans-serif;
 }
@@ -53,7 +57,6 @@ font-family: 'Questrial', sans-serif;
 
 #restaurant-address {
 	font-style: bold;
-	/*border: 1px solid black;*/
 }
 
 #resultbutton {
@@ -278,6 +281,10 @@ font-family: 'Questrial', sans-serif;
 
 .fa-arrow-left {
 	color: black;
+}
+
+#spinner {
+	margin-top: 80px;
 }
 
 .rest-name {

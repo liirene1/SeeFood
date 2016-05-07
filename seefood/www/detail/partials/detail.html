@@ -1,39 +1,37 @@
 <ion-view>
   <ion-content>
-    <div id="detail" class="container">
-      <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
-      <a ui-sref="list"><i class="fa fa-arrow-left"></i></a>
-      <div id="results" class="container">
-        <div class="col-xs-12 text-center">
-          <h1 class="see-food">foodle.</h1>
-        </div>
-        <div class="col-xs-12 text-center">
-        </div>
-        <div class="col-xs-12 text-center">
-          <h2 id="restaurant-name" class="detail-title">{{restaurant.name}}</h2>
-        </div>
-        <div class="row">
-          <div class="col-xs-6"><img id="restaurantthumbnail" ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
-          <div class="col s6 offset-s1" id="restaurantdetails">
-            <div class="col-xs-6 small">
-              <div id='detailCateg'>
-                <p ng-repeat='category in restaurant.categories'>{{category[0]}}</p>
-              </div>
-              <img ng-src="{{restaurant.rating_img_url_small}}">
-              <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
-              <a href="{{restaurant.url}}" id="website" class='btn'><img ng-src='//s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/5cb298e8a186/assets/img/yelp-logo-xsmall@2x.png' alt=""></a>
-              <br>
-            </div>
-          </div>
-        </div>
-        <div id="restaurant-address"  class=text-center>
-          <div ng-repeat='address in restaurant.location.display_address' id='detailAddress'>
-          {{address}}
-          <br>
-          </div>
-        </div>
-        <div id="map"></div>
+    <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
+    <a ui-sref="list"><i class="fa fa-arrow-left fa-2x"></i></a>
+    <div id="results" class="container">
+      <div class="col-xs-12 text-center">
+        <h1 class="see-food">foodle.</h1>
       </div>
+      <div class="col-xs-12 text-center">
+      </div>
+      <div class="col-xs-12 text-center">
+        <h2 id="restaurant-name" class="detail-title">{{restaurant.name}}</h2>
+      </div>
+      <div class="row">
+        <div class="col-xs-6"><img id="restaurantthumbnail" ng-src="{{restaurant.image_url}}" alt="" class="restaurant-logo"></div>
+        <div class="col s6 offset-s1" id="restaurantdetails">
+          <div class="col-xs-6 small">
+            <div id='detailCateg'>
+              <p ng-repeat='category in restaurant.categories'>{{category[0]}}</p>
+            </div>
+            <img ng-src="{{restaurant.rating_img_url_small}}">
+            <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
+            <a href="{{restaurant.url}}" id="website" class='btn'><img ng-src='//s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/5cb298e8a186/assets/img/yelp-logo-xsmall@2x.png' alt=""></a>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div id="restaurant-address"  class=text-center>
+        <div ng-repeat='address in restaurant.location.display_address' id='detailAddress'>
+        {{address}}
+        <br>
+        </div>
+      </div>
+      <div id="map"></div>
     </div>
   </ion-content>
 </ion-view>

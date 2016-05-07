@@ -7,7 +7,8 @@
         </h1>
     	</div>
 	    <div class="col-xs-12" id="picdiv" on-swipe-left="rejected()" on-swipe-right="accepted()">
-	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
+	      <img ng-if='restaurant' id="pic" ng-src="{{restaurant.image_url}}">
+	      <ion-spinner icon='bubbles' id='spinner' ng-hide='restaurant'></ion-spinner>
 	      <h4 ng-repeat='type in restaurant.categories track by $index'>{{type[0]}}</h4>
 	    </div>
 	    <div class="col-xs-12 swipe">
