@@ -82,7 +82,9 @@ font-family: 'Questrial', sans-serif;
 }
 
 #backarrow {
-	float:left;
+	float: left;
+	
+
 }
 
 #restaurantdetails {
@@ -300,7 +302,7 @@ font-family: 'Questrial', sans-serif;
 
 .rest-name {
 	color: #263238;
-	font-size: 12px;
+	font-size: 17px;
 	font-weight: bold;
 }
 
@@ -360,4 +362,8 @@ div#restaurantthumbnail {
 #yelp-logo {
 	height: 20px;
 	wigth: 50px;
+}
+
+#swipe-foodle {
+	margin-left: 65px;
 }
