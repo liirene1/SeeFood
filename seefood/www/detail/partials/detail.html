@@ -4,7 +4,7 @@
     <a ui-sref="list"><i class="fa fa-arrow-left fa-2x"></i></a>
     <div id="results" class="container">
       <div class="col-xs-12 text-center">
-        <h1 class="see-food">foodle.</h1>
+        <h1 class="see-food foodle">foodle.</h1>
       </div>
       <div class="col-xs-12 text-center">
       </div>
@@ -20,7 +20,7 @@
             </div>
             <img ng-src="{{restaurant.rating_img_url_small}}">
             <p>{{distanceInMiles(restaurant.distance)}} miles away</p>
-            <a href="{{restaurant.url}}" id="website" class='btn'><img ng-src='//s3-media2.fl.yelpcdn.com/assets/srv0/developer_pages/5cb298e8a186/assets/img/yelp-logo-xsmall@2x.png' alt=""></a>
+            <a href="{{restaurant.url}}" target='_blank' id="website" class='btn'><img src='img/yelp-logo-small@2x.png'></a>
             <br>
           </div>
         </div>

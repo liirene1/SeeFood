@@ -150,10 +150,6 @@ font-family: 'Questrial', sans-serif;
 	height: 65px;
 }
 
-.swipe {
-	margin-top: 15px;
-}
-
 .list-head {
 	margin-top: 7px;
 	color: #4dd0e1;
@@ -329,7 +325,6 @@ a#website {
 /*options view*/
 .toggle input:checked + .track .handle {
   background-color: #ff7043;
-
 }
 
 .toggle input:checked + .track {
@@ -339,6 +334,11 @@ a#website {
 
 input[type=text]:focus:not([readonly]){
   border-bottom: 1px solid #ff7043;
+}
+
+ion-spinner#spinner {
+  position: absolute;
+  margin-top: 12em;
 }
 
 #radius-range {

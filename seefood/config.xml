@@ -11,6 +11,7 @@
   <access origin="*"/>
   <allow-intent href="*.firebaseio.com"/>
   <allow-intent href="auth.firebase.com"/>
+  <allow-intent href="http://www.yelp.com/*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
