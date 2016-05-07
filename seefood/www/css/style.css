@@ -414,6 +414,7 @@ img.rest-rate {
 
 #radius-range {
 	color: #80deea;
+  margin-left: 47%;
 }
 
 .toggle input:checked + .track .handle {
@@ -433,12 +434,19 @@ input[type=text]:focus:not([readonly]){
 	color: black;
 }
 
+.filterButton {
+	background-color: #80deea;
+	color: #263238;
+	font-weight: bold;
+	margin-bottom: 3%;
+}
+
 .thumb {
 	display: none;
 }
 
 .input-label {
-	width: 100%;
+	width: 50%;
 }
 
 .item {

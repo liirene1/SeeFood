@@ -1,31 +1,27 @@
 <ion-view>
   <ion-content>
-      <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
-      <a ui-sref="swipe"><i class="fa fa-arrow-left fa-2x"></i></a>
-
-      <div id="results" class="container">
+    <a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
+    <a ui-sref="swipe"><i class="fa fa-arrow-left fa-2x"></i></a>
+    <div id="results" class="container">
       <div class="col-xs-12 text-center">
         <h1 class="see-food">foodle.</h1>
       </div>
     </div>
-      <div class="ion-list">
-        <ion-list>
-          <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
-          <ion-item ng-repeat="item in likes track by $index">
-            <a class="item item-thumbnail-right" ng-click="seeDetails(item)">
-              <img ng-src="{{item.image_url}}">
-              <h1 class="rest-name">{{item.name}}</h1>
-              <h3 class="rest-cat">{{item.categories[0][0]}}</h3>
-              <img class="rest-rate" ng-src="{{item.rating_img_url_small}}" alt="">
-            </a>
-
-          </ion-item>
-        </ion-list>
-      </div>
-    </ion-content>
-
-    <div id="foot-list" class="bar bar-footer bar-dark">
-      <div class="title" ui-sref='list'>
-        </div>
-      </div>
-  </ion-view>
+    <div class="ion-list">
+      <ion-list>
+        <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
+        <ion-item ng-repeat="item in likes track by $index">
+          <a class="item item-thumbnail-right" ng-click="seeDetails(item)">
+            <img ng-src="{{item.image_url}}">
+            <h1 class="rest-name">{{item.name}}</h1>
+            <h3 class="rest-cat">{{item.categories[0][0]}}</h3>
+            <img class="rest-rate" ng-src="{{item.rating_img_url_small}}" alt="">
+          </a>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
+  <div id="foot-list" class="bar bar-footer bar-dark">
+    <div class="title" ui-sref='list'></div>
+  </div>
+</ion-view>

@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'firebase', 'uiGmapgoogle-maps']).constant('FirebaseUrl', 'http://seefoodapp.firebaseapp.com').service('rootRef', ['FirebaseUrl', Firebase]).config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
-
   stateProtection.$inject = ["Auth", "$state"];
-  console.log("config being hit");
   $stateProvider.state('home', {
     url: '/',
     templateUrl: 'home/partials/home.html',
@@ -35,9 +33,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
     });
   }
 }]).constant('API', 'http://seefoodapp.herokuapp.com').run(["$ionicPlatform", "$cordovaGeolocation", "RestaurantService", function ($ionicPlatform, $cordovaGeolocation, RestaurantService) {
-  console.log('runs');
   $ionicPlatform.ready(function () {
-    console.log('runs inside');
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -54,12 +50,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
 var app = angular.module('seeFoodApp');
 
 app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$state", function ($scope, $stateParams, RestaurantService, $state) {
-  console.log("Im in detail state");
-  console.log('state: ', $state.current.name);
-  $scope.$parent.state = $state.current.name;
-
   $scope.restaurant = RestaurantService.findLike($stateParams);
-  console.log('detail resto: ', $scope.restaurant);
 
   $scope.distanceInMiles = function (m) {
     return Math.round(m * 0.000621371192);
@@ -85,31 +76,18 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
 
 var app = angular.module('seeFoodApp');
 
-app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function ($scope, HomeService, Auth, $state) {
-	console.log('state: ', $state.current.name);
-	$scope.$parent.state = $state.current.name;
-
+app.controller('homeCtrl', ["$scope", "Auth", "$state", function ($scope, Auth, $state) {
 	$scope.login = function (authMethod, $event) {
-		console.log('login click working');
-		Auth.$authWithOAuthPopup(authMethod).then(function (authData) {
-			console.log("in login function - swipe");
-		}).catch(function (error) {
+		Auth.$authWithOAuthPopup(authMethod).then(function (authData) {}).catch(function (error) {
 			$state.go("home");
-			console.log('no FB login');
 		});
 	};
 
 	Auth.$onAuth(function (authData) {
-		console.log('auth working');
-		if (authData === null) {
-			console.log('Not logged in yet');
-		} else {
-			console.log('Logged in as', authData.uid);
+		if (authData === null) {} else {
 			$state.go("swipe");
-			console.log("homeCtrl onAuth state.go executed");
 		}
 		$scope.authData = authData;
-		console.log('homeCtrl onAuth scope authData: ', $scope.authData);
 	});
 }]);
 'use strict';
@@ -117,12 +95,7 @@ app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function 
 var app = angular.module('seeFoodApp');
 
 app.controller('listCtrl', ["RestaurantService", "$scope", "$state", function (RestaurantService, $scope, $state) {
-
-	console.log('state: ', $state.current.name);
-	$scope.$parent.state = $state.current.name;
-
 	$scope.likes = RestaurantService.grabLikes();
-
 	$scope.seeDetails = function (item) {
 		$state.go('detail', { id: item.id });
 	};
@@ -132,7 +105,6 @@ app.controller('listCtrl', ["RestaurantService", "$scope", "$state", function (R
 var app = angular.module('seeFoodApp');
 
 app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth", "$state", function ($scope, $ionicModal, RestaurantService, Auth, $state) {
-
   $ionicModal.fromTemplateUrl('filters/options.html', {
     scope: $scope
   }).then(function (modal) {
@@ -154,7 +126,6 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
   };
 
   $scope.createFilter = function (filter) {
-    console.log('gimme dat filter: ', filter);
     if (filter) {
       RestaurantService.clearRestaurant();
       RestaurantService.buildFilter(filter);
@@ -163,25 +134,16 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
   };
 
   $scope.logout = function () {
-    console.log("logout authData: ", $scope.authData);
     $state.go('home');
     $scope.authData = null;
     window.localStorage.clear();
     $scope.modal.hide();
-    console.log('window store: ', window.localStorage);
-    console.log('authDate after unauth: ', $scope.authData);
   };
 
   Auth.$onAuth(function (authData) {
-    console.log('onAuth authData: ', authData);
     if (authData === null) {
-      console.log('null mainCtrl Not logged in yet');
-      $state.go('home');
-    } else if (authData === {}) {
-      console.log('{} mainCtrl Not logged in yet');
       $state.go('home');
     } else {
-      console.log('else mainCtrl Logged in as', authData.uid);
       $state.go('swipe');
     }
     $scope.authData = authData;
@@ -191,17 +153,11 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
 
 var app = angular.module('seeFoodApp');
 
-app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$state", "$ionicLoading", function ($scope, HomeService, RestaurantService, $state, $ionicLoading) {
-	console.log("i am in swipe state");
-	$scope.$parent.state = $state.current.name;
-	console.log('state: ', $state.current.name);
-
+app.controller('swipeCtrl', ["$scope", "RestaurantService", "$state", "$ionicLoading", function ($scope, RestaurantService, $state, $ionicLoading) {
 	$scope.$watch(function () {
-		console.log('restaurant', RestaurantService.restaurants);
 		return RestaurantService.restaurants;
 	}, function (newVal, oldVal) {
 		$ionicLoading.hide();
-		console.log('newVal: ', newVal);
 		$scope.restaurant = newVal[0];
 	});
 
@@ -222,10 +178,6 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 
 var app = angular.module('seeFoodApp');
 
-app.service('HomeService', ["$http", function ($http) {
-  console.log('homeService');
-}]);
-
 app.factory('Auth', ["$firebaseAuth", function ($firebaseAuth) {
   var endPoint = "https://seefoodapp.firebaseio.com";
   var usersRef = new Firebase(endPoint);
@@ -236,7 +188,6 @@ app.factory('Auth', ["$firebaseAuth", function ($firebaseAuth) {
 var app = angular.module('seeFoodApp');
 
 app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", function ($http, API, $cordovaGeolocation) {
-
 	this.restaurants = [];
 	this.likes = [];
 	this.filterObj = {};
@@ -244,7 +195,6 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.findMe = function () {
 		var _this = this;
 
-		console.log('find me works');
 		var posOptions = {
 			enableHighAccuracy: true,
 			timeout: 20000,
@@ -252,7 +202,6 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 		};
 
 		var geolocateTimer = window.setTimeout(function () {
-			console.log('timer coords');
 			_this.filterObj = {
 				lat: 37.5489946970847,
 				lng: -121.9429642028612
@@ -262,18 +211,15 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 
 		$cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
 			window.clearTimeout(geolocateTimer);
-			console.log('geolocator coords');
 			_this.filterObj = {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			};
-			console.log('filter: ', _this.filterObj);
 			_this.buildFilter(_this.filterObj);
 		});
 	};
 
 	this.setRestaurants = function (data) {
-		console.log('data', data);
 		data.businesses = _.shuffle(data.businesses);
 		this.restaurants = this.restaurants.concat(data.businesses);
 	};
@@ -308,7 +254,6 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.buildFilter = function (obj) {
 		var _this2 = this;
 
-		console.log('filter works, obj: ', obj);
 		var categories = [];
 		this.filterObj.count = 0;
 		this.filterObj.radius = obj.radius ? obj.radius * 1600 : 10 * 1600;
@@ -336,10 +281,7 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 	this.getRestaurants = function () {
 		var _this3 = this;
 
-		console.log('filterObj: ', this.filterObj);
 		return $http.put(API + '/restaurants', this.filterObj).then(function (res) {
-			console.log(res.data.businesses);
-
 			res.data.businesses.forEach(function (ele, ind, arr) {
 				if (!ele.image_url) {
 					res.data.businesses.splice(arr.indexOf(ele), 1);

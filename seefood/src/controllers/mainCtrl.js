@@ -3,7 +3,6 @@
 var app = angular.module('seeFoodApp');
 
 app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth, $state) {
-
   $ionicModal.fromTemplateUrl('filters/options.html', {
     scope: $scope
   })
@@ -24,7 +23,6 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth
   };
 
   $scope.createFilter = function(filter) {
-    console.log('gimme dat filter: ', filter);
     if(filter) {
       RestaurantService.clearRestaurant();
       RestaurantService.buildFilter(filter);
@@ -33,28 +31,18 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth
   }
 
   $scope.logout = function() {
-    console.log("logout authData: ", $scope.authData);
     $state.go('home');
     $scope.authData = null;
     window.localStorage.clear();
     $scope.modal.hide();
-    console.log('window store: ', window.localStorage);
-    console.log('authDate after unauth: ', $scope.authData);
   }
 
   Auth.$onAuth(function(authData) {
-    console.log('onAuth authData: ', authData);
     if (authData === null) {
-      console.log('null mainCtrl Not logged in yet');
-      $state.go('home');
-    } else if (authData === {}) {
-      console.log('{} mainCtrl Not logged in yet');
       $state.go('home');
     } else {
-      console.log('else mainCtrl Logged in as', authData.uid);
       $state.go('swipe');
     }
     $scope.authData = authData;
   });
-
 });

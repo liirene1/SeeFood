@@ -1,23 +1,19 @@
 <ion-view>
 	<ion-content>
-
 		<div id="swipe" class="container">
     	<a ng-click="openModal()"><i class="fa fa-cogs fa-2x"></i></a>
     	<div class="col-xs-12 text-center foodle">
 				<h1 id="swipe-foodle" class="see-food">foodle.
         </h1>
     	</div>
-
 	    <div class="col-xs-12" id="picdiv" on-swipe-left="rejected()" on-swipe-right="accepted()">
 	      <img id="pic" ng-src="{{restaurant.image_url}}" alt="waiting....">
 	      <h4 ng-repeat='type in restaurant.categories track by $index'>{{type[0]}}</h4>
 	    </div>
-
 	    <div class="col-xs-12 swipe">
 	      <a ng-click='rejected()' id="no" class="btn-floating btn-large btn-warning fa fa-thumbs-down fa-3x swipe-btn"></a>
 	      <a ng-click='accepted()' id="yes" class="btn-floating btn-large btn-danger fa fa-thumbs-up fa-3x swipe-btn"></a>
 	    </div>
-
 	    <div class="col-xs-12 text-center">
 	    </div>
 		</div>
