@@ -36,13 +36,6 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 	    console.log('filter: ', this.filterObj);
 	    this.buildFilter(this.filterObj);
 	  })
-	  // .catch(err => {
-	  // 	this.filterObj = {
-	  //     lat: 37.5489946970847,
-	  //     lng: -121.9429642028612
-	  //   }
-	  //   this.buildFilter(this.filterObj);
-	  // })
 
 	}
 
@@ -108,11 +101,9 @@ app.service('RestaurantService', function($http, API, $cordovaGeolocation) {
 
 	this.getRestaurants = function() {
 		console.log('filterObj: ', this.filterObj);
-    //$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(`${API}/restaurants`, this.filterObj)
 		.then(res => {
 			console.log(res.data.businesses);
-      //$ionicLoading.hide();
 
 			res.data.businesses.forEach((ele, ind, arr) => {
 				if(!ele.image_url) {

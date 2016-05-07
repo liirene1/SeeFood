@@ -33,15 +33,13 @@ app.controller('mainCtrl', function($scope, $ionicModal, RestaurantService, Auth
   }
 
   $scope.logout = function() {
-    // Auth.$onAuth(function(authData) {
-      console.log("logout authData: ", $scope.authData);
-      $state.go('home');
-      $scope.authData = null;
-      window.localStorage.clear();
-      $scope.modal.hide();
-      console.log('window store: ', window.localStorage);
-      console.log('authDate after unauth: ', $scope.authData);
-    // })
+    console.log("logout authData: ", $scope.authData);
+    $state.go('home');
+    $scope.authData = null;
+    window.localStorage.clear();
+    $scope.modal.hide();
+    console.log('window store: ', window.localStorage);
+    console.log('authDate after unauth: ', $scope.authData);
   }
 
   Auth.$onAuth(function(authData) {

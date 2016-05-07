@@ -2,7 +2,7 @@
 
 var app = angular.module('seeFoodApp');
 
-app.service('HomeService', function($http) { //CacheFactory, API
+app.service('HomeService', function($http) {
   console.log('homeService');
 })
 

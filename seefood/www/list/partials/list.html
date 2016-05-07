@@ -9,21 +9,19 @@
       </div>
     </div>
       <div class="ion-list">
-          <ion-list>
-             <!-- add a section header -->
-             <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
-                <!-- iterate thru each item in the list, use $index as item identifier -->
-                <ion-item ng-repeat="item in likes track by $index">
-                  <a class="item item-thumbnail-right" ng-click="seeDetails(item)">
-                    <img ng-src="{{item.image_url}}">
-                    <h1 class="rest-name">{{item.name}}</h1>
-                    <h3 class="rest-cat">{{item.categories[0][0]}}</h3>
-                    <img class="rest-rate" ng-src="{{item.rating_img_url_small}}" alt="">
-                  </a>
+        <ion-list>
+          <ion-item class="item-divider"><center>YOUR PICKS</center></ion-item>
+          <ion-item ng-repeat="item in likes track by $index">
+            <a class="item item-thumbnail-right" ng-click="seeDetails(item)">
+              <img ng-src="{{item.image_url}}">
+              <h1 class="rest-name">{{item.name}}</h1>
+              <h3 class="rest-cat">{{item.categories[0][0]}}</h3>
+              <img class="rest-rate" ng-src="{{item.rating_img_url_small}}" alt="">
+            </a>
 
-                </ion-item>
-          </ion-list>
-        </div>
+          </ion-item>
+        </ion-list>
+      </div>
     </ion-content>
 
     <div id="foot-list" class="bar bar-footer bar-dark">

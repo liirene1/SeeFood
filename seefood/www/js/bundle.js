@@ -46,13 +46,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
       StatusBar.styleDefault();
     }
 
-    // var posOptions = {
-    //   enableHighAccuracy: true,
-    //   timeout: 20000,
-    //   maximumAge: 0
-    // };
-    // console.log('posOptions', posOptions);
-
     RestaurantService.findMe();
   });
 }]);
@@ -72,14 +65,6 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
     return Math.round(m * 0.000621371192);
   };
 
-  // $scope.map = {
-  //   center: {
-  //     latitude: $scope.restaurant.location.coordinate.latitude,
-  //     longitude: $scope.restaurant.location.coordinate.longitude
-  //   },
-  //   zoom: 12
-  // };
-
   initMap();
   function initMap() {
     var myLatLng = { lat: $scope.restaurant.location.coordinate.latitude, lng: $scope.restaurant.location.coordinate.longitude };
@@ -95,31 +80,6 @@ app.controller('detailCtrl', ["$scope", "$stateParams", "RestaurantService", "$s
       title: 'Hello World!'
     });
   }
-
-  // $scope.map.options = {
-  //   draggable: true,
-  //   labelContent: "lat: " + $scope.restaurant.location.coordinate.latitude + ' ' + 'lon: ' +  $scope.restaurant.location.coordinate.longitude,
-  //   labelAnchor: "100 0",
-  //   labelClass: "marker-labels"
-  // };
-
-  // var homeLatLng = new google.maps.LatLng($scope.restaurant.location.coordinate.latitude, $scope.restaurant.location.coordinate.longitude);
-
-  // var marker1 = new MarkerWithLabel({
-  //   position: homeLatLng,
-  //   draggable: true,
-  //   raiseOnDrag: true,
-  //   map: map,
-  //   labelContent: "$425K",
-  //   labelAnchor: new google.maps.Point(22, 0),
-  //   labelClass: "labels", // the CSS class for the label
-  //   labelStyle: {opacity: 0.75}
-  //  });
-
-  // var iw1 = new google.maps.InfoWindow({
-  //    content: $scope.restaurant.location.display_address[0] + "\n" + $scope.restaurant.location.display_address[1]
-  //  });
-  //  google.maps.event.addListener(marker1, "click", function (e) { iw1.open($scope.map, this); });
 }]);
 'use strict';
 
@@ -131,11 +91,7 @@ app.controller('homeCtrl', ["$scope", "HomeService", "Auth", "$state", function 
 
 	$scope.login = function (authMethod, $event) {
 		console.log('login click working');
-		// Auth.$authWithOAuthRedirect(authMethod)
-		// var ref = cordova.InAppBrowser.open('http://apache.org', '_self', 'location=yes')
 		Auth.$authWithOAuthPopup(authMethod).then(function (authData) {
-			// ref.close();
-			// $state.go("swipe");
 			console.log("in login function - swipe");
 		}).catch(function (error) {
 			$state.go("home");
@@ -168,7 +124,6 @@ app.controller('listCtrl', ["RestaurantService", "$scope", "$state", function (R
 	$scope.likes = RestaurantService.grabLikes();
 
 	$scope.seeDetails = function (item) {
-		//use state params for this!
 		$state.go('detail', { id: item.id });
 	};
 }]);
@@ -208,7 +163,6 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
   };
 
   $scope.logout = function () {
-    // Auth.$onAuth(function(authData) {
     console.log("logout authData: ", $scope.authData);
     $state.go('home');
     $scope.authData = null;
@@ -216,7 +170,6 @@ app.controller('mainCtrl', ["$scope", "$ionicModal", "RestaurantService", "Auth"
     $scope.modal.hide();
     console.log('window store: ', window.localStorage);
     console.log('authDate after unauth: ', $scope.authData);
-    // })
   };
 
   Auth.$onAuth(function (authData) {
@@ -241,7 +194,6 @@ var app = angular.module('seeFoodApp');
 app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$state", "$ionicLoading", function ($scope, HomeService, RestaurantService, $state, $ionicLoading) {
 	console.log("i am in swipe state");
 	$scope.$parent.state = $state.current.name;
-	//$ionicLoading.show({ template: 'Loading...'})
 	console.log('state: ', $state.current.name);
 
 	$scope.$watch(function () {
@@ -271,7 +223,6 @@ app.controller('swipeCtrl', ["$scope", "HomeService", "RestaurantService", "$sta
 var app = angular.module('seeFoodApp');
 
 app.service('HomeService', ["$http", function ($http) {
-  //CacheFactory, API
   console.log('homeService');
 }]);
 
@@ -319,13 +270,6 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 			console.log('filter: ', _this.filterObj);
 			_this.buildFilter(_this.filterObj);
 		});
-		// .catch(err => {
-		// 	this.filterObj = {
-		//     lat: 37.5489946970847,
-		//     lng: -121.9429642028612
-		//   }
-		//   this.buildFilter(this.filterObj);
-		// })
 	};
 
 	this.setRestaurants = function (data) {
@@ -393,10 +337,8 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 		var _this3 = this;
 
 		console.log('filterObj: ', this.filterObj);
-		//$ionicLoading.show({ template: 'Loading...'})
 		return $http.put(API + '/restaurants', this.filterObj).then(function (res) {
 			console.log(res.data.businesses);
-			//$ionicLoading.hide();
 
 			res.data.businesses.forEach(function (ele, ind, arr) {
 				if (!ele.image_url) {
@@ -418,10 +360,3 @@ app.service('RestaurantService', ["$http", "API", "$cordovaGeolocation", functio
 		return $http.get('https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCVFibjTMF6wEQUlCV_O5zILn5urQUZ6Zo&address=' + urlAddress);
 	};
 }]);
-'use strict';
-
-var app = angular.module('seeFoodApp');
-
-// app.service('SwipeService', function() {
-//
-// });

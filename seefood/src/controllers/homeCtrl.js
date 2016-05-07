@@ -8,12 +8,8 @@ app.controller('homeCtrl', function($scope, HomeService, Auth, $state) {
 
 	$scope.login = function(authMethod, $event) {
 		console.log('login click working');
-    // Auth.$authWithOAuthRedirect(authMethod)
-    // var ref = cordova.InAppBrowser.open('http://apache.org', '_self', 'location=yes')
     Auth.$authWithOAuthPopup(authMethod)
 		.then(function(authData) {
-      // ref.close();
-			// $state.go("swipe");
       console.log("in login function - swipe");
     }).catch(function(error) {
 					$state.go("home");
