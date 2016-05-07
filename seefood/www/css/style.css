@@ -438,7 +438,7 @@ input[type=text]:focus:not([readonly]){
 }
 
 .input-label {
-	width: 100%;
+	width: 50%;
 }
 
 .item {
