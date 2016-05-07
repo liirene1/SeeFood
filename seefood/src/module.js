@@ -5,8 +5,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
 .service('rootRef', ['FirebaseUrl', Firebase])
 
 .config(function($stateProvider, $urlRouterProvider) {
-
-  console.log("config being hit");
   $stateProvider
   .state('home', {
     url: '/',
@@ -46,9 +44,7 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
 .constant('API', 'http://seefoodapp.herokuapp.com')
 
 .run(function($ionicPlatform, $cordovaGeolocation, RestaurantService) {
-  console.log('runs');
   $ionicPlatform.ready(function() {
-  console.log('runs inside');
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -56,14 +52,6 @@ angular.module('seeFoodApp', ['ionic', 'ui.router', 'ngCordova', 'ngLodash', 'fi
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
-
-    // var posOptions = {
-    //   enableHighAccuracy: true,
-    //   timeout: 20000,
-    //   maximumAge: 0
-    // };
-    // console.log('posOptions', posOptions);
 
     RestaurantService.findMe();
   });

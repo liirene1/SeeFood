@@ -10,7 +10,6 @@ var yelp = new Yelp({
 });
 
 exports.getResults = function(coordObj, callback) {
-  console.log('coordObj:', coordObj)
   yelp.search({
     offset: coordObj.count,
     limit: 20,

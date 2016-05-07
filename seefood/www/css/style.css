@@ -1,3 +1,7 @@
+body {
+	margin-top: 1%;
+}
+
 * {
 font-family: 'Questrial', sans-serif;
 }
@@ -53,7 +57,6 @@ font-family: 'Questrial', sans-serif;
 
 #restaurant-address {
 	font-style: bold;
-	/*border: 1px solid black;*/
 }
 
 #resultbutton {
@@ -280,6 +283,10 @@ font-family: 'Questrial', sans-serif;
 	color: black;
 }
 
+#spinner {
+	margin-top: 80px;
+}
+
 .rest-name {
 	color: #263238;
 	margin-left: 10px;
@@ -414,6 +421,7 @@ img.rest-rate {
 
 #radius-range {
 	color: #80deea;
+  margin-left: 47%;
 }
 
 .toggle input:checked + .track .handle {
@@ -431,6 +439,13 @@ input[type=text]:focus:not([readonly]){
 .filter-buttons {
 	text-align: center;
 	color: black;
+}
+
+.filterButton {
+	background-color: #80deea;
+	color: #263238;
+	font-weight: bold;
+	margin-bottom: 3%;
 }
 
 .thumb {
