@@ -106,7 +106,6 @@ font-family: 'Questrial', sans-serif;
 	background: #263238;
 }
 
-
 .carousel-inner {
 	background: none;
 }
@@ -283,10 +282,6 @@ font-family: 'Questrial', sans-serif;
 	color: black;
 }
 
-#spinner {
-	margin-top: 80px;
-}
-
 .rest-name {
 	color: #263238;
 	margin-left: 10px;
@@ -321,6 +316,14 @@ a#website {
 
 #detailCateg {
 	margin-bottom: 3%;
+}
+
+#openStatus {
+	color: green;
+}
+
+#closedStatus {
+	color: red;
 }
 
 /*options view*/
@@ -386,7 +389,7 @@ div.swipe {
 
 #yelp-logo {
 	height: 20px;
-	wigth: 50px;
+	width: 50px;
 }
 
 #swipe-foodle {
@@ -396,7 +399,6 @@ div.swipe {
 div#viewTitle {
 	font-size: 20px;
 	font-weight: bold;
-	/*color: black;*/
 	color: #263238;
 }
 
@@ -458,5 +460,4 @@ input[type=text]:focus:not([readonly]){
 
 .item {
 	border-color: #80deea;
-	/*border: 1px solid */
 }
