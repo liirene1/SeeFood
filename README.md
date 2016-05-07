@@ -1,4 +1,6 @@
-A way to match you to the most constant, rewarding partner in your life….food! Never distress over what you are eating again!
+Foodle swipes out the daily struggle of finding what’s the best food to eat nearby.
+
+A way to match you to the most constant, rewarding partner in your life… food! Never distress over what you are eating again!
 
 Built With:
 
