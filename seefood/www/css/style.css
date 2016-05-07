@@ -31,8 +31,8 @@ font-family: 'Questrial', sans-serif;
 }
 
 #picdiv {
-	height: 60vh;
-	border: 1px solid black;
+	height: 55vh;
+	text-align: center;
 }
 
 #listThumbnail {
@@ -53,7 +53,7 @@ font-family: 'Questrial', sans-serif;
 
 #restaurant-address {
 	font-style: bold;
-	border: 1px solid black;
+	/*border: 1px solid black;*/
 }
 
 #resultbutton {
@@ -71,7 +71,7 @@ font-family: 'Questrial', sans-serif;
 	width: 50vw;
 }
 
-#mapdiv {
+#map {
 	height: 40vh;
 	border: 1px solid black;
 	margin-bottom: 5px;
@@ -88,10 +88,9 @@ font-family: 'Questrial', sans-serif;
 }
 
 #restaurantdetails {
-	margin-left: 32px;
+	margin-left: 5px;
 }
 
-/*this was from Josh's merge*/
 .swiper {
 	margin-bottom: 20px;
 }
@@ -109,11 +108,6 @@ font-family: 'Questrial', sans-serif;
 
 .carousel-inner {
 	background: none;
-}
-
-.swipe-btn {
-	margin: 10px;
-	margin-left: 34px;
 }
 
 .fa-cogs {
@@ -152,13 +146,6 @@ font-family: 'Questrial', sans-serif;
 	background: black;
 }
 
-/*.item {
-	border: 1px solid gray;
-	padding: 1px;
-	display: inline-block;
-	width: 210px;
-}*/
-
 .bar-footer {
 	height: 55px;
 }
@@ -170,10 +157,6 @@ font-family: 'Questrial', sans-serif;
 .list-head {
 	margin-top: 7px;
 	color: #4dd0e1;
-	font-size: 35px;
-}
-
-.title {
 	font-size: 35px;
 }
 
@@ -237,19 +220,16 @@ font-family: 'Questrial', sans-serif;
 	background: black;
 }
 
-.item {
-	/*border: 1px solid gray;*/
-	padding: 1px;
-	display: inline-block;
-	width: 100%;
-}
-
 .bar-footer {
 	height: 65px;
 }
 
 .swipe {
 	margin-top: 15px;
+}
+
+#detailAddress {
+	font-size: 135%;
 }
 
 .list-head {
@@ -277,10 +257,16 @@ font-family: 'Questrial', sans-serif;
 
 #foot-home {
 	background: #80DEEA;
+<<<<<<< HEAD
 	height: 45px;
+=======
+	height: 35px;
+>>>>>>> 557b741f4bd5fd263ddf2918fdf70db052ec2dba
 }
+
 #foot-list {
 	background: #80DEEA;
+	height: 45px;
 }
 
 .fa-cogs {
@@ -302,6 +288,10 @@ font-family: 'Questrial', sans-serif;
 
 .rest-name {
 	color: #263238;
+<<<<<<< HEAD
+=======
+	margin-left: 10px;
+>>>>>>> 557b741f4bd5fd263ddf2918fdf70db052ec2dba
 	font-size: 17px;
 	font-weight: bold;
 }
@@ -315,6 +305,27 @@ font-family: 'Questrial', sans-serif;
 	color: black;
 }
 
+/*details view*/
+#website>img {
+  height: 5vh;
+}
+
+div#restaurant-address {
+  margin-top: -5%;
+  margin-bottom: 5%;
+}
+
+a#website {
+  padding: 0%;
+  padding-top: 2%;
+  background-color: #d84315;
+}
+
+#detailCateg {
+	margin-bottom: 3%;
+}
+
+/*options view*/
 .toggle input:checked + .track .handle {
   background-color: #ff7043;
 
@@ -346,11 +357,31 @@ input[type=text]:focus:not([readonly]){
 	display: none;
 }
 
+/*swipe view styles*/
 div#restaurantthumbnail {
 	border-color: 2px solid #ff7043;
 }
 
+<<<<<<< HEAD
 .slider-slide {
+=======
+.swipe-btn {
+	margin: 20px;
+}
+
+div.swipe {
+	text-align: center;
+	margin-bottom: 75px;
+}
+
+#foot-swipe {
+	background: #80DEEA;
+	height: 45px;
+	margin-top: 100px;
+}
+
+.slider-slides {
+>>>>>>> 557b741f4bd5fd263ddf2918fdf70db052ec2dba
 	margin-top: -30px;
 	padding-top: 20px;
 }
@@ -367,3 +398,74 @@ div#restaurantthumbnail {
 #swipe-foodle {
 	margin-left: 65px;
 }
+<<<<<<< HEAD
+=======
+
+div#viewTitle {
+	font-size: 20px;
+	font-weight: bold;
+	/*color: black;*/
+	color: #263238;
+}
+
+h3.rest-cat {
+	color: #263238;
+	margin-left: 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+img.rest-rate {
+	margin-left: 10px;
+}
+
+/*filter/options view*/
+#options-header {
+	background-color: #ff7043;
+}
+
+#settings-title {
+	text-align: center;
+}
+
+#radius-range {
+	color: #80deea;
+  margin-left: 47%;
+}
+
+.toggle input:checked + .track .handle {
+  background-color: #80deea;
+}
+
+.toggle input:checked + .track {
+	background-color: #80deea;
+}
+
+input[type=text]:focus:not([readonly]){
+  border-bottom: 1px solid #80deea;
+}
+
+.filter-buttons {
+	text-align: center;
+	color: black;
+}
+
+.filterButton {
+	background-color: #80deea;
+	color: #263238;
+	font-weight: bold;
+	margin-bottom: 3%;
+}
+
+.thumb {
+	display: none;
+}
+
+.input-label {
+	width: 50%;
+}
+
+.item {
+	border-color: #80deea;
+	/*border: 1px solid */
+}
+>>>>>>> 557b741f4bd5fd263ddf2918fdf70db052ec2dba

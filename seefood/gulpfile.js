@@ -25,7 +25,7 @@ gulp.task('babel', function(done) {
     .pipe(ngAnnotate())
     .pipe(babel({presets: ['es2015']}))
     .pipe(concat('bundle.js'))
-    // .pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('./www/js/'))
     .on('end', done);
 });
