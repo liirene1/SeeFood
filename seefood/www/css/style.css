@@ -46,6 +46,12 @@ font-family: 'Questrial', sans-serif;
 	margin-right: 10px;
 }
 
+#modalBack {
+  float: left;
+  margin-left: 3px;
+  margin-top: 2px;
+}
+
 #listWell {
 	width: 275px;
 	margin-right: 15px;
@@ -434,6 +440,16 @@ img.rest-rate {
 	background-color: #80deea;
 }
 
+a.item.item-thumbnail-right {
+  width: 94%;
+  float: left;
+}
+
+i.fa.fa-chevron-right {
+  float: right;
+  margin-top: 8vh;
+}
+
 input[type=text]:focus:not([readonly]){
   border-bottom: 1px solid #80deea;
 }
@@ -460,4 +476,12 @@ input[type=text]:focus:not([readonly]){
 
 .item {
 	border-color: #80deea;
+}
+
+#settings-title{
+	margin-left: -50px;
+}
+
+h1.see-food.foodle.DLTitle {
+  margin-top: 15px;
 }

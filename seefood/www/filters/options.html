@@ -1,5 +1,6 @@
 <ion-modal-view>
   <ion-header-bar class="bar bar-header" id="options-header">
+    <a ng-click="cancelModal()"><i class="fa fa-arrow-left fa-2x" id='modalBack'></i></a>
     <h1 id="settings-title" class="title">Settings</h1>
   </ion-header-bar>
   <ion-content class="padding">
@@ -29,9 +30,9 @@
       <ion-item class='filterButton waves-effect waves-light'>
         <p class="filter-buttons" ng-click="createFilter(filter)">Update</p>
       </ion-item>
-      <ion-item class='filterButton waves-effect waves-light'>
+<!--       <ion-item class='filterButton waves-effect waves-light'>
         <p class="filter-buttons" ng-click="cancelModal()">Cancel</p>
-      </ion-item>
+      </ion-item> -->
       <ion-item class='filterButton waves-effect waves-light' ng-click="logout()">
         <p class="filter-buttons">Log Out</p>
       </ion-item>
